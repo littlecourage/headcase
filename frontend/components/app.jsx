@@ -1,5 +1,4 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import {
   Route,
   Redirect,
@@ -10,13 +9,7 @@ import {
 
 const App = () => (
   <div>
-    <header>
-      <Link to="/" className="header-link">
-        <h1>Headcase</h1>
-      </Link>
-    </header>
-    <Switch>
-    </Switch>
+      <h1>Headcase</h1>
   </div>
 );
 
