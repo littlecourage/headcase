@@ -9,7 +9,7 @@ const Greeting = ({ currentUser, logout }) => {
         <nav className="header-nav">
           <Link to="/login" className="login-link">LOG IN</Link>
           &nbsp;
-          <Link to="/signup" className="signup-link">Sign Up</Link>
+          <Link to="/signup" className="signup-link">Start free trial</Link>
         </nav>
       </div>
     )

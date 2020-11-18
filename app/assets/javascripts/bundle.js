@@ -225,7 +225,7 @@ var Greeting = function Greeting(_ref) {
     }, "LOG IN"), "\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/signup",
       className: "signup-link"
-    }, "Sign Up")));
+    }, "Start free trial")));
   };
 
   var userGreeting = function userGreeting() {

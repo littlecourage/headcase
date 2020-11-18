@@ -1,3 +1,5 @@
+
+
 .login_container {
   align-items: center;
   display: flex;
@@ -6,7 +8,7 @@
 }
 
 .login_img {
-  width: 99%;
+  width: 100%;
   height: auto;
   padding-top: 10px;
   margin-left: 4px;
@@ -28,6 +30,7 @@
 
 .form_title {
   font-size: 26px;
+  font-family: "ApercuPro", sans-serif;
 }
 
 .login_input {
@@ -37,11 +40,16 @@
   width: 550px;
   padding: 20px 0px 14px 20px;
   margin: 0 14px;
+  font-size: 18px;
+  font-family: "ApercuPro", sans-serif;
+  font-weight: 400;
 }
 
 .login_input::-webkit-input-placeholder {
   color: #323233;
   font-size: 18px;
+  font-family: "ApercuPro", sans-serif;
+  font-weight: 400;
 }
 
 .form_submit {
@@ -52,17 +60,29 @@
   text-align: center;
   cursor: pointer;
   width: 550px;
+  font-family: "ApercuPro", sans-serif;
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 400;
+  letter-spacing: 2.5px;
 }
 
 .form_submit:hover {
   background-color: #0069FF;
 }
 
+span {
+  font-family: "ApercuPro", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #5A6175;
+}
+
 .form_link {
   color: #F1853E;
   text-decoration: none;
+  font-family: "ApercuPro", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .form_link:hover {
@@ -78,7 +98,9 @@
   padding: 15px 32px;
   width: 550px;
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 700;
+  font-family: "ApercuPro-Medium", sans-serif;
+  letter-spacing: 2.5px;
 }
 
 .demo_button:hover {
