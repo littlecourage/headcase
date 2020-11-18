@@ -41,8 +41,8 @@ class SessionForm extends React.Component {
     if (this.props.formType === 'signup'){
       let title = 'Sign up';
       return (
-        <div>
-          <form onSubmit={this.handleSubmit}>
+        <div className="signup">
+          <form className="signup_form" onSubmit={this.handleSubmit}>
             <h2>{`${title}`}</h2>
             <br />
             Already Have An Account? {this.props.navLink}
@@ -85,16 +85,18 @@ class SessionForm extends React.Component {
     } else {
       let title = 'Log in';
       return (
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <h2>{`${title}`}</h2>
+        <div className="login_container" >
+
+          <form className="login_form_box" onSubmit={this.handleSubmit}>
+            <h2 className="form_title">{`${title}`}</h2>
             <br />
-            New To Headspace? {this.props.navLink}
+            <h3>New To Headspace?</h3> {this.props.navLink}
             {this.renderErrors()}
             <div>
               <br/>
               <input
                 type="text"
+                className="login_input"
                 placeholder="Email address"
                 value={this.state.email}
                 onChange={this.update('email')}
@@ -102,12 +104,13 @@ class SessionForm extends React.Component {
               <br/>
               <input
                 type="password"
+                className="login_input"
                 placeholder="Password (8+ characters)"
                 value={this.state.password}
                 onChange={this.update('password')}
               />
               <br/>
-              <button>LOG IN</button>
+              <button className="form_submit">LOG IN</button>
             </div>
           </form>
           <br/>
