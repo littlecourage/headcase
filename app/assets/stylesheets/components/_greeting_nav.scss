@@ -9,17 +9,19 @@
   display: flex;
   justify-content: space-between;
   height: 95px;
-  width: 100%;
-  padding: 16px 0px 16px 16px;
+  width: 99%;
+  padding-left: 16px;
   background-color: white;
   align-items: center;
+  position: fixed;
 }
 
 .header-nav {
-  width: 270px;
+  width: 280px;
   height: 60px;
   display: flex;
   align-items: center;
+  padding-right: 60px;
 }
 
 .header-logo {
@@ -29,24 +31,37 @@
 
 .login-link {
   border-left: #5A6175 solid 1px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
-  padding: 10px 10px 10px 14px;
+  // margin-right: 14px;
+  // padding-left: 14px;
+  width: 70px;
+
+  padding: 10px 0px 10px 14px;
   color: #5A6175;
+  text-decoration: none;
 }
 
 .signup-link {
-  padding: 15px 32px;
-  background-color: #0069FF;
+  padding: 0px 32px;
+  background-color: #0E6EF6;
   color: white;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 0px;
   border-radius: 50px;
   width: 170px;
-  height: 49px;
-  text-align: center;
+  height: 45px;
   font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .signup-link:hover {
-    background-color: #0055cc;
+    background-color: #0069FF;
+    cursor: pointer;
 }
+
+
+
