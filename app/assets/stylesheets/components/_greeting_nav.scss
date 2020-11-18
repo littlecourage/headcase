@@ -1,0 +1,52 @@
+ @font-face {
+   font-family: "ApercuPro-Medium";
+   src: url('../../fonts/ApercuPro-Medium.woff') format("truetype");
+   font-family: "ApercuPro";
+   src: url('../../fonts/ApercuPro.woff') format("truetype");
+ }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 95px;
+  width: 100%;
+  padding: 16px 0px 16px 16px;
+  background-color: white;
+  align-items: center;
+}
+
+.header-nav {
+  width: 270px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.header-logo {
+  width: 221px;
+  height: 48px;
+}
+
+.login-link {
+  border-left: #5A6175 solid 1px;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 10px 10px 14px;
+  color: #5A6175;
+}
+
+.signup-link {
+  padding: 15px 32px;
+  background-color: #0069FF;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 0px;
+  border-radius: 50px;
+  width: 170px;
+  height: 49px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.signup-link:hover {
+
+}

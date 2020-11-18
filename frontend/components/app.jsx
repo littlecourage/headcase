@@ -13,14 +13,15 @@ import { AuthRoute } from '../util/route_util';
 
 const App = () => (
   <div>
-    <header>
-      <h1>Headcase</h1>
-      <GreetingContainer />
+    <header className="header">
+      <img src={window.logoUrl} alt="headspace logo" className="header-logo" />
+      <GreetingContainer  />
     </header>
     <Switch>
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
     </Switch>
+    <img src={window.backgroundUrl} alt="background image"/>
   </div>
 );
 
