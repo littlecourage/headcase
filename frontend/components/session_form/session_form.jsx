@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaCheck } from 'react-icons/fa';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -11,12 +12,22 @@ class SessionForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoUser = this.handleDemoUser.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
+  }
+
+  handleDemoUser(e) {
+    e.preventDefault();
+    const user = ({
+      email: "demouser@email.email",
+      password: "password"
+    })
+    this.props.loginDemo(user);
   }
 
   update(field) {
@@ -41,74 +52,119 @@ class SessionForm extends React.Component {
     if (this.props.formType === 'signup'){
       let title = 'Sign up';
       return (
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <h2>{`${title}`}</h2>
-            <br />
-            Already Have An Account? {this.props.navLink}
-            {this.renderErrors()}
-            <div>
-              <br/>
-              <input 
-                type="text" 
-                placeholder="First name"
-                value={this.state.first_name}
-                onChange={this.update('first_name')}
-              />
-              <br/>
-              <input
-                type="text"
-                placeholder="Last name"
-                value={this.state.last_name}
-                onChange={this.update('last_name')}
-              />
-              <br/>
-              <input
-                type="text"
-                placeholder="Email address"
-                value={this.state.email}
-                onChange={this.update('email')}
-              />
-              <br/>
-              <input
-                type="password"
-                placeholder="Password (8+ characters)"
-                value={this.state.password}
-                onChange={this.update('password')}
-              />
+          <div className="signup_outer">
+            <img src={window.loginBackgroundUrl} alt="background image" className="login_img" />
+            
+            <div className="signup_inner">
+              <div class="text_block">
+                <h1 className="tag_line">Get some Headspace for a</h1>
+                <h1 className="tag_line">healthier, happier life.</h1>
+                <br/>
+                <br/>
+                <ul>
+                  <li><FaCheck className="check_icon" />&emsp;Hundreds of guided meditations on everything from stress to 
+                  <li><span>&emsp;</span>&emsp;focus to relationships.</li>
+                  </li>
+                  <li><FaCheck className="check_icon" />&emsp;Stories, soundscapes, and music to help you sleep soundly.</li>
+                  <li><FaCheck className="check_icon" />&emsp;Get a new meditation delivered to your phone everyday.</li>
+                </ul>
+              </div>
+
+              <div>
+                <form className="signup_form_box" onSubmit={this.handleSubmit}>
+                  <h2 className="form_title">{`${title}`}</h2>
+                  <br />
+                  <span>Already have an account? {this.props.navLink}</span>
+                  {this.renderErrors()}
+                  <div>
+                    <br />
+                    <br />
+                    <input
+                      type="text"
+                      className="signup_input"
+                      placeholder="First name"
+                      value={this.state.first_name}
+                      onChange={this.update('first_name')}
+                    />
+                    <br />
+                    <br />
+                    <input
+                      type="text"
+                      className="signup_input"
+                      placeholder="Last name"
+                      value={this.state.last_name}
+                      onChange={this.update('last_name')}
+                    />
+                    <br />
+                    <br />
+                    <input
+                      type="text"
+                      className="signup_input"
+                      placeholder="Email address"
+                      value={this.state.email}
+                      onChange={this.update('email')}
+                    />
+                    <br />
+                    <br />
+                    <input
+                      type="password"
+                      className="signup_input"
+                      placeholder="Password (8+ characters)"
+                      value={this.state.password}
+                      onChange={this.update('password')}
+                    />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                  </div>
+                  <button className="form_submit">CREATE AN ACCOUNT</button>
+                  <br />
+                  <button onClick={this.handleDemoUser} className="demo_button">
+                    SIGN IN AS DEMO USER
+                  </button>
+                </form>
+              </div>
             </div>
-            <button>CREATE AN ACCOUNT</button>
-          </form>
-          <br/>
-        </div>
+          </div>
       )
     } else {
       let title = 'Log in';
       return (
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <h2>{`${title}`}</h2>
+        <div className="login_container" >
+          <img src={window.loginBackgroundUrl} alt="background image" className="login_img"/>
+          <form className="login_form_box" onSubmit={this.handleSubmit}>
+            <h2 className="form_title">{`${title}`}</h2>
             <br />
-            New To Headspace? {this.props.navLink}
+            <span>New To Headcase? {this.props.navLink}</span>
             {this.renderErrors()}
             <div>
               <br/>
               <input
                 type="text"
+                className="login_input"
                 placeholder="Email address"
                 value={this.state.email}
                 onChange={this.update('email')}
               />
               <br/>
+              <br/>
               <input
                 type="password"
+                className="login_input"
                 placeholder="Password (8+ characters)"
                 value={this.state.password}
                 onChange={this.update('password')}
               />
               <br/>
-              <button>LOG IN</button>
+              <br/>
             </div>
+            <button className="form_submit">LOG IN</button>
+            <br/>
+            <button onClick={this.handleDemoUser} className="demo_button">
+              SIGN IN AS DEMO USER
+            </button>
           </form>
           <br/>
         </div>
@@ -121,3 +177,4 @@ class SessionForm extends React.Component {
 }
 
 export default SessionForm;
+

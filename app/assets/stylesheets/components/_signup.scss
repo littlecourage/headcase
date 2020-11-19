@@ -1,0 +1,147 @@
+
+.signup_outer {
+  // align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signup_inner {
+  display: flex;
+  position: absolute;
+  justify-content: space-around;
+  width: 100%;
+  height: 500px;
+}
+
+.signup_img {
+  width: 100%;
+  height: auto;
+  padding-top: 10px;
+  margin-left: 4px;
+  left: 0;
+}
+
+.signup_form_box {
+  margin-top: 0px;
+  margin-right: 45px;
+  background-color: #fff;
+  border-radius: 4px;
+  width: 600px;
+  height: 755px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.form_title {
+  font-size: 27px;
+  font-family: "ApercuPro-Medium", sans-serif;
+  color: #323233;
+}
+
+.signup_input {
+  box-sizing: border-box;
+  border: #E8E7E9 solid 1px;
+  border-radius: 6px;
+  width: 550px;
+  padding: 20px 0px 14px 20px;
+  margin: 2.5px 14px;
+  font-size: 20px;
+  font-family: "ApercuPro", sans-serif;
+  font-weight: 400;
+}
+
+.signup_input::-webkit-input-placeholder {
+  color: #323233;
+  font-size: 20px;
+  font-family: "ApercuPro", sans-serif;
+  font-weight: 400;
+}
+
+.form_submit {
+  padding: 15px 32px;
+  background-color: #0E6EF6;
+  color: white;
+  border-radius: 50px;
+  text-align: center;
+  cursor: pointer;
+  width: 550px;
+  font-family: "ApercuPro", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 2.5px;
+}
+
+.form_submit:hover {
+  background-color: #0069FF;
+}
+
+span {
+  font-family: "ApercuPro", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #5A6175;
+}
+
+.form_link {
+  color: #F1853E;
+  text-decoration: none;
+  font-family: "ApercuPro", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.form_link:hover {
+  text-decoration: underline;
+}
+
+.demo_button {
+  background-color: #FAF6F4;
+  color: #323233;
+  border-radius: 50px;
+  text-align: center;
+  cursor: pointer;
+  padding: 15px 32px;
+  width: 550px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: "ApercuPro-Medium", sans-serif;
+  letter-spacing: 2.5px;
+}
+
+.demo_button:hover {
+  color: #5B5B5C;
+}
+
+.tag_line {
+  color: #5A6175;
+  font-size: 40px;
+  font-family: "ApercuPro", sans-serif;
+  font-weight: 00;
+  line-height: 52px;
+  letter-spacing: 1.5px;
+}
+
+.check_icon {
+  color: #5A6175;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+li {
+  font-family: "ApercuPro", sans-serif;
+  color: #757A8A;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  .special_li {
+    width: 30px;
+  }
+}
+
+.text_block {
+  margin-left: 30px;
+}
