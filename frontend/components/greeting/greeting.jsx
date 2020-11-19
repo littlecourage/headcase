@@ -17,12 +17,17 @@ const Greeting = ({ currentUser, logout }) => {
 
   const userGreeting = () => {
     return (
-      <div>
+      <nav className="user_nav">
         <h4>{currentUser.first_name}</h4>
         &nbsp;
         <button onClick={logout}>Log Out</button>
-      </div>
+      </nav>
     )
+  }
+
+  const changeClasses = () => {
+    const header_logo = $("#header_logo");
+    header_logo.toggleClass("user")
   }
 
   if (currentUser) {

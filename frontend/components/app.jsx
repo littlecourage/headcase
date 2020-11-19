@@ -13,9 +13,13 @@ import { AuthRoute } from '../util/route_util';
 
 const App = () => (
   <div>
-    <header className="header">
+    <header className="header" id="header">
       <Link to="/">
-        <img src={window.logoUrl} alt="headspace logo" className="header-logo" />
+        <img 
+          src={window.logoUrl} 
+          alt="headspace logo" 
+          className="header-logo" 
+          id ="header_logo" />
       </Link>
       <GreetingContainer  />
     </header>
