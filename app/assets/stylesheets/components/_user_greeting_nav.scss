@@ -1,9 +1,67 @@
-.user_nav {
-  // background: red;
-  // height: 130px;
-  display: flex;
-  h4 {
-    color: black;
 
+.user_header {
+  display: flex;
+  justify-content: space-between;
+  height: 128px;
+  width: 100%;
+  background-color: white;
+  align-items: center;
+  position: fixed;
+  z-index: 3;
+}
+
+.header-logo-small {
+  width: 144px;
+  height: auto;
+  padding-left: 84px;
+}
+
+.user_nav {
+  width: 450px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  margin-right: 28px;
+  justify-content: space-around;
+
+  button {
+    font-family: "ApercuPro", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #646A7D;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 5px;
+    margin-left: 5px;
+    outline: none;
   }
+
+  span:hover, button:hover {
+    color: #C3C6CD;
+  }
+
+  span:selected, button:selected {
+    color: #F4A566;
+    outline: none;
+  }
+
+}
+
+.profile_link {
+  font-family: "ApercuPro", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #646A7D;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.profile_pic {
+  width: 32px;
+  height: 32px;
 }
