@@ -27,12 +27,18 @@ export const receiveErrors = (errors) => {
 
 export const login = (user) => (dispatch) => {
   return APIUtils.login(user)
-    .then(user => dispatch(receiveCurrentUser(user)))
+    .then(user => dispatch(receiveCurrentUser(user))
+    , (err) => (
+      dispatch(receiveErrors(err.responseJSON))
+    ))
 }
 
 export const signup = (user) => (dispatch) => {
   return APIUtils.signup(user)
-    .then((newUser) => dispatch(receiveCurrentUser(newUser)))
+    .then((newUser) => dispatch(receiveCurrentUser(newUser))
+    , (err) => (
+      dispatch(receiveErrors(err.responseJSON))
+    ))
 }
 
 export const logout = () => (dispatch) => {

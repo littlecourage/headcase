@@ -56,15 +56,14 @@ class SessionForm extends React.Component {
             <img src={window.loginBackgroundUrl} alt="background image" className="login_img" />
             
             <div className="signup_inner">
-              <div class="text_block">
+              <div className="text_block">
                 <h1 className="tag_line">Get some Headspace for a</h1>
                 <h1 className="tag_line">healthier, happier life.</h1>
                 <br/>
                 <br/>
                 <ul>
-                  <li><FaCheck className="check_icon" />&emsp;Hundreds of guided meditations on everything from stress to 
+                  <li><FaCheck className="check_icon" />&emsp;Hundreds of guided meditations on everything from stress to</li>
                   <li><span>&emsp;</span>&emsp;focus to relationships.</li>
-                  </li>
                   <li><FaCheck className="check_icon" />&emsp;Stories, soundscapes, and music to help you sleep soundly.</li>
                   <li><FaCheck className="check_icon" />&emsp;Get a new meditation delivered to your phone everyday.</li>
                 </ul>
@@ -73,9 +72,10 @@ class SessionForm extends React.Component {
               <div>
                 <form className="signup_form_box" onSubmit={this.handleSubmit}>
                   <h2 className="form_title">{`${title}`}</h2>
+                  {this.renderErrors()}
                   <br />
                   <span>Already have an account? {this.props.navLink}</span>
-                  {this.renderErrors()}
+
                   <div>
                     <br />
                     <br />
