@@ -1,0 +1,65 @@
+.dashHome {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashBackground {
+  height: 508px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  img {
+    margin-top: -150px;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.packBox {
+  background-color: white;
+}
+
+.rectangles {
+  display: flex;
+  position: relative;
+  margin-top: -13px;
+  margin-bottom: 90px;
+  width: 100%;
+
+  .greyRectangle {
+    height: 13px;
+    background-color: #5A6175;
+    flex-basis: 144px;
+  }
+
+  .transparentRectangle {
+    height: 13px;
+    background-color: #fff;
+    opacity: 0.2;
+    flex: 2;
+  }
+
+}
+
+.packsTitle {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  
+  h1 {
+
+  }
+
+  span {
+    
+  }
+
+}
+
+.packBox {
+  display: flex;
+  justify-content: space-evenly;
+}

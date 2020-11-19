@@ -6,8 +6,9 @@
   width: 100%;
   background-color: white;
   align-items: center;
-  z-index: 3;
+  z-index: 400;
   border-bottom: #EFECE7 solid 2px;
+  position: relative;
 }
 
 .header-logo-small {
@@ -45,6 +46,11 @@
   }
 
   span:selected, button:selected {
+    color: #F4A566;
+    outline: none;
+  }
+
+  .home, .home:hover {
     color: #F4A566;
     outline: none;
   }

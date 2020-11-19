@@ -41,7 +41,7 @@ const Greeting = ({ currentUser, logout }) => {
             id="header_logo" />
         </Link>
         <nav className="user_nav">
-          <button>HOME</button>
+          <button className="home">HOME</button>
           &nbsp;
           <button>DISCOVER</button>
           &nbsp;
