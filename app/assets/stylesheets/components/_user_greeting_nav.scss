@@ -6,8 +6,8 @@
   width: 100%;
   background-color: white;
   align-items: center;
-  position: fixed;
   z-index: 3;
+  border-bottom: #EFECE7 solid 2px;
 }
 
 .header-logo-small {
@@ -60,9 +60,10 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  margin-right: 14px;
 }
 
 .profile_pic {
-  width: 32px;
-  height: 32px;
+  width: 38px;
+  height: 38px;
 }
