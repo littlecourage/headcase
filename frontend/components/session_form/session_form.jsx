@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaCheck } from 'react-icons/fa';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -51,64 +52,82 @@ class SessionForm extends React.Component {
     if (this.props.formType === 'signup'){
       let title = 'Sign up';
       return (
-        <div className="login_container">
-          <img src={window.loginBackgroundUrl} alt="background image" className="login_img" />
-          <form className="login_form_box" onSubmit={this.handleSubmit}>
-            <h2 className="form_title">{`${title}`}</h2>
-            <br />
-            <span>Already have an account? {this.props.navLink}</span>
-            {this.renderErrors()}
-            <div>
-              <br/>
-              <br/>
-              <input 
-                type="text"
-                className="login_input" 
-                placeholder="First name"
-                value={this.state.first_name}
-                onChange={this.update('first_name')}
-              />
-              <br/>
-              <br/>
-              <input
-                type="text"
-                className="login_input" 
-                placeholder="Last name"
-                value={this.state.last_name}
-                onChange={this.update('last_name')}
-              />
-              <br/>
-              <br/>
-              <input
-                type="text"
-                className="login_input" 
-                placeholder="Email address"
-                value={this.state.email}
-                onChange={this.update('email')}
-              />
-              <br/>
-              <br/>
-              <input
-                type="password"
-                className="login_input" 
-                placeholder="Password (8+ characters)"
-                value={this.state.password}
-                onChange={this.update('password')}
-              />
-              <br/>
-              <br/>
-              <br/>
-              <br/>
-              <br/>
+          <div className="signup_outer">
+            <img src={window.loginBackgroundUrl} alt="background image" className="login_img" />
+            
+            <div className="signup_inner">
+              <div class="text_block">
+                <h1 className="tag_line">Get some Headspace for a</h1>
+                <h1 className="tag_line">healthier, happier life.</h1>
+                <br/>
+                <br/>
+                <ul>
+                  <li><FaCheck className="check_icon" />&emsp;Hundreds of guided meditations on everything from stress to 
+                  <li><span>&emsp;</span>&emsp;focus to relationships.</li>
+                  </li>
+                  <li><FaCheck className="check_icon" />&emsp;Stories, soundscapes, and music to help you sleep soundly.</li>
+                  <li><FaCheck className="check_icon" />&emsp;Get a new meditation delivered to your phone everyday.</li>
+                </ul>
+              </div>
+
+              <div>
+                <form className="signup_form_box" onSubmit={this.handleSubmit}>
+                  <h2 className="form_title">{`${title}`}</h2>
+                  <br />
+                  <span>Already have an account? {this.props.navLink}</span>
+                  {this.renderErrors()}
+                  <div>
+                    <br />
+                    <br />
+                    <input
+                      type="text"
+                      className="signup_input"
+                      placeholder="First name"
+                      value={this.state.first_name}
+                      onChange={this.update('first_name')}
+                    />
+                    <br />
+                    <br />
+                    <input
+                      type="text"
+                      className="signup_input"
+                      placeholder="Last name"
+                      value={this.state.last_name}
+                      onChange={this.update('last_name')}
+                    />
+                    <br />
+                    <br />
+                    <input
+                      type="text"
+                      className="signup_input"
+                      placeholder="Email address"
+                      value={this.state.email}
+                      onChange={this.update('email')}
+                    />
+                    <br />
+                    <br />
+                    <input
+                      type="password"
+                      className="signup_input"
+                      placeholder="Password (8+ characters)"
+                      value={this.state.password}
+                      onChange={this.update('password')}
+                    />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                  </div>
+                  <button className="form_submit">CREATE AN ACCOUNT</button>
+                  <br />
+                  <button onClick={this.handleDemoUser} className="demo_button">
+                    SIGN IN AS DEMO USER
+                  </button>
+                </form>
+              </div>
             </div>
-            <button className="form_submit">CREATE AN ACCOUNT</button>
-            <br/>
-            <button onClick={this.handleDemoUser}className="demo_button">
-              SIGN IN AS DEMO USER
-            </button>
-          </form>
-          <br/>
-        </div>
+          </div>
       )
     } else {
       let title = 'Log in';
@@ -158,3 +177,71 @@ class SessionForm extends React.Component {
 }
 
 export default SessionForm;
+
+{/*<div className="signup_description">
+                <h1>Get some Headspace for a</h1>
+                <h1>healthier, happier life.</h1>
+                <ul>
+                  <li>Hundreds of guided meditations on everything from
+    stress to focus to relationships.
+                  </li>
+                  <li>Stories, soundscapes, and music to help you sleep soundly.</li>
+                  <li>Get a new meditation delivered to your phone everyday.</li>
+                </ul>
+
+              </div>
+
+              <form className="signup_form_box" onSubmit={this.handleSubmit}>
+                <h2 className="form_title">{`${title}`}</h2>
+                <br />
+                <span>Already have an account? {this.props.navLink}</span>
+                {this.renderErrors()}
+                <div>
+                  <br/>
+                  <br/>
+                  <input 
+                    type="text"
+                    className="signup_input" 
+                    placeholder="First name"
+                    value={this.state.first_name}
+                    onChange={this.update('first_name')}
+                  />
+                  <br/>
+                  <br/>
+                  <input
+                    type="text"
+                    className="signup_input" 
+                    placeholder="Last name"
+                    value={this.state.last_name}
+                    onChange={this.update('last_name')}
+                  />
+                  <br/>
+                  <br/>
+                  <input
+                    type="text"
+                    className="signup_input" 
+                    placeholder="Email address"
+                    value={this.state.email}
+                    onChange={this.update('email')}
+                  />
+                  <br/>
+                  <br/>
+                  <input
+                    type="password"
+                    className="signup_input" 
+                    placeholder="Password (8+ characters)"
+                    value={this.state.password}
+                    onChange={this.update('password')}
+                  />
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                </div>
+                <button className="form_submit">CREATE AN ACCOUNT</button>
+                <br/>
+                <button onClick={this.handleDemoUser}className="demo_button">
+      SIGN IN AS DEMO USER
+                </button>
+              </form> */}

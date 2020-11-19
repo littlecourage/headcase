@@ -1,13 +1,20 @@
 
-
-.login_container {
-  align-items: center;
+.signup_outer {
+  // align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.login_img {
+.signup_inner {
+  display: flex;
+  position: absolute;
+  justify-content: space-around;
+  width: 100%;
+  height: 500px;
+}
+
+.signup_img {
   width: 100%;
   height: auto;
   padding-top: 10px;
@@ -15,39 +22,41 @@
   left: 0;
 }
 
-.login_form_box {
-  margin-top: 85px;
+.signup_form_box {
+  margin-top: 0px;
+  margin-right: 45px;
   background-color: #fff;
   border-radius: 4px;
   width: 600px;
-  height: 590px;
-  position: absolute;
+  height: 755px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+
 .form_title {
-  font-size: 26px;
-  font-family: "ApercuPro", sans-serif;
+  font-size: 27px;
+  font-family: "ApercuPro-Medium", sans-serif;
+  color: #323233;
 }
 
-.login_input {
+.signup_input {
   box-sizing: border-box;
   border: #E8E7E9 solid 1px;
   border-radius: 6px;
   width: 550px;
   padding: 20px 0px 14px 20px;
-  margin: 0 14px;
-  font-size: 18px;
+  margin: 2.5px 14px;
+  font-size: 20px;
   font-family: "ApercuPro", sans-serif;
   font-weight: 400;
 }
 
-.login_input::-webkit-input-placeholder {
+.signup_input::-webkit-input-placeholder {
   color: #323233;
-  font-size: 18px;
+  font-size: 20px;
   font-family: "ApercuPro", sans-serif;
   font-weight: 400;
 }
@@ -105,4 +114,34 @@ span {
 
 .demo_button:hover {
   color: #5B5B5C;
+}
+
+.tag_line {
+  color: #5A6175;
+  font-size: 40px;
+  font-family: "ApercuPro", sans-serif;
+  font-weight: 00;
+  line-height: 52px;
+  letter-spacing: 1.5px;
+}
+
+.check_icon {
+  color: #5A6175;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+li {
+  font-family: "ApercuPro", sans-serif;
+  color: #757A8A;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  .special_li {
+    width: 30px;
+  }
+}
+
+.text_block {
+  margin-left: 30px;
 }
