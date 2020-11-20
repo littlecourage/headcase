@@ -33,7 +33,7 @@ const Greeting = ({ currentUser, logout }) => {
     }
     return (
       <header className="user_header">
-        <Link to="/">
+        <Link to="/dashboard">
           <img
             src={window.logoUrl}
             alt="headspace logo"
@@ -60,7 +60,7 @@ const Greeting = ({ currentUser, logout }) => {
     )
   }
 
-
+  //add withRouter to have access to path property? 
   if (currentUser) {
     return userGreeting();
   } else {

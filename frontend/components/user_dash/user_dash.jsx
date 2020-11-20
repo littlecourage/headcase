@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import { FaPlay } from 'react-icons/fa';
 
 
 class UserDash extends React.Component {
@@ -33,16 +34,18 @@ class UserDash extends React.Component {
         return (
           <div className="dashHome">
 
-            
-            {/* <div className="med_title">
-              <h4>Day 3 of 10</h4>
-              <h1>Happiness</h1>
-              <button>Begin</button>
-            </div> */}
+            <div className="med_box">
+              <div className="med_title">
+                <h4>Day 3 of 10</h4>
+                <h1>Happiness</h1>
+                <button><FaPlay/>&emsp;BEGIN</button>
+              </div>
 
-            <div className="dashBackground">
-              <img src={window.userDashBackgroundUrl} />
+              <div className="dashBackground">
+                <img src={window.userDashBackgroundUrl} />
+              </div>
             </div>
+            
     
             <div className="rectangles">
               <div className="greyRectangle"></div>
@@ -52,7 +55,7 @@ class UserDash extends React.Component {
             <div className="packsTitle">
               <h1>My packs</h1>
               <span>Themed meditations for specific topics. Each session</span>
-              <span>builds on the one before it</span>
+              <span>builds on the one before it.</span>
             </div>
     
             <div className="packs">
