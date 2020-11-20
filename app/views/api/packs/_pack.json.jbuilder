@@ -1,0 +1,1 @@
+json.extract! pack, :id, :title, :category
