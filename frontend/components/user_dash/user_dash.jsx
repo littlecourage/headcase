@@ -31,6 +31,11 @@ class UserDash extends React.Component {
       width: "20%",
     }
 
+    const progressWhite = {
+      backgroundColor: "#FFFFFF",
+      width: "30%"
+    }
+
     if (!this.props.currentUser) {
       return (
         <Redirect to="/" />
@@ -53,9 +58,8 @@ class UserDash extends React.Component {
             
     
               <div className="progress_bar">
-              <div className="greyRectangle" style={progressStyle}></div>
+                <div style={progressStyle}></div>
               </div>
-              {/* <div className="transparentRectangle"></div> */}
             
     
             <div className="packsTitle">
@@ -69,21 +73,43 @@ class UserDash extends React.Component {
                 <img src={window.packYellow1} />
                 <div className="pack_text">
                   <h4>Happiness</h4>
-                  <span>2 of 10</span>
+
+                  <div>
+                    <span>2 of 10</span>
+                    <div className="progress_bar_mini">
+                      <div className="mini_rectangle" style={progressStyle}></div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
               <div className="pack">
                 <img src={window.packTeal1} />
                 <div className="pack_text">
                   <h4>Productivity</h4>
-                  <span>10 sessions</span>
+
+                  <div>
+                    <span>10 sessions</span>
+{/* 
+                    <div className="progress_bar_mini">
+                      <div className="mini_rectangle" style={progressWhite}></div>
+                    </div> */}
+                  </div>
+
                 </div>
               </div>
               <div className="pack">
                 <img src={window.packGray1} />
                 <div className="pack_text">
                   <h4 className="pack_text_white">Restlessness</h4>
-                  <span className="pack_text_white">3 of 10</span>
+                  <div>
+                    <span className="pack_text_white">3 of 10</span>
+
+                    <div className="progress_bar_mini">
+                      <div className="mini_rectangle" style={progressWhite}></div>
+                    </div>
+
+                  </div>
                 </div>
               </div>
             </div>

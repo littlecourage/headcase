@@ -31,10 +31,10 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-evenly;
-  width: 100%;
+  width: auto;
   height: 300px;
-  margin-left: 400px;
-  margin-top: 20px;
+  padding-right: 600px;
+  padding-top: 20px;
 
   h1 {
     color: #5A6175;
@@ -83,23 +83,29 @@
   margin-bottom: 90px;
   width: 100%;
   height: 13px;
-  background-color: #fff;
-  opacity: 0.2;
+  background-color: rgba(255,255,255, 0.2);
 
-  // .greyRectangle {
-  //   // height: 13px;
-  //   background-color: #5A6175;
-  //   opacity: 1;
-  //   // flex-basis: 144px;
+
+  // .transparentRectangle {
+  //   height: 13px;
+  //   background-color: #fff;
+  //   opacity: 0.2;
+  //   flex: 2;
   // }
 
-  .transparentRectangle {
-    height: 13px;
-    background-color: #fff;
-    opacity: 0.2;
-    flex: 2;
-  }
+}
 
+.progress_bar_mini {
+  background-color: rgba(255,255,255, 0.2);
+  width: 255px;
+  border-radius: 50px;
+  height: 6px;
+  margin-top: 20px;
+}
+
+.mini_rectangle {
+  border-radius: 50px;
+  height: 6px;
 }
 
 .packsTitle {
@@ -140,7 +146,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border: red solid 1px;
 
   img {
     width: 330px;
@@ -151,7 +156,6 @@
 
   .pack_text {
     position: absolute;
-    border: red solid 1px;
     margin-top: 77px;
     margin-left: 35px;
     height: 300px;
