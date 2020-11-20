@@ -17,6 +17,19 @@
   }
 }
 
+.med_title {
+  z-index: 2;
+  position: absolute;
+  padding: -300px;
+  h1 {
+    color: #5A6175;
+    font-size: 64px;
+    font-family: "ApercuPro", sans-serif;
+    font-weight: 700;
+  }
+}
+
+
 .packBox {
   background-color: white;
 }
@@ -68,16 +81,15 @@
 
 }
 
-.packBox {
+.packs {
   margin-top: 85px;
   display: flex;
-  width: 100%;
-  justify-content: center;
-
+  width: 1062px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .pack {
-
   border-radius: 10px;
 
   img {
@@ -93,10 +105,18 @@
   border: 2px solid #5A6175;
   border-radius: 50px;
   color: #5A6175;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   font-family: "ApercuPro-Medium", sans-serif;
   letter-spacing: 2.5px;
   background-color: #fff;
-  padding: 15px 20px;
+  padding: 20px 32px;
+  margin: 56px;
+  cursor: pointer;
 }
+
+.show_button:hover {
+  color: white;
+  background-color: #5A6175;
+}
+

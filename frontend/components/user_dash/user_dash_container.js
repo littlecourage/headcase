@@ -3,12 +3,16 @@ import UserDash from './user_dash';
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    // userPacks: Object.value(state.entities.userPacks)
   }
 }
 
-const mapDispatchToProps = () => {
-
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // fetchPacks: () => dispatch(fetchPacks()),
+    // fetchMeditation: meditationId => dispatch(fetchMeditation(meditationId))
+  }
 }
 
-export default connect(mapStateToProps, null)(UserDash);
+export default connect(mapStateToProps, mapDispatchToProps)(UserDash);
