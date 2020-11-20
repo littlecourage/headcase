@@ -50,16 +50,53 @@
   justify-content: center;
   
   h1 {
-
+    font-size: 32px;
+    font-family: "ApercuPro", sans-serif;
+    font-weight: 400;
+    color: #666666;
+    letter-spacing: 1.5px;
+    margin-bottom: 50px;
   }
 
   span {
-    
+    font-family: "ApercuPro", sans-serif;
+    color: #757A8A;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
   }
 
 }
 
 .packBox {
+  margin-top: 85px;
   display: flex;
-  justify-content: space-evenly;
+  width: 100%;
+  justify-content: center;
+
+}
+
+.pack {
+
+  border-radius: 10px;
+
+  img {
+    width: 330px;
+    height: 410px;
+    border-radius: 4px;
+    margin: 12px;
+  }
+
+}
+
+.show_button {
+  border: 2px solid #5A6175;
+  border-radius: 50px;
+  color: #5A6175;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: "ApercuPro-Medium", sans-serif;
+  letter-spacing: 2.5px;
+  background-color: #fff;
+  padding: 15px 20px;
 }
