@@ -33,6 +33,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  span { // moved into this box
+    font-family: "ApercuPro", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #5A6175;
+  }
+
 }
 
 
@@ -79,12 +87,6 @@
   background-color: #0069FF;
 }
 
-span {
-  font-family: "ApercuPro", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  color: #5A6175;
-}
 
 .form_link {
   color: #F1853E;

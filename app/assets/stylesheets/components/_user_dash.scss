@@ -74,22 +74,24 @@
 }
 
 
-.packBox {
-  background-color: white;
-}
 
-.rectangles {
+
+.progress_bar {
   display: flex;
   position: relative;
   margin-top: -13px;
   margin-bottom: 90px;
   width: 100%;
+  height: 13px;
+  background-color: #fff;
+  opacity: 0.2;
 
-  .greyRectangle {
-    height: 13px;
-    background-color: #5A6175;
-    flex-basis: 144px;
-  }
+  // .greyRectangle {
+  //   // height: 13px;
+  //   background-color: #5A6175;
+  //   opacity: 1;
+  //   // flex-basis: 144px;
+  // }
 
   .transparentRectangle {
     height: 13px;
@@ -135,12 +137,47 @@
 
 .pack {
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: red solid 1px;
 
   img {
     width: 330px;
     height: 410px;
     border-radius: 4px;
     margin: 12px;
+  }
+
+  .pack_text {
+    position: absolute;
+    border: red solid 1px;
+    margin-top: 77px;
+    margin-left: 35px;
+    height: 300px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  h4 {
+    font-size: 32px;
+    line-height: 40px;
+    color: #5A6175;
+    font-family: "ApercuPro", sans-serif;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+  }
+
+  span {
+    font-family: "ApercuPro", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #5A6175;
+  }
+
+  .pack_text_white {
+    color: #fff;
   }
 
 }
