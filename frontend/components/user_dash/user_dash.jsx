@@ -90,7 +90,7 @@ class UserDash extends React.Component {
 
                   <div>
                     <span>10 sessions</span>
-{/* 
+                  {/* 
                     <div className="progress_bar_mini">
                       <div className="mini_rectangle" style={progressWhite}></div>
                     </div> */}
