@@ -14,7 +14,7 @@ class Api::PacksController < ApplicationController
 
 
   def pack_params
-    params.require(:pack).permit(:title, :category, :thumbnail)
+    params.require(:pack).permit(:title, :category_id, :thumbnail)
   end
 
 end

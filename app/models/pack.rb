@@ -4,5 +4,6 @@ class Pack < ApplicationRecord
   validates :category, presence: true
 
   has_one_attached :thumbnail
+  belongs_to :category
 
 end
