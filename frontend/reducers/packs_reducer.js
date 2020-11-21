@@ -7,10 +7,10 @@ const packsReducer = (oldState = {}, action) => {
   
   switch (action.type) {
     case RECEIVE_ALL_PACKS:
-      return action.drops;
+      return action.packs;
 
     case RECEIVE_PACK:
-      newState[action.post.id] = action.post;
+      newState[action.pack.id] = action.pack;
 
     default:
       return oldState;

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { FaPlay } from 'react-icons/fa';
-import UserPackIndex from './user_packs_index';
+import UserDashPackIndex from './user_packs_index';
+import { fetchAllPacks } from '../../util/packs_util';
 
 
 class UserDash extends React.Component {
@@ -12,55 +13,34 @@ class UserDash extends React.Component {
     //   addButtonClicked: false,
     //   userPacks: this.props.userPacks
     // }
-    // this.packs = Object.values(this.state.packs);
-    this.state = {
-      packs: {}
-    }
-    this.fetchPacks = this.fetchPacks.bind(this);
-  }
-
-  // componentDidMount() {
-  //   this.props.fetchPacks();
-  //   this.props.fetchMeditation(meditation);
-  // }
-
-  // handleAddPacks() {
-  //   this.setState({
-  //     addButtonClicked: true
-  //   })
-  // }
-
-  fetchPacks() {
-    $.ajax({
-      url: '/api/packs'
-    }).then(
-      packs => {
-        this.setState(packs)
-      }
-    )
   }
 
   componentDidMount() {
-    this.fetchPacks()
+    this.props.fetchAllPacks();
+    // this.props.fetchMeditation(meditation);
+  }
+
+  handleAddPacks() {
+
+  }
+
+  componentDidMount() {
+    this.props.fetchAllPacks()
   }
 
 
   render() {
-    const progressStyle = {
-      backgroundColor: "#5A6175",
-      width: "20%",
-    }
-
-    const progressWhite = {
-      backgroundColor: "#FFFFFF",
-      width: "30%"
-    }
 
     if (!this.props.currentUser) {
       return (
         <Redirect to="/" />
       )
     } else {
+      let progressStyle = {
+        backgroundColor: "#5A6175",
+        width: "20%",
+      }
+
         return (
           <div className="dashHome">
 
@@ -88,9 +68,11 @@ class UserDash extends React.Component {
               <span>builds on the one before it.</span>
             </div>
     
-            <div className="packs">
+            
 
-              <UserPackIndex packs={this.state.packs} />
+              <UserDashPackIndex 
+                fetchAllPacks={this.props.fetchAllPacks} 
+                packs={this.props.packs} />
 
               {/* <div className="pack">
                 <img src={window.packYellow1} />
@@ -136,7 +118,6 @@ class UserDash extends React.Component {
                 </div>
               </div> */}
 
-            </div>
     
             <button className="show_button">SHOW MORE</button>
     

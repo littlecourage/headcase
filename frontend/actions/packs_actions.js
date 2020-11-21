@@ -3,7 +3,7 @@ import * as APIUtil from '../util/packs_util';
 export const RECEIVE_ALL_PACKS = "RECEIVE_ALL_PACKS";
 export const RECEIVE_PACK = "RECEIVE_PACK";
 
-export const receiveAllPacks = () => {
+export const receiveAllPacks = (packs) => {
   return {
     type: RECEIVE_ALL_PACKS,
     packs
