@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { FaPlay } from 'react-icons/fa';
+import UserPackIndex from './user_packs_index';
 
 
 class UserDash extends React.Component {
@@ -11,6 +12,11 @@ class UserDash extends React.Component {
     //   addButtonClicked: false,
     //   userPacks: this.props.userPacks
     // }
+    // this.packs = Object.values(this.state.packs);
+    this.state = {
+      packs: {}
+    }
+    this.fetchPacks = this.fetchPacks.bind(this);
   }
 
   // componentDidMount() {
@@ -23,6 +29,20 @@ class UserDash extends React.Component {
   //     addButtonClicked: true
   //   })
   // }
+
+  fetchPacks() {
+    $.ajax({
+      url: '/api/packs'
+    }).then(
+      packs => {
+        this.setState(packs)
+      }
+    )
+  }
+
+  componentDidMount() {
+    this.fetchPacks()
+  }
 
 
   render() {
@@ -69,7 +89,10 @@ class UserDash extends React.Component {
             </div>
     
             <div className="packs">
-              <div className="pack">
+
+              <UserPackIndex packs={this.state.packs} />
+
+              {/* <div className="pack">
                 <img src={window.packYellow1} />
                 <div className="pack_text">
                   <h4>Happiness</h4>
@@ -90,10 +113,10 @@ class UserDash extends React.Component {
 
                   <div>
                     <span>10 sessions</span>
-                  {/* 
+                  
                     <div className="progress_bar_mini">
                       <div className="mini_rectangle" style={progressWhite}></div>
-                    </div> */}
+                    </div>
                   </div>
 
                 </div>
@@ -111,7 +134,8 @@ class UserDash extends React.Component {
 
                   </div>
                 </div>
-              </div>
+              </div> */}
+
             </div>
     
             <button className="show_button">SHOW MORE</button>
