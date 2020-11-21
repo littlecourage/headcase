@@ -2,7 +2,6 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { FaPlay } from 'react-icons/fa';
 import UserDashPackIndex from './user_packs_index';
-import { fetchAllPacks } from '../../util/packs_util';
 
 
 class UserDash extends React.Component {
@@ -13,11 +12,6 @@ class UserDash extends React.Component {
     //   addButtonClicked: false,
     //   userPacks: this.props.userPacks
     // }
-  }
-
-  componentDidMount() {
-    this.props.fetchAllPacks();
-    // this.props.fetchMeditation(meditation);
   }
 
   handleAddPacks() {
