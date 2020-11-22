@@ -1,5 +1,6 @@
 import React from 'react';
 import PacksIndexContainer from '../packs/pack_index_container';
+import { HashLink } from 'react-router-hash-link';
 
 class CategoryIndex extends React.Component {
 
@@ -20,9 +21,9 @@ class CategoryIndex extends React.Component {
           {categories.map(category => {
 
             return (
-              <div key={category.id}>
+              <HashLink key={category.id} to={`discover/#${category.name}`}>
                 <h2>{category.name}</h2>
-              </div>
+              </HashLink>
             )
 
           })}
@@ -32,7 +33,7 @@ class CategoryIndex extends React.Component {
           {categories.map(category => {
             
             return(
-              <div key={category.id}>
+              <div key={category.id} id={category.name}>
                 <h2>{category.name}</h2>
                 <PacksIndexContainer category={category} />
               </div>
