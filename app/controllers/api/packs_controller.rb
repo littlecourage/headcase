@@ -3,6 +3,7 @@ class Api::PacksController < ApplicationController
   def index
 
     @packs = Pack.all
+     
     render :index
   end
 

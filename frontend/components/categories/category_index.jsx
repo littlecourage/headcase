@@ -1,6 +1,7 @@
 import React from 'react';
-import PacksIndexContainer from '../packs/pack_index_container';
+import PacksList from '../packs/packs_list';
 import { HashLink } from 'react-router-hash-link';
+import { Redirect } from 'react-router-dom';
 
 class CategoryIndex extends React.Component {
 
@@ -10,10 +11,18 @@ class CategoryIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchAllCategories()
+    this.props.fetchAllUserPacks()
+    this.props.fetchAllPacks()
   }
 
   render() {
-    const { categories } = this.props
+    const { categories, currentUser, displayPacks } = this.props
+
+    if (!currentUser) {
+      return (
+        <Redirect to="/" />
+      )
+    }
 
     return (
       <div>
@@ -21,7 +30,7 @@ class CategoryIndex extends React.Component {
           {categories.map(category => {
 
             return (
-              <HashLink key={category.id} to={`discover/#${category.name}`}>
+              <HashLink key={category.id} to={`#${category.name}`}>
                 <h2>{category.name}</h2>
               </HashLink>
             )
@@ -35,7 +44,10 @@ class CategoryIndex extends React.Component {
             return(
               <div key={category.id} id={category.name}>
                 <h2>{category.name}</h2>
-                <PacksIndexContainer category={category} />
+                <PacksList 
+                  category={category}
+                  displayPacks={displayPacks}
+                />
               </div>
             )
             

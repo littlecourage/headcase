@@ -137,4 +137,8 @@ ActiveRecord::Base.transaction do
   # pack18 = Pack.create!(title: "Prioritization", category_id: category4.id)
   # pack19 = Pack.create!(title: "Productivity", category_id: category4.id)
 
+
+  p 'Creating User Packs for demo user...'
+  
+
 end

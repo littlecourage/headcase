@@ -1,0 +1,1 @@
+json.partial! "api/user_packs/user_pack", user_pack: @user_pack
