@@ -11,7 +11,6 @@ class PackIndex extends React.Component {
   }
 
   render () {
-    const { packs } = this.props;
     let colorStyle = {
       backgroundColor: "#5A6175",
       width: "20%",

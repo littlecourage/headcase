@@ -41,7 +41,7 @@
     outline: none;
   }
 
-  span:hover, button:hover {
+  span:hover, .headerLink:hover {
     color: #C3C6CD;
   }
 
@@ -50,8 +50,19 @@
     outline: none;
   }
 
-  .home, .home:hover {
-    color: #F4A566;
+  .headerLink {
+    text-decoration: none;
+    font-family: "ApercuPro", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #646A7D;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 5px;
+    margin-left: 5px;
     outline: none;
   }
 

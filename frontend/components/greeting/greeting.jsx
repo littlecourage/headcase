@@ -1,23 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom';
 
 const Greeting = ({ currentUser, logout }) => {
 
   const sessionLinks = () => {
     return (
         <header className="header" id="header">
-          <Link to="/">
+          <NavLink to="/">
             <img 
               src={window.logoUrl} 
               alt="headspace logo" 
               className="header-logo" 
               id ="header_logo" />
-          </Link>
+          </NavLink>
           <div>
             <nav className="header-nav">
-              <Link to="/login" className="login-link">LOG IN</Link>
+              <NavLink to="/login" className="login-link">LOG IN</NavLink>
               &nbsp;
-              <Link to="/signup" className="signup-link">Start free trial</Link>
+              <NavLink to="/signup" className="signup-link">Start free trial</NavLink>
             </nav>
           </div>
       </header>
@@ -31,21 +31,29 @@ const Greeting = ({ currentUser, logout }) => {
     } else {
       name = currentUser.first_name.toUpperCase();
     }
+    
     return (
       <header className="user_header">
-        <Link to="/dashboard">
+        <NavLink to="/dashboard">
           <img
             src={window.logoUrl}
             alt="headspace logo"
             className="header-logo-small"
             id="header_logo" />
-        </Link>
+        </NavLink>
         <nav className="user_nav">
-          <button className="home">HOME</button>
+          <NavLink 
+            className="headerLink" 
+            activeStyle={{color: "#F4A566"}}
+            to='/dashboard'>
+            HOME
+          </NavLink>
           &nbsp;
-          <button>DISCOVER</button>
+          <NavLink to="/discover" className="headerLink" activeStyle={{ color: "#F4A566" }}>
+            DISCOVER
+          </NavLink>
           &nbsp;
-          <button onClick={logout}>LOG OUT</button>
+          <button className="headerLink" onClick={logout}>LOG OUT</button>
           &nbsp;
           <span className="profile_link">{`${name}`}&emsp;
             <img 
