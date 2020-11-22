@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import UserDash from './user_dash';
-import { fetchAllPacks } from '../../actions/packs_actions';
+import { fetchAllUserPacks } from '../../actions/user_packs_actions';
 
 const mapStateToProps = (state) => {
 
   return {
     currentUser: state.entities.users[state.session.id],
+    userPacks: Object.values(state.entities.userPacks),
     packs: Object.values(state.entities.packs)
     // userPacks: Object.value(state.entities.userPacks)
   }
@@ -13,7 +14,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchAllPacks: () => dispatch(fetchAllPacks()),
+    fetchAllUserPacks: () => dispatch(fetchAllUserPacks()),
     // fetchMeditation: meditationId => dispatch(fetchMeditation(meditationId))
   }
 }

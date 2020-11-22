@@ -1,7 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { FaPlay } from 'react-icons/fa';
-import UserDashPackIndex from './user_packs_index';
+// import UserDashPackIndex from './user_packs_index';
+import UserPackTile from '../pack_tiles/user_pack_tile';
 
 
 class UserDash extends React.Component {
@@ -19,17 +20,11 @@ class UserDash extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAllPacks()
+    this.props.fetchAllUserPacks()
   }
 
 
   render() {
-
-    if (!this.props.currentUser) {
-      return (
-        <Redirect to="/" />
-      )
-    } else {
       let progressStyle = {
         backgroundColor: "#5A6175",
         width: "20%",
@@ -63,10 +58,15 @@ class UserDash extends React.Component {
             </div>
     
             
+              <div className="packs">
+                {this.props.packs.map(pack => {
+                  return (
+                  <UserPackTile pack={pack} />
+                  ) 
+                })}
 
-              <UserDashPackIndex 
-                fetchAllPacks={this.props.fetchAllPacks} 
-                packs={this.props.packs} />
+              </div>
+
 
               {/* <div className="pack">
                 <img src={window.packYellow1} />
@@ -117,9 +117,9 @@ class UserDash extends React.Component {
     
           </div>
         ) 
-      }
-
   }
+
+  
 
 
 

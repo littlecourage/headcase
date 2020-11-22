@@ -21,8 +21,6 @@ const UserDashPackIndex = ({packs}) => {
       //   }
       // }
 
-      console.log(colorStyle);
-      console.log(colorStyle.color);
       return (
         <div key={pack.id} className="pack">
           <img src={pack.thumbnailUrl} />

@@ -1,8 +1,8 @@
 class Api::UserPacksController < ApplicationController 
 
   def index
-    @user_packs = UserPack.where(user_id: current_user.id)
-     
+    @user_packs = UserPack.where(user_id: current_user.id).includes(:pack)
+    debugger
     render :index
   end
 

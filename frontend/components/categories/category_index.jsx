@@ -16,13 +16,7 @@ class CategoryIndex extends React.Component {
   }
 
   render() {
-    const { categories, currentUser, displayPacks } = this.props
-
-    if (!currentUser) {
-      return (
-        <Redirect to="/" />
-      )
-    }
+    const { categories, displayPacks } = this.props
 
     return (
       <div>

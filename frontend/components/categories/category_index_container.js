@@ -26,7 +26,6 @@ const mapStateToProps = (state) => {
   })
    
   return {
-    currentUser: state.entities.users[state.session.id],
     categories: Object.values(state.entities.categories),
     displayPacks: getDisplayPacks(userPacks, packs)
   }
