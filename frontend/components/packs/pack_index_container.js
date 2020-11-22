@@ -2,9 +2,20 @@ import { connect } from 'react-redux';
 import PackIndex from './pack_index';
 import { fetchAllPacks } from '../../actions/packs_actions';
 
-const mapStateToProps = (state) => {
+const getDisplayPacks = (cat, packs) => {
+  if (cat === undefined) {
+    return packs
+  }
+   
+  return packs.filter((pack) => pack.categoryId == cat.id)
+}
+
+const mapStateToProps = (state, ownProps) => {
+  let packs = Object.values(state.entities.packs)
+   
   return {
-    packs: Object.values(state.entities.packs)
+    packs: packs,
+    displayPacks: getDisplayPacks(ownProps.category, packs)
   }
 }
 

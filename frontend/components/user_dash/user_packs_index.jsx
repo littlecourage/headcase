@@ -11,15 +11,15 @@ const UserDashPackIndex = ({packs}) => {
       let textColor = {
         color: "#5A6175"
       }
-      if (pack && pack.thumbnailUrl.includes('gray')) {
-        colorStyle = {
-          backgroundColor: "#FFFFFF",
-          width: "30%",
-        }
-        textColor ={
-          color: "#FFFFFF"
-        }
-      }
+      // if (pack && pack.thumbnailUrl.includes('gray')) {
+      //   colorStyle = {
+      //     backgroundColor: "#FFFFFF",
+      //     width: "30%",
+      //   }
+      //   textColor ={
+      //     color: "#FFFFFF"
+      //   }
+      // }
 
       console.log(colorStyle);
       console.log(colorStyle.color);

@@ -1,3 +1,4 @@
+
 export const fetchAllPacks = () => {
   return $.ajax({
     method: 'GET', 

@@ -21,17 +21,17 @@ class PackIndex extends React.Component {
     }
     return (
       <div>
-        {packs.map(pack => {
-
-          if (pack && pack.thumbnailUrl.includes('gray')) {
-            colorStyle = {
-              backgroundColor: "#FFFFFF",
-              width: "30%",
-            }
-            textColor = {
-              color: "#FFFFFF"
-            }
-          }
+        {this.props.displayPacks.map(pack => {
+          //  
+          // if (pack && pack.thumbnailUrl.includes('gray')) {
+          //   colorStyle = {
+          //     backgroundColor: "#FFFFFF",
+          //     width: "30%",
+          //   }
+          //   textColor = {
+          //     color: "#FFFFFF"
+          //   }
+          // }
 
           return (
             <div key={pack.id} className="pack">
