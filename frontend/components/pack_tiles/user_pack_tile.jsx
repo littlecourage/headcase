@@ -8,13 +8,21 @@ const UserPackTile = ({ pack }) => {
   let textColor = {
     color: "#5A6175"
   }
-  
+
+  if (pack.thumbnailUrl.includes('gray')) {
+    textColor = {
+      color: "#FFFFFF"
+    }
+    colorStyle = {
+      backgroundColor: "#FFFFFF",
+      width: "20%",
+    }
+  }
   return (
     <div className="pack">
       <img src={pack.thumbnailUrl} />
       <div className="pack_text" >
-        <h4 style={textColor}>user pack!</h4>
-        <h4>User pack!</h4>
+        <h4 style={textColor}>{pack.title}</h4>
         <div>
           <span style={textColor}>2 of 10</span>
           <div className="progress_bar_mini">

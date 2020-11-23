@@ -150,8 +150,9 @@
   .pack_text {
     position: absolute;
     margin-top: 77px;
-    margin-left: 35px;
+    margin-left: 45px;
     height: 300px;
+    width: 225px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -186,10 +187,21 @@
   margin: 56px;
   cursor: pointer;
   outline:none;
+
 }
 
 .show_button:hover {
   color: white;
   background-color: #5A6175;
+}
+
+a {
+  text-decoration: none;
+  color: #5A6175;
+  padding: 15px 25px;
+}
+
+a:hover {
+  color: white;
 }
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { FaPlay } from 'react-icons/fa';
-// import UserDashPackIndex from './user_packs_index';
 import UserPackTile from '../pack_tiles/user_pack_tile';
 
 
@@ -57,7 +56,6 @@ class UserDash extends React.Component {
                 <img src={window.userDashBackgroundUrl} />
               </div>
             </div>
-            
     
               <div className="progress_bar">
                 <div style={progressStyle}></div>
@@ -71,68 +69,23 @@ class UserDash extends React.Component {
             </div>
     
             
-              <div className="packs">
-                {this.props.packs.slice(0, this.state.packsToShow).map(pack => {  
-                  return (
-                  <UserPackTile key={pack.id} pack={pack} />
-                  ) 
-                })}
+            <div className="packs">
+              {this.props.packs.slice(0, this.state.packsToShow).map(pack => {  
+                return (
+                <UserPackTile key={pack.id} pack={pack} />
+                ) 
+              })}
 
-              </div>
+            </div>
 
-              <button className="show_button" onClick={this.handleMorePacks}>
-              {(this.state.addButtonClicked) ? <Link to="/discover"> DISCOVER MORE PACKS </Link>: 
-                "SHOW MORE" }
-              </button>
-
-              {/* <div className="pack">
-                <img src={window.packYellow1} />
-                <div className="pack_text">
-                  <h4>Happiness</h4>
-
-                  <div>
-                    <span>2 of 10</span>
-                    <div className="progress_bar_mini">
-                      <div className="mini_rectangle" style={progressStyle}></div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-              <div className="pack">
-                <img src={window.packTeal1} />
-                <div className="pack_text">
-                  <h4>Productivity</h4>
-
-                  <div>
-                    <span>10 sessions</span>
-                  
-                    <div className="progress_bar_mini">
-                      <div className="mini_rectangle" style={progressWhite}></div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-              <div className="pack">
-                <img src={window.packGray1} />
-                <div className="pack_text">
-                  <h4 className="pack_text_white">Restlessness</h4>
-                  <div>
-                    <span className="pack_text_white">3 of 10</span>
-
-                    <div className="progress_bar_mini">
-                      <div className="mini_rectangle" style={progressWhite}></div>
-                    </div>
-
-                  </div>
-                </div>
-              </div> */}
-
-    
-
-    
-          </div>
+            <button className="show_button" onClick={this.handleMorePacks}>
+            {(this.state.addButtonClicked) ? 
+              <Link to="/discover" className="Link" > 
+                DISCOVER MORE PACKS 
+              </Link> : 
+              "SHOW MORE" }
+            </button>   
+        </div>
         ) 
   }
 
