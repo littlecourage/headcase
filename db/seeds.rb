@@ -5,13 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create(
-  first_name: "Demo",
-  last_name: "User",
-  email: "demouser@email.email",
-  password_digest: BCrypt::Password.create('password'),
-  session_token: SecureRandom.base64
-)
+# User.create(
+#   first_name: "Demo",
+#   last_name: "User",
+#   email: "demouser@email.email",
+#   password_digest: BCrypt::Password.create('password'),
+#   session_token: SecureRandom.base64
+# )
 
 require 'open-uri'
 require 'date'
