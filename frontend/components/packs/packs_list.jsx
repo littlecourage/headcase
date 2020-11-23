@@ -7,7 +7,7 @@ const PacksList = ({displayPacks, category }) => {
   displayPacks = displayPacks.filter((pack) => pack.categoryId == category.id) 
 
     return (
-      <div>
+      <div className="innerBox">
         {displayPacks.map(pack => {
           if (pack.userId) {
             return (

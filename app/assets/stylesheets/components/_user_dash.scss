@@ -10,6 +10,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  margin-top: 95px;
 }
 
 .dashBackground {
@@ -126,52 +127,51 @@
 
 }
 
-.packs {
+.packsDash {
   margin-top: 85px;
   display: flex;
   width: 1062px;
   justify-content: flex-start;
   flex-wrap: wrap;
-}
-
-.pack {
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  img {
-    width: 330px;
-    height: 410px;
-    border-radius: 4px;
-    margin: 12px;
-  }
-
-  .pack_text {
-    position: absolute;
-    margin-top: 77px;
-    margin-left: 45px;
-    height: 300px;
-    width: 225px;
+  .pack {
+    border-radius: 10px;
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
-  }
+    align-items: flex-start;
 
-  h4 {
-    font-size: 32px;
-    line-height: 40px;
-    font-family: "ApercuPro", sans-serif;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-  }
+    img {
+      width: 330px;
+      height: 410px;
+      border-radius: 4px;
+      margin: 12px;
+    }
 
-  span {
-    font-family: "ApercuPro", sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-  }
+    .pack_text {
+      position: absolute;
+      margin-top: 77px;
+      margin-left: 45px;
+      height: 300px;
+      width: 225px;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+    }
 
+    h4 {
+      font-size: 32px;
+      line-height: 40px;
+      font-family: "ApercuPro", sans-serif;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+
+    span {
+      font-family: "ApercuPro", sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+  }
 }
 
 .show_button {

@@ -69,7 +69,7 @@ class UserDash extends React.Component {
             </div>
     
             
-            <div className="packs">
+            <div className="packsDash">
               {this.props.packs.slice(0, this.state.packsToShow).map(pack => {  
                 return (
                 <UserPackTile key={pack.id} pack={pack} />

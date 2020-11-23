@@ -21,23 +21,23 @@ const UserPackTile = ({ pack }) => {
     }
   }
   return (
-    <div className="pack">
-
       <Link to={`packs/${pack.id}`}>
-        <img src={pack.thumbnailUrl} />
-      </Link>
+        <div className="pack">
 
-      <div className="pack_text" >
-        <h4 style={textColor}>{pack.title}</h4>
-        <div>
-          <span style={textColor}>2 of 10</span>
-          <div className="progress_bar_mini">
-            <div style={colorStyle} className="mini_rectangle"></div>
+          <img src={pack.thumbnailUrl} />
+
+          <div className="pack_text" >
+            <h4 style={textColor}>{pack.title}</h4>
+            <div>
+              <span style={textColor}>2 of 10</span>
+              <div className="progress_bar_mini">
+                <div style={colorStyle} className="mini_rectangle"></div>
+              </div>
+            </div>
+
           </div>
         </div>
-
-      </div>
-    </div>
+      </Link>
   )
 }
 

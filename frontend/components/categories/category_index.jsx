@@ -19,34 +19,49 @@ class CategoryIndex extends React.Component {
     const { categories, displayPacks } = this.props
 
     return (
-      <div>
-        <div>
+      <div className="discoverPage">
+        <div className="linkBox">
+          <span>PACKS</span>
           {categories.map(category => {
 
             return (
-              <HashLink key={category.id} to={`#${category.name}`}>
-                <h2>{category.name}</h2>
+              <HashLink key={category.id} to={`#${category.name}`} className="hashLink">
+                {category.name}
               </HashLink>
             )
 
           })}
         </div>
 
-        <div>
+        <div className="tileBox">
           {categories.map(category => {
             
             return(
-              <div key={category.id} id={category.name}>
+              <div key={category.id} id={category.name} className="category">
                 <h2>{category.name}</h2>
-                <PacksList 
-                  category={category}
-                  displayPacks={displayPacks}
-                />
+
+                <div className="categoryBox">
+                  <PacksList 
+                    category={category}
+                    displayPacks={displayPacks}
+                    className="innerBox"
+                  />
+                </div>
               </div>
             )
-            
           })}
+
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
         </div>
+        
       </div>
     )
 
