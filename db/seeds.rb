@@ -21,6 +21,7 @@ ActiveRecord::Base.transaction do
   User.destroy_all
   Category.destroy_all
   Pack.destroy_all
+  UserPack.destroy_all
 
   #Demo User
   p 'creating Demo User...'
@@ -139,6 +140,11 @@ ActiveRecord::Base.transaction do
 
 
   p 'Creating User Packs for demo user...'
-  
+  up1 = UserPack.create!(user_id: demo_user.id, pack_id: pack1.id)
+  up2 = UserPack.create!(user_id: demo_user.id, pack_id: pack6.id)
+  up3 = UserPack.create!(user_id: demo_user.id, pack_id: pack7.id)
+  up4 = UserPack.create!(user_id: demo_user.id, pack_id: pack5.id)
+  up5 = UserPack.create!(user_id: demo_user.id, pack_id: pack17.id)
+
 
 end
