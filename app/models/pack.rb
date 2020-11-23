@@ -5,5 +5,7 @@ class Pack < ApplicationRecord
 
   has_one_attached :thumbnail
   belongs_to :category
+  
+  has_many :user_packs
 
 end

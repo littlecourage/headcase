@@ -26,10 +26,10 @@ const Greeting = ({ currentUser, logout }) => {
 
   const userGreeting = () => {
     let name;
-    if (currentUser.first_name === 'Demo') {
+    if (currentUser.firstName === 'Demo User') {
       name = "DEMO USER";
     } else {
-      name = currentUser.first_name.toUpperCase();
+      name = currentUser.firstName.toUpperCase();
     }
     
     return (

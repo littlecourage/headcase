@@ -6,7 +6,11 @@ class UserPack < ApplicationRecord
   validates :pack_id, uniqueness: { scope: :user_id }
 
   belongs_to :user
-  has_one :pack
+  
+  belongs_to :pack,
+    primary_key: :id,
+    foreign_key: :pack_id,
+    class_name: 'Pack'
 
 
 end

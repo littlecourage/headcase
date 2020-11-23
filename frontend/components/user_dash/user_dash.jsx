@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { FaPlay } from 'react-icons/fa';
 // import UserDashPackIndex from './user_packs_index';
 import UserPackTile from '../pack_tiles/user_pack_tile';
@@ -9,22 +9,35 @@ class UserDash extends React.Component {
 
   constructor(props) {
     super(props);
-    // this.state = {
-    //   addButtonClicked: false,
-    //   userPacks: this.props.userPacks
-    // }
+    this.state = {
+      packsToShow: 3,
+      addButtonClicked: false
+    }
+    this.handleMorePacks = this.handleMorePacks.bind(this);
   }
 
-  handleAddPacks() {
-
+  handleMorePacks() {
+    if (this.state.addButtonClicked === true) {
+      console.log(true);
+      <Redirect to="/discover" />
+    } else {
+      this.setState( { addButtonClicked: true, packsToShow: this.state.packsLength } )
+    console.log(this.state);
+    }
   }
+
 
   componentDidMount() {
     this.props.fetchAllUserPacks()
+    this.setState({
+      packsToShow: 3,
+      addButtonClicked: false
+    })
   }
 
 
   render() {
+    
       let progressStyle = {
         backgroundColor: "#5A6175",
         width: "20%",
@@ -59,14 +72,18 @@ class UserDash extends React.Component {
     
             
               <div className="packs">
-                {this.props.packs.map(pack => {
+                {this.props.packs.slice(0, this.state.packsToShow).map(pack => {  
                   return (
-                  <UserPackTile pack={pack} />
+                  <UserPackTile key={pack.id} pack={pack} />
                   ) 
                 })}
 
               </div>
 
+              <button className="show_button" onClick={this.handleMorePacks}>
+              {(this.state.addButtonClicked) ? <Link to="/discover"> DISCOVER MORE PACKS </Link>: 
+                "SHOW MORE" }
+              </button>
 
               {/* <div className="pack">
                 <img src={window.packYellow1} />
@@ -113,7 +130,7 @@ class UserDash extends React.Component {
               </div> */}
 
     
-            <button className="show_button">SHOW MORE</button>
+
     
           </div>
         ) 

@@ -11,7 +11,7 @@ const PacksList = ({displayPacks, category }) => {
         {displayPacks.map(pack => {
           if (pack.userId) {
             return (
-              <UserPackTile key={pack.id} userPack={pack} />
+              <UserPackTile key={pack.id} pack={pack} />
               );
             } else {
               return (

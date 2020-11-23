@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UserPackTile = ({ userPack }) => {
+const UserPackTile = ({ pack }) => {
   let colorStyle = {
     backgroundColor: "#5A6175",
     width: "20%",
@@ -11,7 +11,7 @@ const UserPackTile = ({ userPack }) => {
   
   return (
     <div className="pack">
-      <img src={userPack.packId.thumbnailUrl} />
+      <img src={pack.thumbnailUrl} />
       <div className="pack_text" >
         <h4 style={textColor}>user pack!</h4>
         <h4>User pack!</h4>
