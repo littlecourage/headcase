@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 const UserPackTile = ({ pack }) => {
   let colorStyle = {
@@ -20,7 +22,11 @@ const UserPackTile = ({ pack }) => {
   }
   return (
     <div className="pack">
-      <img src={pack.thumbnailUrl} />
+
+      <Link to={`packs/${pack.id}`}>
+        <img src={pack.thumbnailUrl} />
+      </Link>
+
       <div className="pack_text" >
         <h4 style={textColor}>{pack.title}</h4>
         <div>

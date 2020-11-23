@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PackTile = ({ pack }) => {
   
@@ -23,14 +24,18 @@ const PackTile = ({ pack }) => {
 
   return (
     <div className="pack">
-      <img src={pack.thumbnailUrl} />
+
+      <Link to={`packs/${pack.id}`}>
+        <img src={pack.thumbnailUrl} />
+      </Link>
+
       <div className="pack_text" >
         <h4 style={textColor}>{pack.title}</h4>
         <div>
           <span style={textColor}>10 sessions</span>
         </div>
-
       </div>
+      
     </div>
   )
 }

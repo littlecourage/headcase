@@ -195,13 +195,18 @@
   background-color: #5A6175;
 }
 
-a {
-  text-decoration: none;
-  color: #5A6175;
-  padding: 15px 25px;
+button {
+
+  a {
+    text-decoration: none;
+    color: #5A6175;
+    padding: 15px 25px;
+  }
+
+  a:hover {
+    color: white;
+  }
+
 }
 
-a:hover {
-  color: white;
-}
 
