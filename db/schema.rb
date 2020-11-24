@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_22_145429) do
+ActiveRecord::Schema.define(version: 2020_11_24_162758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,13 +43,21 @@ ActiveRecord::Schema.define(version: 2020_11_22_145429) do
     t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
+  create_table "meditation_completions", force: :cascade do |t|
+    t.integer "med_id", null: false
+    t.integer "user_pack_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["med_id"], name: "index_meditation_completions_on_med_id"
+    t.index ["user_pack_id"], name: "index_meditation_completions_on_user_pack_id"
+  end
+
   create_table "meditations", force: :cascade do |t|
     t.integer "order", null: false
     t.integer "pack_id", null: false
-    t.integer "audio_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["pack_id", "audio_id"], name: "index_meditations_on_pack_id_and_audio_id", unique: true
+    t.index ["pack_id"], name: "index_meditations_on_pack_id"
   end
 
   create_table "packs", force: :cascade do |t|
