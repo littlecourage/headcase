@@ -9,11 +9,22 @@ class User < ApplicationRecord
             :last_name,
             presence: true
 
-  attr_reader :password
-
+            
   after_initialize :ensure_session_token
+            
+  has_many :user_packs,
+    foregin_key: :user_id,
+    class_name: "UserPack"
 
-  has_many :user_packs
+  has_many :meditation_completions,
+    through: :user_packs,
+    source: :meditation_completions
+
+  has_many :meditations,
+    through: :user_packs,
+    source: :meditations
+            
+  attr_reader :password
 
   def self.find_by_credentials(email, password) 
     user = User.find_by(email: email)

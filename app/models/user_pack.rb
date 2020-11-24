@@ -13,4 +13,18 @@ class UserPack < ApplicationRecord
     foreign_key: :pack_id,
     class_name: 'Pack'
 
+  has_many :meditations,
+    through: :pack,
+    source: :meditations
+
+  has_many :meditation_completions,
+    foreign_key: :user_pack_id,
+    class_name: 'MeditationCompletion'
+
+  
+  def getMeditationsCompleted
+
+  end
+
+
 end
