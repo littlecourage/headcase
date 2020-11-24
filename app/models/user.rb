@@ -53,5 +53,21 @@ class User < ApplicationRecord
     self.save!
     self.session_token
   end
+
+  def user_pack_completed?(user_pack)
+    med_com = self.meditation_completions.where(user_pack_id: user_pack.id)
+    return true if user_pack.pack.length == med_com.length
+    return false
+  end  
+  
+  def user_meditations_completed(user_pack)
+    med_com = self.meditation_completions.where(user_pack_id: user_pack.id)
+    return med_com.length
+  end
+  
+  def current_track(user_pack)
+    return self.user_meditations_completed(user_pack) + 1
+  end
+  
   
 end

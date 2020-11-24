@@ -21,11 +21,8 @@ class UserPack < ApplicationRecord
     foreign_key: :user_pack_id,
     class_name: 'MeditationCompletion'
 
-  
-  def user_pack_completed?
-    return true if self.pack.length == self.meditation_completions.length
-    return false
+  def length 
+    return self.pack.length
   end
-
 
 end

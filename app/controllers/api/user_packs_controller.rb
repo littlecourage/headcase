@@ -8,6 +8,7 @@ class Api::UserPacksController < ApplicationController
 
   def show
     @user_pack = UserPack.find(params[:id])
+    render :show
   end
 
   def user_pack_params
