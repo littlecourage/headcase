@@ -6,13 +6,13 @@ import {
   Link,
   HashRouter
 } from 'react-router-dom';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import GreetingContainer from './greeting/greeting_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import LoginFormContainer from './session_form/login_form_container';
 import UserDashContainer from './user_dash/user_dash_container';
 import CategoryIndexContainer from './categories/category_index_container';
 import PackShowContainer from './packs/pack_show_container';
-import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import LandingPageContainer from './landing_page/landing_page_container';
 
 const App = () => (
