@@ -11,7 +11,7 @@ class Meditation < ApplicationRecord
     foreign_key: :med_id,
     class_name: "MeditationCompletions"
 
-  belongs_to :user_pack,
+  has_many :user_packs,
     through: :meditation_completions,
     source: :user_pack
 

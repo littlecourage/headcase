@@ -147,4 +147,6 @@ ActiveRecord::Base.transaction do
   up5 = UserPack.create!(user_id: demo_user.id, pack_id: pack17.id)
 
 
+  
+
 end

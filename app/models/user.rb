@@ -13,7 +13,7 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
             
   has_many :user_packs,
-    foregin_key: :user_id,
+    foreign_key: :user_id,
     class_name: "UserPack"
 
   has_many :meditation_completions,
