@@ -9,7 +9,9 @@ class Pack < ApplicationRecord
     foreign_key: :category_id,
     class_name: "Category"
 
-  has_many :user_packs
+  has_many :user_packs,
+    foreign_key: :pack_id,
+    class_name: 'UserPack'
 
   has_many :meditations,
     foreign_key: :pack_id,

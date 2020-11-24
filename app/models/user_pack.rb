@@ -22,8 +22,9 @@ class UserPack < ApplicationRecord
     class_name: 'MeditationCompletion'
 
   
-  def getMeditationsCompleted
-
+  def user_pack_completed?
+    return true if self.pack.length == self.meditation_completions.length
+    return false
   end
 
 

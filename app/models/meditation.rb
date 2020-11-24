@@ -9,7 +9,7 @@ class Meditation < ApplicationRecord
 
   has_many :meditation_completions,
     foreign_key: :med_id,
-    class_name: "MeditationCompletions"
+    class_name: "MeditationCompletion"
 
   has_many :user_packs,
     through: :meditation_completions,
