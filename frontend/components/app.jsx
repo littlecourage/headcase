@@ -13,6 +13,7 @@ import UserDashContainer from './user_dash/user_dash_container';
 import CategoryIndexContainer from './categories/category_index_container';
 import PackShowContainer from './packs/pack_show_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import LandingPageContainer from './landing_page/landing_page_container';
 
 const App = () => (
   <div>
@@ -23,6 +24,7 @@ const App = () => (
       <ProtectedRoute exact path="/dashboard" component={UserDashContainer} />
       <ProtectedRoute exact path="/discover" component={CategoryIndexContainer} />
       <ProtectedRoute exact path="/packs/:packId" component={PackShowContainer} />
+      <AuthRoute exact path="/" component={LandingPageContainer} />
     </Switch>
   </div>
 );

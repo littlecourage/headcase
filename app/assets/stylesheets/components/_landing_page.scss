@@ -1,0 +1,62 @@
+.landingContainer {
+  display: flex;
+  align-items: center;
+}
+
+.landingImage {
+  width: 100%;
+}
+
+.landingText {
+  position: absolute;
+  width: 635px;
+  height: 410px;
+  margin-left: 140px;
+  margin-top: 140px;
+
+  h1 {
+    color: #5A6175;
+    font-size: 86px;
+    font-family: "ApercuPro", sans-serif;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    margin-bottom: 60px;
+    padding-left: 4px;
+  }
+
+  p {
+    font-size: 22px;
+    font-family: "ApercuPro", sans-serif;
+    font-weight: 400;
+    color: #666666;
+    letter-spacing: 1.5px;
+    padding-bottom: 10px;
+    line-height: 30px;
+    margin-bottom: 30px;
+  }
+
+  a {
+    padding: 0px 20px;
+    background-color: #0E6EF6;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 0px;
+    border-radius: 50px;
+    width: 170px;
+    height: 65px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "ApercuPro", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  a:hover {
+    background-color: #0069FF;
+    cursor: pointer;
+  }
+
+}
