@@ -3,11 +3,10 @@ import * as APIUtil from '../util/user_packs_util';
 export const RECEIVE_ALL_USER_PACKS = "RECEIVE_ALL_USER_PACKS";
 export const RECEIVE_USER_PACK = "RECEIVE_USER_PACK"
 
-export const receiveAllUserPacks = (userPacks, packs) => {
+export const receiveAllUserPacks = (userPacks) => {
   return {
     type: RECEIVE_ALL_USER_PACKS,
-    userPacks,
-    packs
+    userPacks
   }
 }
 
