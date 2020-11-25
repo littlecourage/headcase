@@ -1,0 +1,1 @@
+json.partial! "api/meditations/meditation", meditation: @meditation
