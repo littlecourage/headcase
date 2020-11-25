@@ -25,4 +25,26 @@ class UserPack < ApplicationRecord
     return self.pack.length
   end
 
+  def user_pack_completed?
+    user = self.user
+    med_com = user.meditation_completions.where(user_pack_id: self.id)
+    return true if self.pack.length == med_com.length
+    return false
+  end  
+  
+  def played_meditations
+    user = self.user
+    med_com = user.meditation_completions.where(user_pack_id: self.id)
+    return med_com.length
+  end
+  
+  def current_track
+    if self.user_pack_completed?
+      return self.meditations.where(order: 1).select(:id)
+    end
+    return self.meditations.where(order: self.played_meditations + 1).select(:id)
+  end
+
+
+
 end

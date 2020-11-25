@@ -11,7 +11,4 @@ class Api::MeditationsController < ApplicationController
     render :show
   end
 
-  
-
-
 end

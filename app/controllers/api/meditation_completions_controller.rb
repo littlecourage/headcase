@@ -13,8 +13,8 @@ class Api::MeditationCompletionsController < ApplicationController
   end
 
   def create
-    @user_pack = UserPack.find(params[:user_pack_id])
-    @meditation = Meditation.find(params[:med_id])
+    @user_pack = UserPack.find(current_user.id)
+    @meditation = Meditation.find(params[:meditation_id])
 
     @meditation_completion = MeditationCompletion.new(
         med_id: @meditation.id, 

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :packs, only: [:index, :show]
     resources :categories, only: [:index, :show]
     resources :user_packs, only: [:index, :show]
+    resources :meditations, only: [:index, :show]
+    resources :meditation_completions, only: [:index, :create, :show]
   end
 
   root "static_pages#root"
