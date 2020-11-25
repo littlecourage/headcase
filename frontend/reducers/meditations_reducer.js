@@ -13,8 +13,13 @@ const meditationsReducer = (oldState = {}, action) => {
       return action.meditations
 
     case RECEIVE_MEDITATION:
-      return newState[action.meditation.id] = action.meditation;
-  
+      const { meditation } = action;
+      newState = Object.assign(
+        {},
+        oldState,
+        { [meditation.id]: meditation }
+      );
+      return newState;
     default:
       return oldState;
   }

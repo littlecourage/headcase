@@ -1,8 +1,7 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import PlayBar from '../audio_player/play_bar';
-import PlayPage from '../audio_player/play_page';
+import PlayPageContainer from '../audio_player/play_page_container';
 
 
 const Modal = (props) => {
@@ -12,12 +11,12 @@ const Modal = (props) => {
   }
 
   let modalComponent;
-  switch (modalComponent) {
-    case 'bottomPlayer':
+  switch (props.modal) {
+    case 'playBar':
       modalComponent = <PlayBar />;
       break;
-    case 'fullPlayer':
-      modalComponent = <PlayPage />;
+    case 'playPage':
+      modalComponent = <PlayPageContainer />;
       break;
     default:
       return null;

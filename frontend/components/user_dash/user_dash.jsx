@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { FaPlay } from 'react-icons/fa';
+
 import UserPackTile from '../pack_tiles/user_pack_tile';
 
 
@@ -49,7 +49,7 @@ class UserDash extends React.Component {
               <div className="med_title">
                 <h4>Day 3 of 10</h4>
                 <h1>Happiness</h1>
-                <button><FaPlay/>&emsp;BEGIN</button>
+                {this.props.showModal}
               </div>
 
               <div className="dashBackground">
