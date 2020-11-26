@@ -17,14 +17,6 @@ class Meditation < ApplicationRecord
 
   has_one_attached :track
 
-  def track_url
-    url = ""
 
-    if self.track.attached?
-      url = url_for(self.track)
-      return url
-    end
-
-  end
 
 end

@@ -13,15 +13,31 @@ end
 
 json.meditations do
   user_pack.meditations.each do |meditation|
-    json.extract! meditation, :id, :order, :pack_id
-    if meditation.track.attached?
-      json.trackUrl url_for(meditation.track)
-    else
-      json.trackUrl ""
+    json.set! meditation.id do
+      json.extract! meditation, :id, :order, :pack_id
+      if meditation.track.attached?
+        json.trackUrl url_for(meditation.track)
+      else
+        json.trackUrl ""
+      end
     end
   end
-
 end
+
+
+# json.meditations(user_pack.meditations) do |meditation|
+#   json.extract! meditation, :id, :order, :pack_id
+#   if meditation.track.attached?
+#     json.trackUrl url_for(meditation.track)
+#   else
+#     json.trackUrl ""
+#   end
+# end
+
+# json.people(@people) do |person|
+#   json.name person.name
+#   json.age calculate_age(person.birthday)
+# end
 
 
 # json.meditations do
@@ -29,6 +45,12 @@ end
 #     json.partial! "api/meditations/meditation", meditations: user_pack.meditations
 #   end
 # end
+
+      # if meditation.track.attached?
+      #   json.trackUrl url_for(meditation.track)
+      # else
+      #   json.trackUrl ""
+      # end
 
 
 # def get_pack_partial(pack)
