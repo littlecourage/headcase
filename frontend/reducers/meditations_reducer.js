@@ -8,17 +8,14 @@ const meditationsReducer = (oldState = {}, action) => {
 
   let newState = Object.assign({}, oldState);
 
-  switch (action.typpe) {
+  switch (action.type) {
     case RECEIVE_ALL_MEDITATIONS:
       return action.meditations
 
     case RECEIVE_MEDITATION:
       const { meditation } = action;
-      newState = Object.assign(
-        {},
-        oldState,
-        { [meditation.id]: meditation }
-      );
+      newState[meditation.id] = meditation;
+      debugger
       return newState;
     default:
       return oldState;

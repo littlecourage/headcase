@@ -11,7 +11,7 @@ const packsReducer = (oldState = {}, action) => {
 
     case RECEIVE_PACK:
       newState[action.pack.id] = action.pack;
-
+      return newState;
     default:
       return oldState;
   }

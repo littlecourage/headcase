@@ -4,11 +4,11 @@ import { fetchMeditation } from '../../actions/meditations_actions';
 import PlayPage from './play_page';
 
 const mapStateToProps = (state) => {
-  debugger
-  let currentUser = state.entities.users[state.session.id]
-  return {
-    currentMed: state.entities.users[state.session.id].currentMeditation,
 
+  let currentMed = state.entities.users[state.session.id].currentMeditation
+  debugger
+  return {
+    currentMed: currentMed,
   }
 }
 

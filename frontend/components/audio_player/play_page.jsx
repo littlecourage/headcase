@@ -15,7 +15,7 @@ class PlayPage extends React.Component {
       <div className="player">
         <img src={window.userDashBackgroundUrl} alt=""/>
         <audio controls>
-          <source scr={this.props.currentMed.trackUrl} />
+          <source />
         </audio>
       </div>
     )
