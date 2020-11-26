@@ -17,4 +17,5 @@ class Pack < ApplicationRecord
     foreign_key: :pack_id,
     class_name: "Meditation"
 
+
 end

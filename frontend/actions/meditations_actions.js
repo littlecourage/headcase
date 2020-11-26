@@ -20,7 +20,7 @@ const receiveMeditation = (meditation) => {
 export const fetchAllMeditations = () => (dispatch) => {
   return APIUtil.fetchAllMeditations()
     .then((meditations) => {
-      debugger
+      
       return dispatch(receiveAllMeditations(meditations))
     });
   }
@@ -28,7 +28,7 @@ export const fetchAllMeditations = () => (dispatch) => {
 export const fetchMeditation = (meditationId) => (dispatch) => {
   return APIUtil.fetchMeditation(meditationId)
     .then((meditation) => {
-      debugger
+      
       return dispatch(receiveMeditation(meditation))
     })
 }

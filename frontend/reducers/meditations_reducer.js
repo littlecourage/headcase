@@ -15,7 +15,7 @@ const meditationsReducer = (oldState = {}, action) => {
     case RECEIVE_MEDITATION:
       const { meditation } = action;
       newState[meditation.id] = meditation;
-      debugger
+      
       return newState;
     default:
       return oldState;

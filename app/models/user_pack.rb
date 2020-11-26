@@ -40,9 +40,9 @@ class UserPack < ApplicationRecord
   
   def current_track
     if self.user_pack_completed?
-      return self.meditations.where(order: 1).last
+      return self.meditations.with_attached_track.where(order: 1).last
     end
-    return self.meditations.where(order: self.played_meditations + 1).last
+    return self.meditations.with_attached_track.where(order: self.played_meditations + 1).last
   end
 
 

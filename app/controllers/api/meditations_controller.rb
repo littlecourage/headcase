@@ -1,13 +1,13 @@
 class Api::MeditationsController < ApplicationController 
 
   def index
-    @meditations = Meditation.where(pack_id: pack.id)
+    @meditations = Meditation.with_attached_track.where(pack_id: pack.id)
 
     render :index
   end
 
   def show
-    @meditation = Meditation.find(params[:id])
+    @meditation = Meditation.with_attached_track.find(params[:id])
     render :show
   end
 

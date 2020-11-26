@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
-
+import { FaPlay } from 'react-icons/fa';
 import UserPackTile from '../pack_tiles/user_pack_tile';
 
 
@@ -41,7 +41,7 @@ class UserDash extends React.Component {
         backgroundColor: "#5A6175",
         width: "20%",
       }
-
+        const { currentMedId } = this.props;
         return (
           <div className="dashHome">
 
@@ -49,7 +49,9 @@ class UserDash extends React.Component {
               <div className="med_title">
                 <h4>Day 3 of 10</h4>
                 <h1>Happiness</h1>
-                {this.props.showModal}
+                <Link to={`/play/${currentMedId}`}>
+                  <FaPlay />&emsp;BEGIN
+                </Link>
               </div>
 
               <div className="dashBackground">

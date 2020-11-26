@@ -71,6 +71,7 @@ class User < ApplicationRecord
         .last
         .user_pack
         .current_track
+
         return next_meditation
     else
       return last_user_pack.current_track

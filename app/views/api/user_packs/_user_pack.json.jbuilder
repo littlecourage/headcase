@@ -14,6 +14,7 @@ end
 json.meditations do
   user_pack.meditations.each do |meditation|
     json.set! meditation.id do
+      # json.partial! "api/meditations/meditation", meditations: user_pack.meditations
       json.extract! meditation, :id, :order, :pack_id
       if meditation.track.attached?
         json.trackUrl url_for(meditation.track)
