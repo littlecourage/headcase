@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import React from 'react';
 import UserDash from './user_dash';
 import { fetchAllUserPacks } from '../../actions/user_packs_actions';
-import { openModal, closeModal } from '../../actions/modal_actions';
 
 
 const getPacks = (userPacks=[]) => {

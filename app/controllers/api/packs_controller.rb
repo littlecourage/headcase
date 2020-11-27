@@ -2,13 +2,13 @@ class Api::PacksController < ApplicationController
 
   def index
 
-    @packs = Pack.all
+    @packs = Pack.all.with_attached_thumbnail
      
     render :index
   end
 
   def show 
-    @pack = Pack.find(params[:id])
+    @pack = Pack.with_attached_thumbnail.find(params[:id])
 
     render :show
   end

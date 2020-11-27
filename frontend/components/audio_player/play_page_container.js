@@ -2,11 +2,12 @@ import { connect } from 'react-redux';
 import { fetchMeditation } from '../../actions/meditations_actions';
 import PlayPage from './play_page';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+
   let currentMed = state.entities.users[state.session.id].currentMeditation
   return {
     currentMed: currentMed,
-    // currentTrack: state.entities.
+    currentTrack: state.entities.users[state.session.id].trackUrl
   }
 }
 

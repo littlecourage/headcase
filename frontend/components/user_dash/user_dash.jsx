@@ -21,7 +21,7 @@ class UserDash extends React.Component {
       <Redirect to="/discover" />
     } else {
       this.setState( { addButtonClicked: true, packsToShow: this.state.packsLength } )
-    console.log(this.state);
+
     }
   }
 
@@ -36,7 +36,7 @@ class UserDash extends React.Component {
 
 
   render() {
-    
+
       let progressStyle = {
         backgroundColor: "#5A6175",
         width: "20%",
