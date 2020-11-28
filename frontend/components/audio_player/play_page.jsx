@@ -12,6 +12,10 @@ class PlayPage extends React.Component {
     this.togglePlay = this.togglePlay.bind(this);
     this.handleMetadata = this.handleMetadata.bind(this);
     this.handleTimeUpdate = this.handleTimeUpdate.bind(this);
+    this.positionTime = this.positionTime.bind(this);
+    this.handleMouseDown = this.handleMouseDown.bind(this);
+    this.handleMouseUp = this.handleMouseUp.bind(this);
+    this.handleMouseMove = this.handleMouseMove.bind(this);
   }
   
   componentDidMount() {
@@ -22,14 +26,25 @@ class PlayPage extends React.Component {
     } 
 
     this.handleTimeUpdate();
-    this.audio.addEventListener('loadedmetadata', () => this.handleMetadata() )
+    this.audio.addEventListener('loadedmetadata', () => this.handleMetadata());
     this.audio.addEventListener('ended', () => this.setState({ play: false }));
-    this.audio.addEventListener('timeupdate', () => this.handleTimeUpdate());
+    this.audio.addEventListener('timeupdate', () => {
+      this.handleTimeUpdate();
+      let ratio = this.audio.currentTime / this.audio.duration;
+      let position = this.outer.offsetWidth * ratio;
+      this.positionTime(position);
+    });
+  
   }
 
   componentWillUnmount() {
     this.audio.removeEventListener('ended', () => this.setState({ play: false }));
-    this.audio.removeEventListener('timeupdate', this.handleTimeUpdate())
+    this.audio.removeEventListener('timeupdate', () => {
+      this.handleTimeUpdate();
+      let ratio = this.audio.currentTime / this.audio.duration;
+      let position = this.outer.offsetWidth * ratio;
+      this.positionTime(position);
+    })
     this.audio.removeEventListener('loadedmetadata', () => this.handleMetadata() )
   }
 
@@ -69,12 +84,45 @@ class PlayPage extends React.Component {
       durMins = "0" + durMins;
     }
     this.setState({
-        currentTimeUnMod : this.audio.currentTime,
+        // currentTimeUnMod : this.audio.currentTime,
         currentTime: curMins + ":" + curSecs,
         durTime: durMins + ":" + durSecs,
       })
 
   }
+
+  positionTime(position) {
+    let outerBarWidth = this.outer.offsetWidth - this.range.offsetWidth;
+    let rangeLeft = position - this.outer.offsetLeft;
+
+    if (rangeLeft >= 0 && rangeLeft <= outerBarWidth) {
+      this.range.style.marginLeft = rangeLeft;
+    }
+    if (rangeLeft < 0) {
+      this.range.style.marginLeft = 0;
+    }
+    if (rangeLeft > outerBarWidth) {
+      this.range.style.marginLeft = outerBarWidth;
+    }
+  }
+
+  handleMouseMove(e) {
+    this.positionTime(e.pageX)
+    this.audio.currentTime = (e.pageX / this.outer.offsetWidth) * this.audio.duration;
+    console.log("click!")
+  }
+
+  handleMouseDown(e) {
+    window.addEventListener('mousemove', this.handleMouseMove);
+    window.addEventListener('mouseup', this.handleMouseUp);
+    console.log("clickMD!")
+  }
+
+  handleMouseUp(e) {
+    window.removeEventListener('mousemove', this.handleMouseMove);
+    window.removeEventListener('mouseup', this.handleMouseUp);
+  }
+
 
 
   render() {
@@ -82,17 +130,15 @@ class PlayPage extends React.Component {
     let outerBarStyle = {width: width}
     let ptCt = this.state.currentTimeUnMod / width;
     let barStyle = {width: (width * ptCt), backgroundColor: "purple"}
-    console.log(barStyle)
-    console.log(this.state.currentTimeUnMod)
-    console.log(this.state.currentTimeUnMod / width)
+
    return (this.props.currentMed && this.props.currentUp) ?
     (
       <div className="player">
         <img src={window.userDashBackgroundUrl} alt=""/>
         <p>Day {this.props.currentMed.order} / {this.props.currentUp.length}</p>
         <button onClick={this.togglePlay}>{this.state.play ? 'Pause' : 'Play'}</button>
-         <div className="hp_slide" style={outerBarStyle}>
-           <div className="hp_range" style={barStyle} ></div>
+         <div className="hp_slide"  ref={(outer) => {this.outer = outer }} onClick={this.handleMouseMove}>
+           <div className="hp_range"  ref={(range) => {this.range = range}} onMouseDown={this.handleMouseDown} ></div>
          </div>
         <p>{this.state.currentTime}/{this.state.durTime}</p>
       </div>
