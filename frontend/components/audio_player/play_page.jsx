@@ -6,6 +6,7 @@ class PlayPage extends React.Component {
     super(props);
     this.state = {
       play: false,
+      currentTimeUnMod : 1
     }
     this.audio = new Audio(this.props.currentTrack);
     this.togglePlay = this.togglePlay.bind(this);
@@ -67,16 +68,32 @@ class PlayPage extends React.Component {
     if (durMins < 10) {
       durMins = "0" + durMins;
     }
-    this.setState({ currentTime: curMins + ":" + curSecs, durTime: durMins + ":" + durSecs})
+    this.setState({
+        currentTimeUnMod : this.audio.currentTime,
+        currentTime: curMins + ":" + curSecs,
+        durTime: durMins + ":" + durSecs,
+      })
+
   }
 
+
   render() {
+    let width = 400;
+    let outerBarStyle = {width: width}
+    let ptCt = this.state.currentTimeUnMod / width;
+    let barStyle = {width: (width * ptCt), backgroundColor: "purple"}
+    console.log(barStyle)
+    console.log(this.state.currentTimeUnMod)
+    console.log(this.state.currentTimeUnMod / width)
    return (this.props.currentMed && this.props.currentUp) ?
-      (
-        <div className="player">
+    (
+      <div className="player">
         <img src={window.userDashBackgroundUrl} alt=""/>
         <p>Day {this.props.currentMed.order} / {this.props.currentUp.length}</p>
         <button onClick={this.togglePlay}>{this.state.play ? 'Pause' : 'Play'}</button>
+         <div className="hp_slide" style={outerBarStyle}>
+           <div className="hp_range" style={barStyle} ></div>
+         </div>
         <p>{this.state.currentTime}/{this.state.durTime}</p>
       </div>
     ) : (
