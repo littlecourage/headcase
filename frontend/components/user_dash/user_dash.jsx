@@ -13,6 +13,7 @@ class UserDash extends React.Component {
       addButtonClicked: false
     }
     this.handleMorePacks = this.handleMorePacks.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleMorePacks() {
@@ -40,22 +41,28 @@ class UserDash extends React.Component {
 
 
   render() {
-
-      let progressStyle = {
+    const { currentUp, currentMed } = this.props;
+    let progressStyle = {
+      backgroundColor: "#5A6175",
+      width: "20%"
+    }
+    if (currentUp) {
+      progressStyle = {
         backgroundColor: "#5A6175",
-        width: "20%",
+        width: (currentMed.order/currentUp.length) * 100 + "%",
       }
-        const { currentMedId } = this.props;
-        return (
+      console.log(progressStyle)
+    }
+        return (currentUp) ? (
           <div className="dashHome">
 
             <div className="med_box">
               <div className="med_title">
-                <h4>Day 3 of 10</h4>
-                <h1>Happiness</h1>
-                <Link to={`/play/${currentMedId}`}>
+                <h4>Day {currentMed.order} of {currentUp.length}</h4>
+                <h1>{currentUp.pack.title}</h1>
+                <button onClick={this.handleClick}>
                   <FaPlay />&emsp;BEGIN
-                </Link>
+                </button>
               </div>
 
               <div className="dashBackground">
@@ -92,7 +99,9 @@ class UserDash extends React.Component {
               "SHOW MORE" }
             </button>   
         </div>
-        ) 
+        ) : (
+          null
+        )
   }
 
   
