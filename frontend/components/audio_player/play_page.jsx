@@ -1,4 +1,5 @@
 import React from 'react';
+import { VscChromeClose } from "react-icons/vsc";
 
 class PlayPage extends React.Component {
 
@@ -6,7 +7,6 @@ class PlayPage extends React.Component {
     super(props);
     this.state = {
       play: false,
-      currentTimeUnMod : 1
     }
     this.audio = new Audio(this.props.currentTrack);
     this.togglePlay = this.togglePlay.bind(this);
@@ -16,6 +16,7 @@ class PlayPage extends React.Component {
     this.handleMouseDown = this.handleMouseDown.bind(this);
     this.handleMouseUp = this.handleMouseUp.bind(this);
     this.handleMouseMove = this.handleMouseMove.bind(this);
+    this.handleCompletion = this.handleCompletion.bind(this);
   }
   
   componentDidMount() {
@@ -27,7 +28,10 @@ class PlayPage extends React.Component {
 
     this.handleTimeUpdate();
     this.audio.addEventListener('loadedmetadata', () => this.handleMetadata());
-    this.audio.addEventListener('ended', () => this.setState({ play: false }));
+    this.audio.addEventListener('ended', () => {
+      this.setState({ play: false })
+      this.handleCompletion();
+    });
     this.audio.addEventListener('timeupdate', () => {
       this.handleTimeUpdate();
       let ratio = this.audio.currentTime / this.audio.duration;
@@ -84,7 +88,6 @@ class PlayPage extends React.Component {
       durMins = "0" + durMins;
     }
     this.setState({
-        // currentTimeUnMod : this.audio.currentTime,
         currentTime: curMins + ":" + curSecs,
         durTime: durMins + ":" + durSecs,
       })
@@ -123,6 +126,13 @@ class PlayPage extends React.Component {
     window.removeEventListener('mouseup', this.handleMouseUp);
   }
 
+  handleCompletion() {
+    let completion = {
+      userPackId: this.props.currentUp.id,
+      meditationId: this.props.currentMed.id
+    }
+    this.props.action(completion);
+  }
 
 
   render() {
@@ -134,13 +144,19 @@ class PlayPage extends React.Component {
    return (this.props.currentMed && this.props.currentUp) ?
     (
       <div className="player">
-        <img src={window.userDashBackgroundUrl} alt=""/>
-        <p>Day {this.props.currentMed.order} / {this.props.currentUp.length}</p>
-        <button onClick={this.togglePlay}>{this.state.play ? 'Pause' : 'Play'}</button>
-         <div className="hp_slide"  ref={(outer) => {this.outer = outer }} onClick={this.handleMouseMove}>
-           <div className="hp_range"  ref={(range) => {this.range = range}} onMouseDown={this.handleMouseDown} ></div>
-         </div>
-        <p>{this.state.currentTime}/{this.state.durTime}</p>
+        <img src={window.userDashBackgroundUrl} className="playerBackground"/>
+        <div className="boxClose">
+           <VscChromeClose />
+        </div>
+        <div className="playBox">
+          <h4>{this.props.currentUp.pack.title}</h4>
+          <p>Day {this.props.currentMed.order} / {this.props.currentUp.length}</p>
+          <button onClick={this.togglePlay}>{this.state.play ? 'Pause' : 'Play'}</button>
+          <div className="hp_slide"  ref={(outer) => {this.outer = outer }} onClick={this.handleMouseMove}>
+            <div className="hp_range"  ref={(range) => {this.range = range}} onMouseDown={this.handleMouseDown} ></div>
+          </div>
+          <p>{this.state.currentTime}/{this.state.durTime}</p>
+        </div>
       </div>
     ) : (
       null

@@ -1,8 +1,8 @@
 
 export const createMeditationCompletion = (completion) => {
-  $.ajax({
-    method: 'POST',method,
+  return $.ajax({
+    method: 'POST',
     url: '/api/meditation_completions',
-    data: completion
+    data: completion,
   })
 }
