@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import UserDash from './user_dash';
 import { fetchAllUserPacks } from '../../actions/user_packs_actions';
+import { fetchMeditation } from '../../actions/meditations_actions';
 
 
 const getPacks = (userPacks=[]) => {
@@ -22,7 +23,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchAllUserPacks: () => dispatch(fetchAllUserPacks())
+    fetchAllUserPacks: () => dispatch(fetchAllUserPacks()),
+    fetchMeditation: (medId) => dispatch(fetchMeditation(medId))
   }
 }
 

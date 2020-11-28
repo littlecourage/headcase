@@ -5,17 +5,21 @@ class PlayPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      play: false
+      play: false,
     }
     this.audio = new Audio(this.props.currentTrack);
-
     this.togglePlay = this.togglePlay.bind(this);
     this.handleMetadata = this.handleMetadata.bind(this);
     this.handleTimeUpdate = this.handleTimeUpdate.bind(this);
   }
-
+  
   componentDidMount() {
-    this.props.fetchMeditation(this.props.currentMed.id)
+    this.props.fetchMeditation(this.props.match.params.meditationId);
+
+    if (!this.props.currentUp) {
+      this.props.fetchAllUserPacks()
+    } 
+
     this.handleTimeUpdate();
     this.audio.addEventListener('loadedmetadata', () => this.handleMetadata() )
     this.audio.addEventListener('ended', () => this.setState({ play: false }));
@@ -24,7 +28,8 @@ class PlayPage extends React.Component {
 
   componentWillUnmount() {
     this.audio.removeEventListener('ended', () => this.setState({ play: false }));
-    this.audio.removeEventListener('timeupdate', this.handleTimeUpdate)
+    this.audio.removeEventListener('timeupdate', this.handleTimeUpdate())
+    this.audio.removeEventListener('loadedmetadata', () => this.handleMetadata() )
   }
 
   togglePlay() {
@@ -66,14 +71,18 @@ class PlayPage extends React.Component {
   }
 
   render() {
-    return (
-      <div className="player">
+   return (this.props.currentMed && this.props.currentUp) ?
+      (
+        <div className="player">
         <img src={window.userDashBackgroundUrl} alt=""/>
-        <p></p>
+        <p>Day {this.props.currentMed.order} / {this.props.currentUp.length}</p>
         <button onClick={this.togglePlay}>{this.state.play ? 'Pause' : 'Play'}</button>
         <p>{this.state.currentTime}/{this.state.durTime}</p>
       </div>
+    ) : (
+      null
     )
+  
   }
 
 }

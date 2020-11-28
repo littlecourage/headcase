@@ -6,6 +6,7 @@ import {
   Link,
   HashRouter
 } from 'react-router-dom';
+
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 // import Modal from './modal/modal';
 import GreetingContainer from './greeting/greeting_container';

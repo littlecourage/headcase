@@ -25,6 +25,10 @@ class UserDash extends React.Component {
     }
   }
 
+  handleClick() {
+    const medId = this.props.currentMed.id;
+    this.props.history.push(`/play/${medId}`)
+  }
 
   componentDidMount() {
     this.props.fetchAllUserPacks()
