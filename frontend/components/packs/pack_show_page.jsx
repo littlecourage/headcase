@@ -10,10 +10,12 @@ class PackShow extends React.Component {
 
   render() {
     const { pack } = this.props;
-    return (
+    return (pack) ? (
       <div>
         <h2>{pack.title}</h2>
       </div>
+    ) : (
+      null
     )
   }
 }
