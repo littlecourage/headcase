@@ -54,6 +54,19 @@ class User < ApplicationRecord
     self.session_token
   end
 
+  def ensure_user_packs
+    return self.initialize_user_packs if self.user_packs.empty?
+  end
+
+  def initialize_user_packs
+    pack1 = Pack.find_by(title: 'Happiness')
+    pack2 = Pack.find_by(title: "Sleep")
+    pack3 = Pack.find_by(title: "Restlessness")
+    self.user_packs.create(user_id: self.id, pack_id: pack1.id)
+    self.user_packs.create(user_id: self.id, pack_id: pack2.id)
+    self.user_packs.create(user_id: self.id, pack_id: pack3.id)
+  end
+
   def last_med_com
     self.meditation_completions.order("created_at").last
   end
@@ -64,6 +77,7 @@ class User < ApplicationRecord
 
   def current_user_pack
     med = self.last_meditation_completed
+    return self.user_packs.first unless med
     pack = med.pack
     user_pack = self.user_packs.where(pack_id: pack.id).first
     if med.order >= pack.length
