@@ -2,16 +2,16 @@ import * as APIUtil from '../util/meditation_completions_util';
 
 export const RECEIVE_MEDITATION_COMPLETION = "RECEIVE_MEDITATION_COMPLETION";
 
-const receiveMeditationCompletion = (completion) => {
+const receiveMeditationCompletion = (meditationCompletion) => {
   
   return {
     type: RECEIVE_MEDITATION_COMPLETION,
-    completion
+    meditationCompletion
   }
 }
 
-export const createMeditationCompletion = (medCom) => (dispatch) => {
+export const createMeditationCompletion = (meditationCompletion) => (dispatch) => {
   
-  APIUtil.createMeditationCompletion(medCom)
+  APIUtil.createMeditationCompletion(meditationCompletion)
     .then((newCompletion) => dispatch(receiveMeditationCompletion(newCompletion)))
 }

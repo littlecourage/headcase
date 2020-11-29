@@ -16,9 +16,9 @@ class CategoryIndex extends React.Component {
   }
 
   render() {
-    const { categories, displayPacks } = this.props
+    const { categories, displayPacks, userPacks } = this.props
 
-    return (
+    return (userPacks) ? (
       <div className="discoverPage">
         <div className="linkBox">
           <span>PACKS</span>
@@ -63,6 +63,8 @@ class CategoryIndex extends React.Component {
         </div>
         
       </div>
+    ) : (
+      null
     )
 
   }

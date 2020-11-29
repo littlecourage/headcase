@@ -39,7 +39,7 @@ class PlayPage extends React.Component {
     this.audio.addEventListener('timeupdate', () => {
       this.handleTimeUpdate();
       let ratio = this.audio.currentTime / this.audio.duration;
-      let position = this.outer.offsetWidth * ratio;
+      let position = (this.outer.offsetWidth * ratio) + this.outer.offsetLeft;
       this.positionTime(position);
     });
   
@@ -96,7 +96,8 @@ class PlayPage extends React.Component {
     }
     this.setState({
         currentTime: curMins + ":" + curSecs,
-        durTime: durMins + ":" + durSecs
+        durTime: durMins + ":" + durSecs,
+        currentTimeUnMod: this.audio.currentTime
     })
 
   }
@@ -106,19 +107,25 @@ class PlayPage extends React.Component {
     let rangeLeft = position - this.outer.offsetLeft;
 
     if (rangeLeft >= 0 && rangeLeft <= outerBarWidth) {
-      this.range.style.marginLeft = rangeLeft;
+      this.range.style.marginLeft = rangeLeft + "px";
     }
     if (rangeLeft < 0) {
-      this.range.style.marginLeft = 0;
+      this.range.style.marginLeft = "0px";
     }
     if (rangeLeft > outerBarWidth) {
-      this.range.style.marginLeft = outerBarWidth;
+      this.range.style.marginLeft = outerBarWidth + "px";
     }
   }
 
   handleMouseMove(e) {
     this.positionTime(e.pageX)
-    this.audio.currentTime = (e.pageX / this.outer.offsetWidth) * this.audio.duration;
+    console.log("e.pageX")
+    console.log(e.pageX)
+    console.log("this.audio.currentTime")
+    this.audio.currentTime = (e.pageX - this.outer.offsetLeft) / this.outer.offsetWidth * this.audio.duration;
+    // console.log(this.outer.offsetWidth)
+    // console.log(e.pageX / this.outer.offsetWidth)
+    // console.log((e.pageX / this.outer.offsetWidth) * this.audio.duration)
     console.log("click!")
   }
 
@@ -134,18 +141,21 @@ class PlayPage extends React.Component {
   }
 
   handleCompletion() {
-    let completion = {
+    let meditationCompletion = {
       userPackId: this.props.currentUp.id,
       meditationId: this.props.currentMed.id
     }
-    this.props.action(completion);
+    this.props.action(meditationCompletion);
+
   }
 
   render() {
-    let width = 125;
-    let outerBarStyle = {width: width}
-    let ptCt = this.state.currentTimeUnMod / width;
-    let barStyle = {width: (width * ptCt)}
+    let width = 200;
+    let ptCt = (this.state.currentTimeUnMod / width) * 100;
+    // console.log("currentTime")
+    // console.log(this.state.currentTimeUnMod)
+    // console.log(ptCt)
+    let barStyle = { width: (ptCt) + "%"}
 
 
    return (this.props.currentMed && this.props.currentUp) ?
@@ -163,7 +173,7 @@ class PlayPage extends React.Component {
             <div className="infoBox">
               <p>DAY {this.props.currentMed.order}/{this.props.currentUp.length}</p>
               <span>{this.state.durMins} MINUTES</span>
-             <button onClick={this.togglePlay}>{this.state.play ? <FaPause /> : <FaPlay  />}</button>
+               <button onClick={this.togglePlay}>{this.state.play ? <FaPause /> : <FaPlay />}</button>
               <div className="slide"  ref={(outer) => {this.outer = outer }} onClick={this.handleMouseMove}>
                 <div className="range"  ref={(range) => {this.range = range}} onMouseDown={this.handleMouseDown} ></div>
               </div>

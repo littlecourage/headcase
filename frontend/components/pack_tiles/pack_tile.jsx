@@ -29,7 +29,7 @@ const PackTile = ({ pack }) => {
             <div className="pack_text" >
               <h4 style={textColor}>{pack.title}</h4>
               <div>
-                <span style={textColor}>10 sessions</span>
+              <span style={textColor}>{pack.length} sessions</span>
               </div>
             </div>
 

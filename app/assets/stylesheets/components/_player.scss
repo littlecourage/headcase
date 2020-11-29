@@ -26,7 +26,7 @@
   height: 90vh;
   justify-content: space-between;
   // padding-top: 65px;
-  border: red 1px solid;
+
 
 }
 
@@ -41,7 +41,7 @@
   a:hover {
     color: #9A8F7C;
   }
-  border: red 1px solid;
+
 }
 
 .playBox {
@@ -49,14 +49,14 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  border: red 1px solid;
   width: 300px;
+
   h4, p, span {
     font-family: "ApercuPro", sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
     color: #646A7D;
-    letter-spacing: 2.5px;
+    letter-spacing: 4px;
   }
   p{
     font-weight: 700;
@@ -86,7 +86,6 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  border: red 1px solid;
   height: 300px;
   width: 300px;
 
@@ -121,7 +120,7 @@
 
 
 .slide{
-    width:125px;
+    width:200px;
     background:rgba(90,97,117, 0.2);
     height:25px;
     // border-radius: 100%;

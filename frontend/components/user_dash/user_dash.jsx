@@ -41,18 +41,18 @@ class UserDash extends React.Component {
 
 
   render() {
-    const { currentMed, userPacks, currentUp, currentPack } = this.props;
+    const { currentMed, userPacks, currentUp, currentPack, packs } = this.props;
     let progressStyle = {
       backgroundColor: "#5A6175",
       width: "20%"
     }
-    // if (currentUp) {
-    //   progressStyle = {
-    //     backgroundColor: "#5A6175",
-    //     width: (currentMed.order/currentUp.length) * 100 + "%",
-    //   }
-    //   console.log(progressStyle)
-    // }
+    if (currentPack) {
+      progressStyle = {
+        backgroundColor: "#5A6175",
+        width: ((currentMed.order - 1)/currentPack.length) * 100 + "%",
+      }
+      console.log(progressStyle)
+    }
         return (currentUp) ? (
           <div className="dashHome">
 
@@ -83,9 +83,9 @@ class UserDash extends React.Component {
     
             
             <div className="packsDash">
-              {this.props.packs.slice(0, this.state.packsToShow).map(pack => {  
+              {userPacks.slice(0, this.state.packsToShow).map(userPack => {  
                 return (
-                <UserPackTile key={pack.id} pack={pack} />
+                <UserPackTile key={userPack.pack.id} pack={userPack.pack} userPack={userPack}/>
                 ) 
               })}
 
