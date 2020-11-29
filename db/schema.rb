@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_171011) do
+ActiveRecord::Schema.define(version: 2020_11_29_003515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_11_24_171011) do
     t.integer "pack_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "current_med_no", default: 1, null: false
     t.index ["pack_id", "user_id"], name: "index_user_packs_on_pack_id_and_user_id", unique: true
   end
 

@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   margin-top: 95px;
 }
 
@@ -36,7 +36,7 @@
   height: 300px;
   margin-right: 200px;
   padding-top: 20px;
-  // padding-left: 185px;
+  padding-left: 185px;
 
   h1 {
     color: #5A6175;

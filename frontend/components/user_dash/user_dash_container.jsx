@@ -13,15 +13,18 @@ const getPacks = (userPacks=[]) => {
 
 const mapStateToProps = (state) => {
   let userPacks = Object.values(state.entities.userPacks);
-  let uPacks = Object.values(state.entities.userPacks);
-  let currentMed = state.entities.users[state.session.id].currentMeditation;
-  let currentUp = uPacks.find(up => up.currentTrack.id === currentMed.id);
+  // let uPacks = Object.values(state.entities.userPacks);
+  // let currentMed = state.entities.users[state.session.id].currentMeditation;
+  // if (userPacks.length > 0){
+  //   currentUp = userPacks.find(up => up.currentMeditation.id === currentMed.id);
+  // }
   return {
     currentUser: state.entities.users[state.session.id],
     packs: getPacks(userPacks),
     currentMed: state.entities.users[state.session.id].currentMeditation,
-    currentUp: currentUp
-    // userPacks: Object.value(state.entities.userPacks)
+    userPacks: userPacks,
+    currentUp: state.entities.users[state.session.id].currentUserPack,
+    currentPack: state.entities.users[state.session.id].currentPack
   }
 }
 

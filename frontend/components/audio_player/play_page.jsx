@@ -1,5 +1,8 @@
 import React from 'react';
 import { VscChromeClose } from "react-icons/vsc";
+import { NavLink } from 'react-router-dom';
+import { FaPlay, FaPause } from 'react-icons/fa';
+import { TiMediaPause } from 'react-icons/ti';
 
 class PlayPage extends React.Component {
 
@@ -17,6 +20,7 @@ class PlayPage extends React.Component {
     this.handleMouseUp = this.handleMouseUp.bind(this);
     this.handleMouseMove = this.handleMouseMove.bind(this);
     this.handleCompletion = this.handleCompletion.bind(this);
+
   }
   
   componentDidMount() {
@@ -64,9 +68,11 @@ class PlayPage extends React.Component {
     if (durSecs < 10) {
       durSecs = "0" + durSecs;
     }
+    this.setState({ durMins })
     if (durMins < 10) {
       durMins = "0" + durMins;
     }
+    
     this.setState({ durTime: durMins + ":" + durSecs });
   }
 
@@ -84,13 +90,14 @@ class PlayPage extends React.Component {
     if (curMins < 10) {
       curMins = "0" + curMins; 
     }
+    this.setState({ durMins })
     if (durMins < 10) {
       durMins = "0" + durMins;
     }
     this.setState({
         currentTime: curMins + ":" + curSecs,
-        durTime: durMins + ":" + durSecs,
-      })
+        durTime: durMins + ":" + durSecs
+    })
 
   }
 
@@ -134,28 +141,40 @@ class PlayPage extends React.Component {
     this.props.action(completion);
   }
 
-
   render() {
-    let width = 400;
+    let width = 125;
     let outerBarStyle = {width: width}
     let ptCt = this.state.currentTimeUnMod / width;
-    let barStyle = {width: (width * ptCt), backgroundColor: "purple"}
+    let barStyle = {width: (width * ptCt)}
+
 
    return (this.props.currentMed && this.props.currentUp) ?
     (
       <div className="player">
         <img src={window.userDashBackgroundUrl} className="playerBackground"/>
-        <div className="boxClose">
-           <VscChromeClose />
-        </div>
-        <div className="playBox">
-          <h4>{this.props.currentUp.pack.title}</h4>
-          <p>Day {this.props.currentMed.order} / {this.props.currentUp.length}</p>
-          <button onClick={this.togglePlay}>{this.state.play ? 'Pause' : 'Play'}</button>
-          <div className="hp_slide"  ref={(outer) => {this.outer = outer }} onClick={this.handleMouseMove}>
-            <div className="hp_range"  ref={(range) => {this.range = range}} onMouseDown={this.handleMouseDown} ></div>
+        <div className="playContainer">
+           <div className="navBox" >
+            <NavLink to="/dashboard">
+              <VscChromeClose />
+            </NavLink>
           </div>
-          <p>{this.state.currentTime}/{this.state.durTime}</p>
+          <div className="playBox">
+            <h4>{this.props.currentUp.pack.title.toUpperCase()}</h4>
+            <div className="infoBox">
+              <p>DAY {this.props.currentMed.order}/{this.props.currentUp.length}</p>
+              <span>{this.state.durMins} MINUTES</span>
+             <button onClick={this.togglePlay}>{this.state.play ? <FaPause /> : <FaPlay  />}</button>
+              <div className="slide"  ref={(outer) => {this.outer = outer }} onClick={this.handleMouseMove}>
+                <div className="range"  ref={(range) => {this.range = range}} onMouseDown={this.handleMouseDown} ></div>
+              </div>
+              <span>{this.state.currentTime}/{this.state.durTime}</span>
+            </div>
+            <div>
+              <span></span>
+            </div>
+          </div>
+          <div className="playBox">
+          </div>
         </div>
       </div>
     ) : (

@@ -132,15 +132,6 @@ ActiveRecord::Base.transaction do
   # pack18 = Pack.create!(title: "Prioritization", category_id: category4.id)
   # pack19 = Pack.create!(title: "Productivity", category_id: category4.id)
 
-
-  p 'Creating User Packs for demo user...'
-  up1 = UserPack.create!(user_id: demo_user.id, pack_id: pack1.id)
-  up2 = UserPack.create!(user_id: demo_user.id, pack_id: pack6.id)
-  up3 = UserPack.create!(user_id: demo_user.id, pack_id: pack7.id)
-  up4 = UserPack.create!(user_id: demo_user.id, pack_id: pack5.id)
-  up5 = UserPack.create!(user_id: demo_user.id, pack_id: pack17.id)
-
-
   p 'Creating meditations...'
   p 'Pack 1 meditations...'
   med1 = Meditation.create!(order: 1, pack_id: pack1.id)
@@ -413,10 +404,18 @@ ActiveRecord::Base.transaction do
   p 'uploading med...'
   med58.track.attach(io: med58Track, filename:"Mindfulness_difficulties_4.mp3")
 
+  p 'Creating User Packs for demo user...'
+  up1 = UserPack.create!(user_id: demo_user.id, pack_id: pack1.id, current_med_no: 3)
+  up2 = UserPack.create!(user_id: demo_user.id, pack_id: pack6.id, current_med_no: 1)
+  up3 = UserPack.create!(user_id: demo_user.id, pack_id: pack7.id, current_med_no: 1)
+  up4 = UserPack.create!(user_id: demo_user.id, pack_id: pack5.id, current_med_no: 1)
+  up5 = UserPack.create!(user_id: demo_user.id, pack_id: pack17.id, current_med_no: 2)
+
   p 'Creating Meditation completions...'
   mc1 = MeditationCompletion.create!(user_pack_id: up1.id, med_id: med1.id)
   mc2 = MeditationCompletion.create!(user_pack_id: up1.id, med_id: med2.id)
-  mc3 = MeditationCompletion.create!(user_pack_id: up3.id, med_id: med4.id)
-  mc4 = MeditationCompletion.create!(user_pack_id: up3.id, med_id: med5.id)
-  mc5 = MeditationCompletion.create!(user_pack_id: up3.id, med_id: med6.id)
+  mc3 = MeditationCompletion.create!(user_pack_id: up3.id, med_id: med22.id)
+  mc4 = MeditationCompletion.create!(user_pack_id: up3.id, med_id: med23.id)
+  mc5 = MeditationCompletion.create!(user_pack_id: up3.id, med_id: med24.id)
+  mc6 = MeditationCompletion.create!(user_pack_id: up5.id, med_id: med54.id)
 end

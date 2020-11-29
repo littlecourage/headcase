@@ -41,25 +41,25 @@ class UserDash extends React.Component {
 
 
   render() {
-    const { currentUp, currentMed } = this.props;
+    const { currentMed, userPacks, currentUp, currentPack } = this.props;
     let progressStyle = {
       backgroundColor: "#5A6175",
       width: "20%"
     }
-    if (currentUp) {
-      progressStyle = {
-        backgroundColor: "#5A6175",
-        width: (currentMed.order/currentUp.length) * 100 + "%",
-      }
-      console.log(progressStyle)
-    }
+    // if (currentUp) {
+    //   progressStyle = {
+    //     backgroundColor: "#5A6175",
+    //     width: (currentMed.order/currentUp.length) * 100 + "%",
+    //   }
+    //   console.log(progressStyle)
+    // }
         return (currentUp) ? (
           <div className="dashHome">
 
             <div className="med_box">
               <div className="med_title">
-                <h4>Day {currentMed.order} of {currentUp.length}</h4>
-                <h1>{currentUp.pack.title}</h1>
+                <h4>Day {currentMed.order} of {currentPack.length}</h4>
+                <h1>{currentPack.title}</h1>
                 <button onClick={this.handleClick}>
                   <FaPlay />&emsp;BEGIN
                 </button>

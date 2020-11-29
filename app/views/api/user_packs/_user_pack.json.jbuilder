@@ -5,7 +5,7 @@ json.extract! user_pack, :id, :pack_id, :user_id
 json.length user_pack.length
 json.user_pack_completed? user_pack.user_pack_completed?
 json.played_meditations user_pack.played_meditations
-json.current_track user_pack.current_track
+json.current_meditation user_pack.current_meditation
 
 json.pack do
   json.partial! "api/packs/pack", pack: user_pack.pack

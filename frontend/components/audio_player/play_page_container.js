@@ -8,7 +8,7 @@ const mapStateToProps = (state) => {
 
   let currentMed = state.entities.users[state.session.id].currentMeditation;
   let uPacks = Object.values(state.entities.userPacks);
-  let currentUp = uPacks.find(up => up.currentTrack.id === currentMed.id);
+  let currentUp = uPacks.find(up => up.currentMeditation.id === currentMed.id);
 
   return {
     currentMed: currentMed,

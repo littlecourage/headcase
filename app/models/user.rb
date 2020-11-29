@@ -54,29 +54,40 @@ class User < ApplicationRecord
     self.session_token
   end
 
-  def current_meditation
-    last_meditation = self
-      .meditation_completions
-      .order("created_at")
-      .last
-      .meditation
+  def last_med_com
+    self.meditation_completions.order("created_at").last
+  end
 
-    last_user_pack = last_meditation.user_packs.where(user_id: self.id).last
+  def last_meditation_completed
+    self.last_med_com.meditation if self.last_med_com
+  end
 
-    if last_user_pack.user_pack_completed?
-        next_meditation = self
-        .meditation_completions
-        .where.not(user_pack_id: last_user_pack.id)
-        .order("created_at")
-        .last
-        .user_pack
-        .current_track
-
-        return next_meditation
+  def current_user_pack
+    med = self.last_meditation_completed
+    pack = med.pack
+    user_pack = self.user_packs.where(pack_id: pack.id).first
+    if med.order >= pack.length
+      ordered_user_packs = self.user_packs.order("created_at").to_a
+      # wrap index around pack length
+      next_idx = (ordered_user_packs.index(user_pack) + 1) % pack.length
+      next_user_pack = ordered_user_packs[next_idx]
     else
-      return last_user_pack.current_track
+      user_pack
     end
+  end
 
+  def current_meditation
+    self.current_user_pack.current_meditation
+  end
+
+  def current_track
+    return self.current_meditation.track if self.current_meditation
+    return nil
+  end
+
+  def current_track_attached?
+    return self.current_track.attached? if self.current_track
+    return false
   end
 
 end

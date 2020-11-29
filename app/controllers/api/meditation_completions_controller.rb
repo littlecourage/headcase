@@ -16,13 +16,12 @@ class Api::MeditationCompletionsController < ApplicationController
     @user_pack = UserPack.find(params[:userPackId])
     @meditation = Meditation.find(params[:meditationId])
 
-    
-    @meditation_completion = MeditationCompletion.new(
-        med_id: @meditation.id, 
-        user_pack_id: @user_pack.id
-      )
+    @meditation_completion = MeditationCompletion
+      .where(med_id: @meditation.id, user_pack_id: @user_pack.id)
+      .first_or_initialize
 
     if @meditation_completion.save
+      @user_pack.increment_current_med_no!
       render json: @meditation_completion
     else
       render json: meditation_completion.errors.full_messages, status: 422

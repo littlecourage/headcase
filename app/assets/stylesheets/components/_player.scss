@@ -6,6 +6,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow: hidden;
+  position: relative;
   align-items: center;
 }
 
@@ -13,21 +15,119 @@
   width: 100%;
   height: auto;
   z-index: 5;
+  overflow-y: hidden;
+}
+
+.playContainer {
+  display: flex;
+  position: absolute;
+  z-index: 6;
+  width: 100%;
+  height: 90vh;
+  justify-content: space-between;
+  // padding-top: 65px;
+  border: red 1px solid;
+
+}
+
+.navBox {
+  z-index: 6;
+  width: 300px;
+  a {
+    padding-left: 38px;
+    color: #5A6175;
+    font-size: 28px;
+  }
+  a:hover {
+    color: #9A8F7C;
+  }
+  border: red 1px solid;
 }
 
 .playBox {
-  position: absolute;
-  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: red 1px solid;
+  width: 300px;
+  h4, p, span {
+    font-family: "ApercuPro", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #646A7D;
+    letter-spacing: 2.5px;
+  }
+  p{
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    font-size: 15px;
+  }
+  span {
+    color: #9A8F7C;
+  }
+
+  button{
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    background-color: #5A6175;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 40px;
+    align-items: center;
+    outline: none;
+  }
+
 }
 
-.hp_slide{
+.infoBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: red 1px solid;
+  height: 300px;
+  width: 300px;
+
+  p, span {
+    font-family: "ApercuPro", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #646A7D;
+    letter-spacing: 2.5px;
+  }
+  p{
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    font-size: 15px;
+  }
+  span {
+    color: #9A8F7C;
+  }
+
+  button{
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    background-color: #5A6175;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 40px;
+    align-items: center;
+    outline: none;
+  }
+}
+
+
+.slide{
     width:125px;
-    background:black;
+    background:rgba(90,97,117, 0.2);
     height:25px;
     // border-radius: 100%;
 }
-.hp_range{
+.range{
     height:25px;
     width: 7px;
-    background-color: purple;
+    background-color: rgba(90,97,117, 0.2);
 }
