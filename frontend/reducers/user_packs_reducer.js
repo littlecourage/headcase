@@ -1,6 +1,7 @@
 import { 
   RECEIVE_USER_PACK, 
-  RECEIVE_ALL_USER_PACKS 
+  RECEIVE_ALL_USER_PACKS, 
+  REMOVE_USER_PACK
 } from '../actions/user_packs_actions';
 
 const userPacksReducer = (oldState = {}, action) => {
@@ -13,7 +14,12 @@ const userPacksReducer = (oldState = {}, action) => {
       return action.userPacks;
 
     case RECEIVE_USER_PACK:
-      return newState[action.userPack.id] = action.userPack;
+      newState[action.userPack.id] = action.userPack;
+      return newState;
+
+    case REMOVE_USER_PACK:
+      delete newState[action.userPackId];
+      return newState; 
   
     default:
       return oldState;

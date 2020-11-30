@@ -8,20 +8,30 @@ class PackShow extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      
+      userId: this.props.currentUser.id,
+      packId: this.props.match.params.packId,
+      added: null
     }
-    console.log(this.state)
-    this.handleIsUserPack = this.handleIsUserPack.bind(this);
+    
+    this.handleAdd = this.handleAdd.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchPack(this.props.match.params.packId);
     this.props.fetchAllUserPacks();
-
   }
 
-  handleIsUserPack() {
+  handleAdd() {
+    let newUserPack = { userId: this.state.userId, packId: this.state.packId}
+    this.props.createUserPack(newUserPack)
+  }
 
+  handleRemove() {
+    let packId = this.state.packId;
+    let userPacks = this.props.userPacks;
+    let userPackId = userPacks.filter((uP) => uP.packId === parseInt(packId))[0].id
+    this.props.deleteUserPack(userPackId)
   }
 
   render() {
@@ -38,9 +48,9 @@ class PackShow extends React.Component {
           {userPacks
             .map(uP => uP.packId)
             .includes(pack.id) ? 
-            (<div className="selectOrRemove"><span className="icon"><IoIosCloseCircleOutline /></span> 
+            (<div className="selectOrRemove" onClick={this.handleRemove}><span className="icon"><IoIosCloseCircleOutline /></span> 
               <span >&emsp;REMOVE FROM MY PACKS</span></div>) 
-            : (<div className="selectOrRemove"><span className="icon"><IoIosAddCircleOutline /></span> 
+            : (<div className="selectOrRemove" onClick={this.handleAdd}><span className="icon"><IoIosAddCircleOutline /></span> 
               <span>&emsp;ADD TO MY PACKS</span></div>)}
         </div>
         <div className="showImg">
