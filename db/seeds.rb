@@ -413,9 +413,15 @@ ActiveRecord::Base.transaction do
 
   p 'Creating Meditation completions...'
   mc1 = MeditationCompletion.create!(user_pack_id: up1.id, med_id: med1.id)
+  up1.increment_current_med_no!
   mc2 = MeditationCompletion.create!(user_pack_id: up1.id, med_id: med2.id)
+  up1.increment_current_med_no!
   mc3 = MeditationCompletion.create!(user_pack_id: up3.id, med_id: med22.id)
+  up3.increment_current_med_no!
   mc4 = MeditationCompletion.create!(user_pack_id: up3.id, med_id: med23.id)
+  up3.increment_current_med_no!
   mc5 = MeditationCompletion.create!(user_pack_id: up3.id, med_id: med24.id)
+  up3.increment_current_med_no!
   mc6 = MeditationCompletion.create!(user_pack_id: up5.id, med_id: med54.id)
+  up5.increment_current_med_no!
 end
