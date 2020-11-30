@@ -119,20 +119,20 @@ class PlayPage extends React.Component {
 
   handleMouseMove(e) {
     this.positionTime(e.pageX)
-    console.log("e.pageX")
-    console.log(e.pageX)
-    console.log("this.audio.currentTime")
+    // console.log("e.pageX")
+    // console.log(e.pageX)
+    // console.log("this.audio.currentTime")
     this.audio.currentTime = (e.pageX - this.outer.offsetLeft) / this.outer.offsetWidth * this.audio.duration;
     // console.log(this.outer.offsetWidth)
     // console.log(e.pageX / this.outer.offsetWidth)
     // console.log((e.pageX / this.outer.offsetWidth) * this.audio.duration)
-    console.log("click!")
+    // console.log("click!")
   }
 
   handleMouseDown(e) {
     window.addEventListener('mousemove', this.handleMouseMove);
     window.addEventListener('mouseup', this.handleMouseUp);
-    console.log("clickMD!")
+    // console.log("clickMD!")
   }
 
   handleMouseUp(e) {
