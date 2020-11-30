@@ -1,0 +1,64 @@
+.showContainer {
+  display: flex;
+  padding-top: 130px;
+  justify-content: center;
+}
+
+.showText {
+  margin-top: 55px;
+  margin-right: 20px;
+  width: 500px;
+  height: 310px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  h2 {
+    color: #4C4C4C;
+    font-size: 52px;
+    font-family: "ApercuPro", sans-serif;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+  }
+  p {
+    font-size: 22px;
+    font-family: "ApercuPro", sans-serif;
+    font-weight: 400;
+    color: #4C4C4C;
+    letter-spacing: 1.5px;
+    line-height: 40px;
+  }
+  .sessions {
+    color: #838383;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 3.5px;
+  } 
+}
+
+.selectOrRemove {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  span {
+    letter-spacing: 3px;
+    font-family: "ApercuPro", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #5A6175;
+    text-align: center;
+  }
+  .icon {
+    margin-top: 10px;
+    font-size: 50px;
+  }
+}
+
+
+.showImg {
+  margin-top: 75px;
+  img {
+    border-radius: 6px;
+    width: 520px;
+    height: 360px;
+  }
+}
