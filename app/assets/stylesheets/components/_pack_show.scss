@@ -2,6 +2,7 @@
   display: flex;
   padding-top: 130px;
   justify-content: center;
+  border: red 1px solid;
 }
 
 .showText {
@@ -61,4 +62,22 @@
     width: 520px;
     height: 360px;
   }
+}
+
+.pack-footer {
+  width: 100%;
+  z-index: 100;
+  position: fixed;
+  bottom: 0;
+  height: auto;
+}
+
+.open {
+  background-color: pink;
+  height: 500px;
+}
+
+.close {
+  background-color: yellow;
+  height: 90px;
 }
