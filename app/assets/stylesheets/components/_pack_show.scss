@@ -86,7 +86,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: red 1px solid;
   }
 
   a {
@@ -112,6 +111,12 @@
   }
 
   span {
+    font-size: 24px;
+    color: #413D47;
+    font-weight: 400;
+  }
+
+  span svg{
     z-index: 101;
     color: #4C4343;
     font-size: 46px;
