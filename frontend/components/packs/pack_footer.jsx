@@ -1,16 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { IoIosArrowDropup, IoIosArrowDropdown } from "react-icons/io";
+import { FaPlay } from 'react-icons/fa';
 
 
  const PackFooter = ({expanded, pack, handleAdd, handleExpand, userPacks, className}) => {
+  let added =  (userPacks.map(uP => uP.packId).includes(pack.id));
+  let currentTrack;
+  if (added) {
+    currentTrack = userPacks.filter(uP => uP.packId === pack.id)[0].currentMeditation.id;
+  } else {
+    currentTrack = pack.meditations[0].id;
+  }
+  
   return (expanded) ? (
     <div className={className}>
-      <span onClick={handleExpand}><IoIosArrowDropup /></span>
+      <img src={window.footerImg} alt="background image"/>
+      <div>
+        <Link to={`/play/${currentTrack}`} onClick={added ? null : handleAdd}><FaPlay />&#8239;&ensp;BEGIN</Link>
+        <span onClick={handleExpand}><IoIosArrowDropdown /></span>
+      </div>
     </div>
   ) : (
     <div className={className}>
-        <span onClick={handleExpand}><IoIosArrowDropdown /></span>
+        <img src={window.footerImg} alt="background image" />
+        <div>
+          <Link to={`/play/${currentTrack}`} onClick={added ? null : handleAdd}><FaPlay />&#8239;&ensp;BEGIN</Link>
+          <span onClick={handleExpand}><IoIosArrowDropdown /></span>
+        </div>
     </div>
   )
  }

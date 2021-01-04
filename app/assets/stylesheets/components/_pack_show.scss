@@ -2,7 +2,6 @@
   display: flex;
   padding-top: 130px;
   justify-content: center;
-  border: red 1px solid;
 }
 
 .showText {
@@ -70,14 +69,73 @@
   position: fixed;
   bottom: 0;
   height: auto;
+  box-sizing: border-box;
+}
+
+.open, .close {
+  div {
+    font-size: 18px;
+    z-index: 101;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 20px;
+    margin-left: 13.5%;
+    width: 75%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: red 1px solid;
+  }
+
+  a {
+    width: 145px;
+    height: 40px;
+    color: white;
+    background-color: #413D47;
+    cursor: pointer;
+    outline:none;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: "ApercuPro-Medium", sans-serif;
+    letter-spacing: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+
+  a:hover {
+    background-color: #3A363F;
+  }
+
+  span {
+    z-index: 101;
+    color: #4C4343;
+    font-size: 46px;
+    font-weight: 400;
+    cursor: pointer;
+    margin-right: 55px;
+    text-align: center;
+  }
 }
 
 .open {
-  background-color: pink;
   height: 500px;
+  transition: height 0.5s;
+  span svg {
+    transform: rotate(0deg);
+    transition: -webkit-transform 0.5s cubic-bezier(0.85, -0.06, 0.35, 1.26) 0.3s, transform 0.5s cubic-bezier(0.85, -0.06, 0.35, 1.26) 0.3s;
+  }
 }
 
 .close {
-  background-color: yellow;
   height: 90px;
+  transition: height 0.5s;
+  span svg {
+    transform: rotate(180deg);
+    transition: -webkit-transform 0.5s cubic-bezier(0.85, -0.06, 0.35, 1.26) 0.3s, transform 0.5s cubic-bezier(0.85, -0.06, 0.35, 1.26) 0.3s;
+  }
 }

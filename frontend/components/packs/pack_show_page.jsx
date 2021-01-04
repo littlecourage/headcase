@@ -48,6 +48,7 @@ class PackShow extends React.Component {
   render() {
     const { pack, userPacks } = this.props;
     const { expanded } = this.state;
+
     return (pack) ? (
       <div>
         <div className="showContainer">
