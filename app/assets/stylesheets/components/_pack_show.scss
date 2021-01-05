@@ -65,7 +65,6 @@
 
 .pack-footer {
   width: 100%;
-  z-index: 100;
   position: fixed;
   bottom: 0;
   height: auto;
@@ -73,20 +72,28 @@
 }
 
 .open, .close {
-
-  .description {
-  font-size: 18px;
-  z-index: 101;
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin-top: 20px;
-  margin-left: 13.5%;
-  width: 75%;
-  height: 50px;
+  border: red 1px solid;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+    img {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .description {
+    font-size: 18px;
+    z-index: 105;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 20px;
+    margin-left: 13.5%;
+    width: 75%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     div {
       display: flex;
       justify-content: space-between;
@@ -140,7 +147,14 @@
 .outer {
   width: 100%;
   height: 95px;
-  position: relative;
+  position: fixed;
+  overflow: hidden;
+  z-index: 200;
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
   .progress {
     position: absolute;
     bottom: 0;
@@ -165,5 +179,33 @@
   span svg {
     transform: rotate(180deg);
     transition: -webkit-transform 0.5s cubic-bezier(0.85, -0.06, 0.35, 1.26) 0.3s, transform 0.5s cubic-bezier(0.85, -0.06, 0.35, 1.26) 0.3s;
+  }
+}
+
+.meditation {
+  border: red 1px solid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 105%;
+  margin: 0px 188px;
+  padding-top: 100px;
+  max-height: 415px;
+  overflow: scroll;
+  transition: max-height 0.3s cubic-bezier(0.85, -0.06, 0.35, 1.26) 0s;
+  div{
+    padding: 30px 0px;
+    display: flex;
+    justify-content: flex-start;
+    border: red 1px solid;
+    span {
+      color: #4C4343;
+    }
+    font-size: 24px;
+    a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
   }
 }

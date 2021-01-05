@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { IoIosArrowDropup, IoIosArrowDropdown } from "react-icons/io";
-import { FaPlay } from 'react-icons/fa';
+import { ImLock } from "react-icons/im";
+import { FaPlay, FaCheck  } from 'react-icons/fa';
 
 
  const PackFooter = ({expanded, pack, handleAdd, handleExpand, userPacks, className}) => {
   let added = (userPacks.map(uP => uP.packId).includes(pack.id));
+  let meditations = [];
   let currentTrack;
   let num = 1;
   let progress = {
@@ -19,11 +21,11 @@ import { FaPlay } from 'react-icons/fa';
   }
 
   if (added) {
-    currentTrack = userPacks.filter(uP => uP.packId === pack.id)[0].currentMeditation.id;
-    num = userPacks.filter(uP => uP.packId === pack.id)[0].currentMeditation.order;
-    length = userPacks.filter(uP => uP.packId === pack.id)[0].length;
-    console.log(num);
-    console.log(length);
+    let userPack = userPacks.filter(uP => uP.packId === pack.id)[0]
+    currentTrack = userPack.currentMeditation.id;
+    num = userPack.currentMeditation.order;
+    length = userPack.length;
+    meditations = meditations.concat(Object.values(userPack.meditations));
     if (num > 1) {
       bar.width = ((num - 1)/length) * 100 + "%"
       console.log(bar.width);
@@ -31,12 +33,14 @@ import { FaPlay } from 'react-icons/fa';
     }
   } else {
     currentTrack = pack.meditations[0].id;
+    meditations = meditations.concat(pack.meditations)
   }
   
-  return (expanded) ? (
+  return (expanded && meditations) ? (
     <div className={className}>
-      <div className="outer">
         <img src={window.footerImg} alt="background image"/>
+      <div className="outer">
+        <img src={window.footerImg} alt="background image" />
         <div className="description">
           <div>
             <Link to={`/play/${currentTrack}`} onClick={added ? null : handleAdd}><FaPlay />&#8239;&ensp;BEGIN</Link>
@@ -48,12 +52,39 @@ import { FaPlay } from 'react-icons/fa';
           <div style={bar}></div>
         </div>
       </div>
+      <div className='meditation'>
+        {added ? (
+          meditations.map(med => {
+            return (<div>
+              <Link to={`/play/${med.id}`}>{
+                (med.order < currentTrack.order) ?
+                   <FaCheck />
+                : ((med.order === currentTrack.order) ? (
+                  <FaPlay />
+                ) : (
+                  <ImLock />
+                ))
+              }
+              </Link>
+              <span>Session {med.order}</span>
+            </div>)
+          })
+        ) : (  
+          meditations.map(med => {
+            return (<div>
+              <Link to={`/play/${med.id}`}>{med.order === 1 ? <FaPlay /> : <ImLock />}</Link>
+              <span>Session {med.order}</span>
+            </div>)
+          })
+        )}
+      </div>
     </div>
   ) : (
     <div className={className}>
-        <div className="outer">
           <img src={window.footerImg} alt="background image" />
+        <div className="outer">
           <div className="description">
+
             <div>
               <Link to={`/play/${currentTrack}`} onClick={added ? null : handleAdd}><FaPlay />&#8239;&ensp;BEGIN</Link>
               <span>Day {num} of {pack.title}</span>
