@@ -183,7 +183,6 @@
 }
 
 .meditation {
-  border: red 1px solid;
   position: absolute;
   top: 0;
   left: 0;
@@ -191,21 +190,48 @@
   margin: 0px 188px;
   padding-top: 100px;
   max-height: 415px;
-  overflow: scroll;
+  overflow-y: scroll;
   transition: max-height 0.3s cubic-bezier(0.85, -0.06, 0.35, 1.26) 0s;
   div{
     padding: 30px 0px;
     display: flex;
     justify-content: flex-start;
-    border: red 1px solid;
+    border-bottom: rgba(65, 61, 71, 0.3) solid 2px;
+    width: 1030px;
     span {
+      font-size: 24px;
       color: #4C4343;
     }
-    font-size: 24px;
-    a {
-      width: 40px;
-      height: 40px;
+    .check-icon {
+      transition: all 0.2s ease-in-out 0s;
+      box-sizing: border-box;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
+      border: 2px solid #413D47;
+    }
+
+    .lock-icon {
+      box-sizing: border-box;
+      background-color: transparent;
+      color: 'white';
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      padding-left: 6px;
+      border: 2px solid #413D47;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .check-icon:hover, .lock-icon:hover, .play-icon {
+      transition: all 0.2s ease-in-out 0s;
+      box-sizing: border-box;
+      width: 42px;
+      height: 42px;
+      border: 2px solid rgb(255, 255, 255);
+      background-color: rgb(255, 255, 255);
+      color: rgb(65, 61, 71);
     }
   }
 }

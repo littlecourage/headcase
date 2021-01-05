@@ -22,17 +22,17 @@ import { FaPlay, FaCheck  } from 'react-icons/fa';
 
   if (added) {
     let userPack = userPacks.filter(uP => uP.packId === pack.id)[0]
-    currentTrack = userPack.currentMeditation.id;
+    currentTrack = userPack.currentMeditation;
     num = userPack.currentMeditation.order;
     length = userPack.length;
     meditations = meditations.concat(Object.values(userPack.meditations));
     if (num > 1) {
       bar.width = ((num - 1)/length) * 100 + "%"
       console.log(bar.width);
-      progress.backgroundColor =  'rgba(255, 255, 255, 0.2)'
+      progress.backgroundColor =  'rgba(255, 255, 255, 0.2)';
     }
   } else {
-    currentTrack = pack.meditations[0].id;
+    currentTrack = pack.meditations[0];
     meditations = meditations.concat(pack.meditations)
   }
   
@@ -43,7 +43,7 @@ import { FaPlay, FaCheck  } from 'react-icons/fa';
         <img src={window.footerImg} alt="background image" />
         <div className="description">
           <div>
-            <Link to={`/play/${currentTrack}`} onClick={added ? null : handleAdd}><FaPlay />&#8239;&ensp;BEGIN</Link>
+            <Link to={`/play/${currentTrack.id}`} onClick={added ? null : handleAdd}><FaPlay />&#8239;&ensp;BEGIN</Link>
             <span>Day {num} of {pack.title}</span>
           </div>
           <span onClick={handleExpand}><IoIosArrowDropdown /></span>
@@ -55,26 +55,39 @@ import { FaPlay, FaCheck  } from 'react-icons/fa';
       <div className='meditation'>
         {added ? (
           meditations.map(med => {
-            return (<div>
-              <Link to={`/play/${med.id}`}>{
+            return (
+            <div key={med.id}>
+              {
                 (med.order < currentTrack.order) ?
-                   <FaCheck />
+                  <Link to={`/play/${med.id}`} className="check-icon"><FaCheck /></Link>
                 : ((med.order === currentTrack.order) ? (
-                  <FaPlay />
+                  <Link to={`/play/${med.id}`} className="play-icon"><FaPlay /></Link>
                 ) : (
-                  <ImLock />
+                  <Link to={null} className="lock-icon"><ImLock/></Link>
                 ))
               }
-              </Link>
+
               <span>Session {med.order}</span>
             </div>)
           })
         ) : (  
           meditations.map(med => {
-            return (<div>
-              <Link to={`/play/${med.id}`}>{med.order === 1 ? <FaPlay /> : <ImLock />}</Link>
+            return (
+            <div key={med.id}>
+              {
+                (med.order === 1) ? (
+                  <Link to={`/play/${med.id}`} className="play-icon">
+                    <FaPlay /> 
+                  </Link>
+                ) : (
+                  <Link to={null} className="lock-icon">
+                    <ImLock />
+                  </Link>
+                )
+              }
               <span>Session {med.order}</span>
-            </div>)
+            </div>
+            )
           })
         )}
       </div>
@@ -84,9 +97,8 @@ import { FaPlay, FaCheck  } from 'react-icons/fa';
           <img src={window.footerImg} alt="background image" />
         <div className="outer">
           <div className="description">
-
             <div>
-              <Link to={`/play/${currentTrack}`} onClick={added ? null : handleAdd}><FaPlay />&#8239;&ensp;BEGIN</Link>
+              <Link to={`/play/${currentTrack.id}`} onClick={added ? null : handleAdd}><FaPlay />&#8239;&ensp;BEGIN</Link>
               <span>Day {num} of {pack.title}</span>
             </div>
             <span onClick={handleExpand}><IoIosArrowDropdown /></span>
