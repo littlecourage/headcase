@@ -4,11 +4,11 @@ import { fetchMeditation } from '../../actions/meditations_actions';
 import { fetchAllUserPacks } from '../../actions/user_packs_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
+  let currentMedId = parseInt(ownProps.match.params.meditationId)
   return {
-    currentMedId: ownProps.match.params.meditationId,
+    currentMedId: currentMedId,
     uPacks: Object.values(state.entities.userPacks),
-    currentMed: Object.values(state.entities.meditations)[0]
+    currentMed: Object.values(state.entities.meditations).find(med => med.id === currentMedId)
   }
 }
 

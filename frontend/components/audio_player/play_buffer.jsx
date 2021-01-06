@@ -11,9 +11,13 @@ class PlayBuffer extends React.Component {
   }
 
   render() {
+    if(this.props.currentMed) {
+      console.log(this.props.currentMed.id)
+      console.log(this.props.currentMedId)
+    }
     debugger
-    return (this.props.currentMed) ? (
-      <PlayPage currentMed={this.props.currentMed} />
+    return (this.props.currentMed && this.props.uPacks.length > 0 && this.props.currentMedId == this.props.currentMed.id) ? (
+      <PlayPage currentMed={this.props.currentMed} userPacks={this.props.uPacks} />
     ) : (
       null
     )
