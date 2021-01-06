@@ -9,11 +9,12 @@
   overflow: hidden;
   position: relative;
   align-items: center;
+  height: 100vh;
 }
 
 .playerBackground {
   width: 100%;
-  height: auto;
+  height: 100%;
   z-index: 5;
   overflow-y: hidden;
 }
@@ -33,12 +34,13 @@
 .navBox {
   z-index: 6;
   width: 300px;
-  a {
+  span {
+    cursor: pointer;
     padding-left: 38px;
     color: #5A6175;
     font-size: 28px;
   }
-  a:hover {
+  span:hover {
     color: #9A8F7C;
   }
 

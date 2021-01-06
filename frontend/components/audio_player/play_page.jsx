@@ -20,9 +20,10 @@ class PlayPage extends React.Component {
     this.handleMouseUp = this.handleMouseUp.bind(this);
     this.handleMouseMove = this.handleMouseMove.bind(this);
     this.handleCompletion = this.handleCompletion.bind(this);
-
   }
   
+
+
   componentDidMount() {
     // this.props.fetchMeditation(this.props.currentMedId);
     // this.props.fetchAllUserPacks();
@@ -161,20 +162,20 @@ class PlayPage extends React.Component {
         <img src={window.userDashBackgroundUrl} className="playerBackground"/>
         <div className="playContainer">
            <div className="navBox" >
-            <NavLink to="/dashboard">
+            <span onClick={this.props.handleBack}>
               <VscChromeClose />
-            </NavLink>
+            </span>
           </div>
           <div className="playBox">
             <h4>{this.props.currentUp.pack.title.toUpperCase()}</h4>
             <div className="infoBox">
               <p>DAY {this.props.currentMed.order}/{this.props.currentUp.length}</p>
-              <span>{this.state.durMins} MINUTES</span>
+              <span>{this.state.durMins || "0"} MINUTES</span>
                <button onClick={this.togglePlay}>{this.state.play ? <FaPause /> : <FaPlay />}</button>
               <div className="slide"  ref={(outer) => {this.outer = outer }} onClick={this.handleMouseMove}>
                 <div className="range"  ref={(range) => {this.range = range}} onMouseDown={this.handleMouseDown} ></div>
               </div>
-              <span>{this.state.currentTime}/{this.state.durTime}</span>
+                <span>{this.state.currentTime}/{this.state.durTime !== "NaN:NaN" ? this.state.durTime : "00:00"}</span>
             </div>
             <div>
               <span></span>
