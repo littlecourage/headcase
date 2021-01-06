@@ -63,7 +63,7 @@ import { FaPlay, FaCheck  } from 'react-icons/fa';
                 : ((med.order === currentTrack.order) ? (
                   <Link to={`/play/${med.id}`} className="play-icon"><FaPlay /></Link>
                 ) : (
-                  <Link to={null} className="lock-icon"><ImLock/></Link>
+                  <div className="lock-icon"><ImLock/></div>
                 ))
               }
 
@@ -80,9 +80,9 @@ import { FaPlay, FaCheck  } from 'react-icons/fa';
                     <FaPlay /> 
                   </Link>
                 ) : (
-                  <Link to={null} className="lock-icon">
+                  <div className="lock-icon">
                     <ImLock />
-                  </Link>
+                  </div>
                 )
               }
               <span>Session {med.order}</span>

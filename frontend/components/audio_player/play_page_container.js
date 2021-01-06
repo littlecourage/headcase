@@ -5,14 +5,18 @@ import { createMeditationCompletion } from '../../actions/meditation_completions
 import PlayPage from './play_page';
 
 const mapStateToProps = (state, ownProps) => {
-  let currentMedId = parseInt(ownProps.match.params.meditationId);
+
+  let currentMedId = parseInt(ownProps.currentMed.id);
+  let currentMed = ownProps.currentMed
   let uPacks = Object.values(state.entities.userPacks);
   let currentUp = uPacks.find(up => up.currentMeditation.id === currentMedId);
-  let currentMed = Object.values(currentUp.meditations).find(med => med.id === currentMedId);
+  let currentTrack = currentMed.trackUrl;
+  debugger
   return {
+    currentMedId: currentMedId,
     currentMed: currentMed,
-    currentTrack: currentMed.trackUrl,
-    currentUp: currentUp
+    currentUp: currentUp, 
+    currentTrack: currentTrack
   }
 }
 

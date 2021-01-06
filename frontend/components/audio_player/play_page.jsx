@@ -11,7 +11,7 @@ class PlayPage extends React.Component {
     this.state = {
       play: false,
     }
-    this.audio = new Audio(this.props.currentTrack);
+    this.audio = new Audio(this.props.currentMed.trackUrl);
     this.togglePlay = this.togglePlay.bind(this);
     this.handleMetadata = this.handleMetadata.bind(this);
     this.handleTimeUpdate = this.handleTimeUpdate.bind(this);
@@ -24,12 +24,8 @@ class PlayPage extends React.Component {
   }
   
   componentDidMount() {
-    this.props.fetchMeditation(this.props.match.params.meditationId);
-
-    if (!this.props.currentUp) {
-      this.props.fetchAllUserPacks()
-    } 
-
+    this.props.fetchMeditation(this.props.currentMedId);
+    this.props.fetchAllUserPacks();
     this.handleTimeUpdate();
     this.audio.addEventListener('loadedmetadata', () => this.handleMetadata());
     this.audio.addEventListener('ended', () => {
@@ -77,28 +73,30 @@ class PlayPage extends React.Component {
   }
 
   handleTimeUpdate() {
-    let curMins = Math.floor(this.audio.currentTime / 60);
-    let curSecs = Math.floor(this.audio.currentTime - curMins * 60);
-    let durMins = Math.floor(this.audio.duration / 60);
-    let durSecs = Math.floor(this.audio.duration - durMins * 60);
-    if (curSecs < 10) {
-      curSecs = "0" + curSecs;
+    if (this.audio) {
+      let curMins = Math.floor(this.audio.currentTime / 60);
+      let curSecs = Math.floor(this.audio.currentTime - curMins * 60);
+      let durMins = Math.floor(this.audio.duration / 60);
+      let durSecs = Math.floor(this.audio.duration - durMins * 60);
+      if (curSecs < 10) {
+        curSecs = "0" + curSecs;
+      }
+      if (durSecs < 10) {
+        durSecs = "0" + durSecs;
+      }
+      if (curMins < 10) {
+        curMins = "0" + curMins; 
+      }
+      this.setState({ durMins })
+      if (durMins < 10) {
+        durMins = "0" + durMins;
+      }
+      this.setState({
+          currentTime: curMins + ":" + curSecs,
+          durTime: durMins + ":" + durSecs,
+          currentTimeUnMod: this.audio.currentTime
+      })
     }
-    if (durSecs < 10) {
-      durSecs = "0" + durSecs;
-    }
-    if (curMins < 10) {
-      curMins = "0" + curMins; 
-    }
-    this.setState({ durMins })
-    if (durMins < 10) {
-      durMins = "0" + durMins;
-    }
-    this.setState({
-        currentTime: curMins + ":" + curSecs,
-        durTime: durMins + ":" + durSecs,
-        currentTimeUnMod: this.audio.currentTime
-    })
 
   }
 
@@ -157,8 +155,7 @@ class PlayPage extends React.Component {
     // console.log(ptCt)
     let barStyle = { width: (ptCt) + "%"}
 
-
-   return (this.props.currentMed && this.props.currentUp) ?
+    return (this.props.currentMed && this.props.currentUp && this.props.currentTrack) ?
     (
       <div className="player">
         <img src={window.userDashBackgroundUrl} className="playerBackground"/>
