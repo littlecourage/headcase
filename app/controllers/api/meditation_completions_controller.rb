@@ -21,6 +21,7 @@ class Api::MeditationCompletionsController < ApplicationController
       .first_or_initialize
 
     if @meditation_completion.save
+      
       @user_pack.increment_current_med_no!
       render json: @meditation_completion
     else

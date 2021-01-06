@@ -17,6 +17,7 @@ import CategoryIndexContainer from './categories/category_index_container';
 import PackShowContainer from './packs/pack_show_container';
 import LandingPageContainer from './landing_page/landing_page_container';
 import PlayPageContainer from './audio_player/play_page_container';
+import PlayBufferContainer from './audio_player/play_buffer_container';
 
 const App = () => (
   <div>
@@ -27,7 +28,7 @@ const App = () => (
       <ProtectedRoute exact path="/dashboard" component={UserDashContainer} />
       <ProtectedRoute exact path="/discover" component={CategoryIndexContainer} />
       <ProtectedRoute exact path="/packs/:packId" component={PackShowContainer} />
-      <ProtectedRoute exact path="/play/:meditationId" component={PlayPageContainer} />
+      <ProtectedRoute exact path="/play/:meditationId" component={PlayBufferContainer} />
       <AuthRoute exact path="/" component={LandingPageContainer} />
     </Switch>
   </div>

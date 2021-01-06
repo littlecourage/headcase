@@ -4,16 +4,19 @@ import { fetchAllUserPacks } from '../../actions/user_packs_actions';
 import { createMeditationCompletion } from '../../actions/meditation_completions_actions';
 import PlayPage from './play_page';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
 
-  let currentMed = state.entities.users[state.session.id].currentMeditation;
+  let currentMedId = parseInt(ownProps.currentMed.id);
+  let currentMed = ownProps.currentMed
   let uPacks = Object.values(state.entities.userPacks);
-  let currentUp = uPacks.find(up => up.currentMeditation.id === currentMed.id);
-
+  let currentUp = uPacks.find(up => up.currentMeditation.id === currentMedId);
+  let currentTrack = currentMed.trackUrl;
+  debugger
   return {
+    currentMedId: currentMedId,
     currentMed: currentMed,
-    currentTrack: state.entities.users[state.session.id].trackUrl,
-    currentUp: currentUp
+    currentUp: currentUp, 
+    currentTrack: currentTrack
   }
 }
 

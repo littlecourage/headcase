@@ -1,17 +1,27 @@
 import { connect } from 'react-redux';
 import PackShow from './pack_show_page';
 import { fetchPack } from '../../actions/packs_actions';
+import { fetchAllUserPacks, 
+        deleteUserPack, 
+        createUserPack } from '../../actions/user_packs_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
+  
   return {
-    pack: state.entities.packs[ownProps.match.params.packId]
+    pack: state.entities.packs[ownProps.match.params.packId],
+    userPacks: Object.values(state.entities.userPacks),
+    currentUser: state.entities.users[state.session.id]
   }
+
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchPack: (packId) => dispatch(fetchPack(packId))
+    fetchPack: (packId) => dispatch(fetchPack(packId)),
+    fetchAllUserPacks: () => dispatch(fetchAllUserPacks()),
+    createUserPack: (userPack) => dispatch(createUserPack(userPack)),
+    deleteUserPack: (userPackId) => dispatch(deleteUserPack(userPackId))
   }
 }
 

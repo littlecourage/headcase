@@ -18,5 +18,8 @@ class Pack < ApplicationRecord
     foreign_key: :pack_id,
     class_name: "Meditation"
 
+  def is_user_pack?
+    return self.user_packs.where(user_id: current_user.id)
+  end
 
 end

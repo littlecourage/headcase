@@ -9,7 +9,8 @@ const meditationCompletionsReducer = (oldState = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_MEDITATION_COMPLETION:
-      return newState[action.meditationCompletion.id] = action.meditationCompletion;
+      newState[action.meditationCompletion.id] = action.meditationCompletion;
+      return newState
   
     default:
       return oldState;

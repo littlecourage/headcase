@@ -51,7 +51,7 @@ class UserDash extends React.Component {
         backgroundColor: "#5A6175",
         width: ((currentMed.order - 1)/currentPack.length) * 100 + "%",
       }
-      console.log(progressStyle)
+
     }
         return (currentUp) ? (
           <div className="dashHome">
