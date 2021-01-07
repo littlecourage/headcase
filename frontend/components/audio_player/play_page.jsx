@@ -21,43 +21,6 @@ class PlayPage extends React.Component {
     this.handleMouseMove = this.handleMouseMove.bind(this);
     this.handleCompletion = this.handleCompletion.bind(this);
   }
-  
-
-
-  componentDidMount() {
-    // this.props.fetchMeditation(this.props.currentMedId);
-    // this.props.fetchAllUserPacks();
-    this.handleTimeUpdate();
-    this.audio.addEventListener('loadedmetadata', () => this.handleMetadata());
-    this.audio.addEventListener('ended', () => {
-      this.setState({ play: false })
-      this.handleCompletion();
-    });
-    this.audio.addEventListener('timeupdate', () => {
-      this.handleTimeUpdate();
-      let ratio = this.audio.currentTime / this.audio.duration;
-      let position = (this.outer.offsetWidth * ratio) + this.outer.offsetLeft;
-      this.positionTime(position);
-    });
-  
-  }
-
-  componentWillUnmount() {
-    this.audio.removeEventListener('ended', () => this.setState({ play: false }));
-    this.audio.removeEventListener('timeupdate', () => {
-      this.handleTimeUpdate();
-      let ratio = this.audio.currentTime / this.audio.duration;
-      let position = this.outer.offsetWidth * ratio;
-      this.positionTime(position);
-    })
-    this.audio.removeEventListener('loadedmetadata', () => this.handleMetadata() )
-  }
-
-  togglePlay() {
-    this.setState({ play: !this.state.play }, () => {
-      this.state.play ? this.audio.play() : this.audio.pause();
-    });
-  }
 
   handleMetadata() {
     let durMins = Math.floor(this.audio.duration / 60);
@@ -69,7 +32,6 @@ class PlayPage extends React.Component {
     if (durMins < 10) {
       durMins = "0" + durMins;
     }
-    
     this.setState({ durTime: durMins + ":" + durSecs });
   }
 
@@ -97,8 +59,20 @@ class PlayPage extends React.Component {
           durTime: durMins + ":" + durSecs,
           currentTimeUnMod: this.audio.currentTime
       })
+      // let ratio = this.audio.currentTime / this.audio.duration;
+      // let position = this.outer.offsetWidth * ratio;
+      // this.positionTime(position);
+      let ratio = this.audio.currentTime / this.audio.duration;
+      let position = (this.outer.offsetWidth * ratio) + this.outer.offsetLeft;
+      this.positionTime(position);
     }
 
+  }
+
+  togglePlay() {
+    this.setState({ play: !this.state.play }, () => {
+      this.state.play ? this.audio.play() : this.audio.pause();
+    });
   }
 
   positionTime(position) {
@@ -114,6 +88,31 @@ class PlayPage extends React.Component {
     if (rangeLeft > outerBarWidth) {
       this.range.style.marginLeft = outerBarWidth + "px";
     }
+  }
+
+  handleCompletion() {
+    this.setState({ play: false })
+    let meditationCompletion = {
+      userPackId: this.props.currentUp.id,
+      meditationId: this.props.currentMed.id
+    }
+    this.props.action(meditationCompletion);
+  }
+
+  componentDidMount() {
+    // this.props.fetchMeditation(this.props.currentMedId);
+    // this.props.fetchAllUserPacks();
+    this.handleTimeUpdate();
+    this.audio.addEventListener('loadedmetadata', this.handleMetadata);
+    this.audio.addEventListener('ended', this.handleCompletion);
+    this.audio.addEventListener('timeupdate', this.handleTimeUpdate);
+
+  }
+
+  componentWillUnmount() {
+    this.audio.removeEventListener('ended', this.handleCompletion);
+    this.audio.removeEventListener('timeupdate', this.handleTimeUpdate)
+    this.audio.removeEventListener('loadedmetadata',this.handleMetadata)
   }
 
   handleMouseMove(e) {
@@ -139,15 +138,6 @@ class PlayPage extends React.Component {
     window.removeEventListener('mouseup', this.handleMouseUp);
   }
 
-  handleCompletion() {
-    let meditationCompletion = {
-      userPackId: this.props.currentUp.id,
-      meditationId: this.props.currentMed.id
-    }
-    this.props.action(meditationCompletion);
-
-  }
-
   render() {
     let width = 200;
     let ptCt = (this.state.currentTimeUnMod / width) * 100;
@@ -155,7 +145,7 @@ class PlayPage extends React.Component {
     // console.log(this.state.currentTimeUnMod)
     // console.log(ptCt)
     let barStyle = { width: (ptCt) + "%"}
-    debugger
+
     return (this.props.currentMed && this.props.currentUp && this.props.currentTrack) ?
     (
       <div className="player">

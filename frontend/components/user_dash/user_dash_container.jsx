@@ -3,6 +3,7 @@ import React from 'react';
 import UserDash from './user_dash';
 import { fetchAllUserPacks } from '../../actions/user_packs_actions';
 import { fetchMeditation } from '../../actions/meditations_actions';
+import { showUser } from '../../actions/session_actions';
 
 
 const getPacks = (userPacks=[]) => {
@@ -24,14 +25,16 @@ const mapStateToProps = (state) => {
     currentMed: state.entities.users[state.session.id].currentMeditation,
     userPacks: userPacks,
     currentUp: state.entities.users[state.session.id].currentUserPack,
-    currentPack: state.entities.users[state.session.id].currentPack
+    currentPack: state.entities.users[state.session.id].currentPack,
+    medCompletions: Object.values(state.entities.meditationCompletions)
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchAllUserPacks: () => dispatch(fetchAllUserPacks()),
-    fetchMeditation: (medId) => dispatch(fetchMeditation(medId))
+    fetchMeditation: (medId) => dispatch(fetchMeditation(medId)),
+    showUser: (userId) => dispatch(showUser(userId))
   }
 }
 
