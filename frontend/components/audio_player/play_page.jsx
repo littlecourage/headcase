@@ -1,6 +1,4 @@
 import React from 'react';
-import CircleControls from 'react-player-circle-controls';
-import ReactPlayer from 'react-player';
 import { VscChromeClose } from "react-icons/vsc";
 import { NavLink } from 'react-router-dom';
 import { FaPlay, FaPause } from 'react-icons/fa';
@@ -50,16 +48,16 @@ class PlayPage extends React.Component {
         durSecs = "0" + durSecs;
       }
       if (curMins < 10) {
-        curMins = "0" + curMins; 
+        curMins = "0" + curMins;
       }
       this.setState({ durMins })
       if (durMins < 10) {
         durMins = "0" + durMins;
       }
       this.setState({
-          currentTime: curMins + ":" + curSecs,
-          durTime: durMins + ":" + durSecs,
-          currentTimeUnMod: this.audio.currentTime
+        currentTime: curMins + ":" + curSecs,
+        durTime: durMins + ":" + durSecs,
+        currentTimeUnMod: this.audio.currentTime
       })
       // let ratio = this.audio.currentTime / this.audio.duration;
       // let position = this.outer.offsetWidth * ratio;
@@ -114,7 +112,7 @@ class PlayPage extends React.Component {
   componentWillUnmount() {
     this.audio.removeEventListener('ended', this.handleCompletion);
     this.audio.removeEventListener('timeupdate', this.handleTimeUpdate)
-    this.audio.removeEventListener('loadedmetadata',this.handleMetadata)
+    this.audio.removeEventListener('loadedmetadata', this.handleMetadata)
   }
 
   handleMouseMove(e) {
@@ -126,13 +124,13 @@ class PlayPage extends React.Component {
     // console.log(this.outer.offsetWidth)
     // console.log(e.pageX / this.outer.offsetWidth)
     // console.log((e.pageX / this.outer.offsetWidth) * this.audio.duration)
-    console.log("click!")
+    // console.log("click!")
   }
 
   handleMouseDown(e) {
     window.addEventListener('mousemove', this.handleMouseMove);
     window.addEventListener('mouseup', this.handleMouseUp);
-    console.log("clickMD!")
+    // console.log("clickMD!")
   }
 
   handleMouseUp(e) {
@@ -140,70 +138,47 @@ class PlayPage extends React.Component {
     window.removeEventListener('mouseup', this.handleMouseUp);
   }
 
-  // handleSeek(amount) {
-  //   if (this.state.play) {
-  //     this.player.current.seekTo(amount, 'fraction')
-  //   }
-  // }
-
   render() {
     let width = 200;
     let ptCt = (this.state.currentTimeUnMod / width) * 100;
     // console.log("currentTime")
     // console.log(this.state.currentTimeUnMod)
     // console.log(ptCt)
-    let barStyle = { width: (ptCt) + "%"}
+    let barStyle = { width: (ptCt) + "%" }
 
     return (this.props.currentMed && this.props.currentUp && this.props.currentTrack) ?
-    (
-      <div className="player">
-        <img src={window.footerImg} className="playerBackground"/>
-        <div className="playContainer">
-           <div className="navBox" >
-            <span onClick={this.props.handleBack}>
-              <VscChromeClose />
-            </span>
-          </div>
-          <div className="playBox">
-            <h4>{this.props.currentUp.pack.title.toUpperCase()}</h4>
-            <div className="infoBox">
-              <p>DAY {this.props.currentMed.order}/{this.props.currentUp.length}</p>
-              <span>{this.state.durMins || "0"} MINUTES</span>
-               <button onClick={this.togglePlay}>{this.state.play ? <FaPause /> : <FaPlay />}</button>
-                <br/>
-              <div className="slide"  ref={(outer) => {this.outer = outer }} onClick={this.handleMouseMove}>
-                <div className="range"  ref={(range) => {this.range = range}} onMouseDown={this.handleMouseDown} ></div>
+      (
+        <div className="player">
+          <img src={window.userDashBackgroundUrl} className="playerBackground" />
+          <div className="playContainer">
+            <div className="navBox" >
+              <span onClick={this.props.handleBack}>
+                <VscChromeClose />
+              </span>
+            </div>
+            <div className="playBox">
+              <h4>{this.props.currentUp.pack.title.toUpperCase()}</h4>
+              <div className="infoBox">
+                <p>DAY {this.props.currentMed.order}/{this.props.currentUp.length}</p>
+                <span>{this.state.durMins || "0"} MINUTES</span>
+                <button onClick={this.togglePlay}>{this.state.play ? <FaPause /> : <FaPlay />}</button>
+                <div className="slide" ref={(outer) => { this.outer = outer }} onClick={this.handleMouseMove}>
+                  <div className="range" ref={(range) => { this.range = range }} onMouseDown={this.handleMouseDown} ></div>
+                </div>
+                <span>{this.state.currentTime}/{this.state.durTime !== "NaN:NaN" ? this.state.durTime : "00:00"}</span>
               </div>
-                {/* <ReactPlayer
-                  ref={(player) => this.player = player}
-                  url={this.props.currentMed.trackUrl}
-                  playing={this.state.play}
-                  height="0"
-                  width="0"
-                  onProgress={() => this.setState({play: true})}
-                  onEnded={this.handleCompletion}
-                />
-              <CircleControls
-                  // played={playerState.played}
-                  // loaded={playerState.loaded}
-                  playing={this.state.play}
-                  onSeek={this.handleSeek}
-                  onTogglePlaying={this.togglePlay}
-              /> */}
-              <span>{this.state.currentTime}/{this.state.durTime !== "NaN:NaN" ? this.state.durTime : "00:00"}</span>
+              <div>
+                <span></span>
+              </div>
             </div>
-            <div>
-              <span></span>
+            <div className="playBox">
             </div>
-          </div>
-          <div className="playBox">
           </div>
         </div>
-      </div>
-    ) : (
-      null
-    )
-  
+      ) : (
+        null
+      )
+
   }
 
 }
