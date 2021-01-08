@@ -1,6 +1,6 @@
 import React from 'react';
 import { VscChromeClose } from "react-icons/vsc";
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { FaPlay, FaPause } from 'react-icons/fa';
 import { TiMediaPause } from 'react-icons/ti';
 
@@ -60,9 +60,6 @@ class PlayPage extends React.Component {
         durTime: durMins + ":" + durSecs,
         currentTimeUnMod: this.audio.currentTime
       })
-      // let ratio = this.audio.currentTime / this.audio.duration;
-      // let position = this.outer.offsetWidth * ratio;
-      // this.positionTime(position);
       let ratio = this.audio.currentTime / this.audio.duration;
       if (this.outer) {
         let position = (this.outer.offsetWidth * ratio) + this.outer.offsetLeft;
@@ -183,6 +180,7 @@ class PlayPage extends React.Component {
               </div>
             </div>
             <div className="playBox">
+              {/* empty div for flexbox purposes */}
             </div>
           </div>
         </div>
@@ -195,3 +193,7 @@ class PlayPage extends React.Component {
 }
 
 export default PlayPage;
+
+// <span>The meditation clips used for this project are courtesy of
+//                 <Link to="https://www.audiodharma.org/" target="_blank">AudioDharma</Link>
+//                 and the Insight Meditation Center in Redwood, California</span>

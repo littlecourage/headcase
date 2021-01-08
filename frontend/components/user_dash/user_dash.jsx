@@ -74,7 +74,7 @@ class UserDash extends React.Component {
               </div>
 
               <div className="dashBackground">
-                <img src={window.userDashBackgroundUrl} />
+                <img src={window.footerImg} />
               </div>
             </div>
     
