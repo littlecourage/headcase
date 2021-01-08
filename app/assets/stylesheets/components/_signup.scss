@@ -4,35 +4,38 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow-x: hidden;
 }
 
 .signup_inner {
   display: flex;
   position: absolute;
   justify-content: space-around;
+  margin-top: -145px;
   width: 100%;
   height: 500px;
 }
 
 .signup_img {
-  width: 100%;
-  height: auto;
-  padding-top: 10px;
-  margin-left: 4px;
+  width: 108%;
+  // height: 100vh;
+  margin-top: 93px;
+  margin-left: -59px;
   left: 0;
 }
 
 .signup_form_box {
-  margin-top: 0px;
-  margin-right: 45px;
+  margin-top: -4px;
+  padding-top: 30px;
+  margin-right: 50px;
   background-color: #fff;
   border-radius: 4px;
-  width: 600px;
-  height: 755px;
+  width: 605px;
+  height: 700px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
   span { // moved into this box
     font-family: "ApercuPro", sans-serif;
@@ -48,6 +51,8 @@
   font-size: 27px;
   font-family: "ApercuPro-Medium", sans-serif;
   color: #323233;
+  letter-spacing: 1.15px;
+  margin-bottom: 10px;
 }
 
 .signup_input {
@@ -122,16 +127,16 @@
 
 .tag_line {
   color: #5A6175;
-  font-size: 40px;
+  font-size: 42px;
   font-family: "ApercuPro", sans-serif;
   font-weight: 00;
   line-height: 52px;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.75px;
 }
 
 .check_icon {
   color: #5A6175;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
 }
 
@@ -148,4 +153,17 @@ li {
 
 .text_block {
   margin-left: 30px;
+  padding-left: 20px;
+  h1:last-of-type {
+    margin-bottom: 25px;
+  }
+}
+
+.eye-icon {
+  box-sizing: content-box;
+  margin-left: -50px;
+  font-size: 24px;
+  height: 24px;
+  width: auto;
+  color: #5A6175;
 }

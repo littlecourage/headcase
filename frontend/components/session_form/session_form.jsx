@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaCheck } from 'react-icons/fa';
+import { RiEyeCloseLine, RiEyeLine } from "react-icons/ri";
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -8,11 +9,13 @@ class SessionForm extends React.Component {
       email: "",
       password: "",
       last_name: "",
-      first_name: ""
+      first_name: "",
+      type: 'password'
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemoUser = this.handleDemoUser.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
   }
 
   handleSubmit(e) {
@@ -28,6 +31,14 @@ class SessionForm extends React.Component {
       password: "password"
     })
     this.props.loginDemo(user);
+  }
+
+  handleToggle() {
+    if (this.state.type === "password") {
+      this.setState({type: 'text'})
+    } else if (this.state.type === "text") {
+      this.setState({ type: 'password' })
+    }
   }
 
   update(field) {
@@ -53,14 +64,12 @@ class SessionForm extends React.Component {
       let title = 'Sign up';
       return (
           <div className="signup_outer">
-            <img src={window.loginBackgroundUrl} alt="background image" className="login_img" />
+            <img src={window.loginBackgroundUrl} alt="background image" className="signup_img" />
             
             <div className="signup_inner">
               <div className="text_block">
-                <h1 className="tag_line">Get some Headspace for a</h1>
+                <h1 className="tag_line">Get some Headcase for a</h1>
                 <h1 className="tag_line">healthier, happier life.</h1>
-                <br/>
-                <br/>
                 <ul>
                   <li><FaCheck className="check_icon" />&emsp;Hundreds of guided meditations on everything from stress to</li>
                   <li><span>&emsp;</span>&emsp;focus to relationships.</li>
@@ -107,12 +116,19 @@ class SessionForm extends React.Component {
                     <br />
                     <br />
                     <input
-                      type="password"
+                      type={this.state.type}
                       className="signup_input"
                       placeholder="Password (8+ characters)"
                       value={this.state.password}
                       onChange={this.update('password')}
                     />
+                    {
+                      (this.state.type === 'password') ? (
+                      <RiEyeCloseLine onClick={this.handleToggle} className="eye-icon" id="closed-eye"/>
+                      ) : (
+                        <RiEyeLine onClick={this.handleToggle} className="eye-icon" id="open-eye" />
+                      )
+                    }
                     <br />
                     <br />
                     <br />
@@ -151,12 +167,19 @@ class SessionForm extends React.Component {
               <br/>
               <br/>
               <input
-                type="password"
+                type={this.state.type}
                 className="login_input"
                 placeholder="Password (8+ characters)"
                 value={this.state.password}
                 onChange={this.update('password')}
               />
+              {
+                (this.state.type === 'password') ? (
+                  <RiEyeCloseLine onClick={this.handleToggle} className="eye-icon" id="closed-eye" />
+                ) : (
+                    <RiEyeLine onClick={this.handleToggle} className="eye-icon" id="open-eye" />
+                  )
+              }
               <br/>
               <br/>
             </div>

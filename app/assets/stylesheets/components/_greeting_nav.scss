@@ -3,47 +3,68 @@
   display: flex;
   justify-content: space-between;
   height: 95px;
-  width: 99%;
-  padding-left: 24px;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 25px;
   background-color: white;
   align-items: center;
   position: fixed;
   z-index: 3;
 }
 
+.about-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .header-nav {
-  width: 280px;
+  width: 266px;
   height: 60px;
   display: flex;
   align-items: center;
-  padding-right: 60px;
+  justify-content: flex-end;
 }
+
 
 .header-logo {
-  width: 221px;
+  width: auto;
   height: 48px;
+  margin-top: 3px;
+  margin-left: -2px;
 }
 
-.login-link {
+.login-link, .about-link {
   border-left: #5A6175 solid 1px;
-  width: 70px;
-  padding: 10px 0px 10px 14px;
+  width: auto;
+  padding: 9px 10px 9px 12px;
   color: #5A6175;
   text-decoration: none;
   font-family: "ApercuPro", sans-serif;
   font-size: 14px;
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 2.75px;
+  text-transform: uppercase;
+}
+
+.about-link {
+  border: none;
+  font-weight: 400;
+}
+
+.login-link:hover, .about-link:hover {
+  cursor: pointer;
+  color: #5A6175;
 }
 
 .signup-link {
-  padding: 0px 20px;
+  padding: 0px 30px;
   background-color: #0E6EF6;
   color: white;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 0px;
   border-radius: 50px;
-  width: 170px;
-  height: 45px;
+  width: 168px;
+  height: 48px;
   font-weight: bold;
   text-decoration: none;
   cursor: pointer;
@@ -53,6 +74,7 @@
   font-family: "ApercuPro", sans-serif;
   font-size: 16px;
   font-weight: 400;
+  margin-left: -2px;
 }
 
 .signup-link:hover {

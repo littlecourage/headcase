@@ -13,7 +13,13 @@ const Greeting = ({ currentUser, logout }) => {
               className="header-logo" 
               id ="header_logo" />
           </NavLink>
-          <div>
+          <div className="about-nav">
+            <div>
+              <a href="https://github.com/littlecourage/headcase" className="about-link" target="_blank">GitHub</a>
+              <a href="https://angel.co/u/christine-adams-5" className="about-link" target="_blank">AngelList</a>
+              <a href="https://littlecourage.github.io/" className="about-link" target="_blank">Portfolio</a>
+              <a href="" className="about-link" target="_blank">About</a>
+            </div>
             <nav className="header-nav">
               <NavLink to="/login" className="login-link">LOG IN</NavLink>
               &nbsp;

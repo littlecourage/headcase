@@ -96,3 +96,8 @@ nav .active:hover {
   color: #F4A566;
   cursor: default;
 }
+
+.header-nav .active:hover {
+  cursor: pointer;
+  color: #5A6175;
+}

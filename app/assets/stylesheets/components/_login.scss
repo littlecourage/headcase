@@ -5,22 +5,23 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow-x: hidden;
 }
 
 .login_img {
   width: 100%;
   height: auto;
-  padding-top: 10px;
-  margin-left: 4px;
+
   left: 0;
+  margin-top: 3px;
 }
 
 .login_form_box {
   margin-top: 85px;
   background-color: #fff;
   border-radius: 4px;
-  width: 600px;
-  height: 590px;
+  width: 611px;
+  height: 592px;
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -37,17 +38,17 @@
   box-sizing: border-box;
   border: #E8E7E9 solid 1px;
   border-radius: 6px;
-  width: 550px;
+  width: 560px;
   padding: 20px 0px 14px 20px;
   margin: 0 14px;
-  font-size: 18px;
+  font-size: 20px;
   font-family: "ApercuPro", sans-serif;
   font-weight: 400;
 }
 
 .login_input::-webkit-input-placeholder {
   color: #323233;
-  font-size: 18px;
+  font-size: 20px;
   font-family: "ApercuPro", sans-serif;
   font-weight: 400;
 }
@@ -107,4 +108,13 @@ span {
 
 .demo_button:hover {
   color: #5B5B5C;
+}
+
+.eye-icon {
+  box-sizing: content-box;
+  margin-left: -50px;
+  font-size: 24px;
+  height: 24px;
+  width: auto;
+  color: #5A6175;
 }
