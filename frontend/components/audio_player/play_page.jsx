@@ -1,6 +1,6 @@
 import React from 'react';
 import { VscChromeClose } from "react-icons/vsc";
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { FaPlay, FaPause } from 'react-icons/fa';
 import { TiMediaPause } from 'react-icons/ti';
 
@@ -20,43 +20,7 @@ class PlayPage extends React.Component {
     this.handleMouseUp = this.handleMouseUp.bind(this);
     this.handleMouseMove = this.handleMouseMove.bind(this);
     this.handleCompletion = this.handleCompletion.bind(this);
-  }
-  
-
-
-  componentDidMount() {
-    // this.props.fetchMeditation(this.props.currentMedId);
-    // this.props.fetchAllUserPacks();
-    this.handleTimeUpdate();
-    this.audio.addEventListener('loadedmetadata', () => this.handleMetadata());
-    this.audio.addEventListener('ended', () => {
-      this.setState({ play: false })
-      this.handleCompletion();
-    });
-    this.audio.addEventListener('timeupdate', () => {
-      this.handleTimeUpdate();
-      let ratio = this.audio.currentTime / this.audio.duration;
-      let position = (this.outer.offsetWidth * ratio) + this.outer.offsetLeft;
-      this.positionTime(position);
-    });
-  
-  }
-
-  componentWillUnmount() {
-    this.audio.removeEventListener('ended', () => this.setState({ play: false }));
-    this.audio.removeEventListener('timeupdate', () => {
-      this.handleTimeUpdate();
-      let ratio = this.audio.currentTime / this.audio.duration;
-      let position = this.outer.offsetWidth * ratio;
-      this.positionTime(position);
-    })
-    this.audio.removeEventListener('loadedmetadata', () => this.handleMetadata() )
-  }
-
-  togglePlay() {
-    this.setState({ play: !this.state.play }, () => {
-      this.state.play ? this.audio.play() : this.audio.pause();
-    });
+    this.handleClose = this.handleClose.bind(this);
   }
 
   handleMetadata() {
@@ -69,7 +33,6 @@ class PlayPage extends React.Component {
     if (durMins < 10) {
       durMins = "0" + durMins;
     }
-    
     this.setState({ durTime: durMins + ":" + durSecs });
   }
 
@@ -86,19 +49,30 @@ class PlayPage extends React.Component {
         durSecs = "0" + durSecs;
       }
       if (curMins < 10) {
-        curMins = "0" + curMins; 
+        curMins = "0" + curMins;
       }
       this.setState({ durMins })
       if (durMins < 10) {
         durMins = "0" + durMins;
       }
       this.setState({
-          currentTime: curMins + ":" + curSecs,
-          durTime: durMins + ":" + durSecs,
-          currentTimeUnMod: this.audio.currentTime
+        currentTime: curMins + ":" + curSecs,
+        durTime: durMins + ":" + durSecs,
+        currentTimeUnMod: this.audio.currentTime
       })
+      let ratio = this.audio.currentTime / this.audio.duration;
+      if (this.outer) {
+        let position = (this.outer.offsetWidth * ratio) + this.outer.offsetLeft;
+        this.positionTime(position);
+      }
     }
 
+  }
+
+  togglePlay() {
+    this.setState({ play: !this.state.play }, () => {
+      this.state.play ? this.audio.play() : this.audio.pause();
+    });
   }
 
   positionTime(position) {
@@ -114,6 +88,31 @@ class PlayPage extends React.Component {
     if (rangeLeft > outerBarWidth) {
       this.range.style.marginLeft = outerBarWidth + "px";
     }
+  }
+
+  handleCompletion() {
+    this.setState({ play: false })
+    let meditationCompletion = {
+      userPackId: this.props.currentUp.id,
+      meditationId: this.props.currentMed.id
+    }
+    this.props.action(meditationCompletion);
+  }
+
+  componentDidMount() {
+    // this.props.fetchMeditation(this.props.currentMedId);
+    // this.props.fetchAllUserPacks();
+    this.handleTimeUpdate();
+    this.audio.addEventListener('loadedmetadata', this.handleMetadata);
+    this.audio.addEventListener('ended', this.handleCompletion);
+    this.audio.addEventListener('timeupdate', this.handleTimeUpdate);
+
+  }
+
+  componentWillUnmount() {
+    this.audio.removeEventListener('ended', this.handleCompletion);
+    this.audio.removeEventListener('timeupdate', this.handleTimeUpdate)
+    this.audio.removeEventListener('loadedmetadata', this.handleMetadata)
   }
 
   handleMouseMove(e) {
@@ -139,13 +138,12 @@ class PlayPage extends React.Component {
     window.removeEventListener('mouseup', this.handleMouseUp);
   }
 
-  handleCompletion() {
-    let meditationCompletion = {
-      userPackId: this.props.currentUp.id,
-      meditationId: this.props.currentMed.id
+  handleClose() {
+    if (this.state.play) {
+      this.audio.pause();
+      this.setState({play: false});
     }
-    this.props.action(meditationCompletion);
-
+    this.props.handleBack();
   }
 
   render() {
@@ -154,43 +152,48 @@ class PlayPage extends React.Component {
     // console.log("currentTime")
     // console.log(this.state.currentTimeUnMod)
     // console.log(ptCt)
-    let barStyle = { width: (ptCt) + "%"}
-    debugger
+    let barStyle = { width: (ptCt) + "%" }
+
     return (this.props.currentMed && this.props.currentUp && this.props.currentTrack) ?
-    (
-      <div className="player">
-        <img src={window.userDashBackgroundUrl} className="playerBackground"/>
-        <div className="playContainer">
-           <div className="navBox" >
-            <span onClick={this.props.handleBack}>
-              <VscChromeClose />
-            </span>
-          </div>
-          <div className="playBox">
-            <h4>{this.props.currentUp.pack.title.toUpperCase()}</h4>
-            <div className="infoBox">
-              <p>DAY {this.props.currentMed.order}/{this.props.currentUp.length}</p>
-              <span>{this.state.durMins || "0"} MINUTES</span>
-               <button onClick={this.togglePlay}>{this.state.play ? <FaPause /> : <FaPlay />}</button>
-              <div className="slide"  ref={(outer) => {this.outer = outer }} onClick={this.handleMouseMove}>
-                <div className="range"  ref={(range) => {this.range = range}} onMouseDown={this.handleMouseDown} ></div>
-              </div>
+      (
+        <div className="player">
+          <img src={window.footerImg} className="playerBackground" />
+          <div className="playContainer">
+            <div className="navBox" >
+              <span onClick={this.handleClose}>
+                <VscChromeClose />
+              </span>
+            </div>
+            <div className="playBox">
+              <h4>{this.props.currentUp.pack.title.toUpperCase()}</h4>
+              <div className="infoBox">
+                <p>DAY {this.props.currentMed.order}/{this.props.currentUp.length}</p>
+                <span>{this.state.durMins || "0"} MINUTES</span>
+                <button onClick={this.togglePlay}>{this.state.play ? <FaPause /> : <FaPlay />}</button>
+                <div className="slide" ref={(outer) => { this.outer = outer }} onClick={this.handleMouseMove}>
+                  <div className="range" ref={(range) => { this.range = range }} onMouseDown={this.handleMouseDown} ></div>
+                </div>
                 <span>{this.state.currentTime}/{this.state.durTime !== "NaN:NaN" ? this.state.durTime : "00:00"}</span>
+              </div>
+              <div>
+                <span></span>
+              </div>
             </div>
-            <div>
-              <span></span>
+            <div className="playBox">
+              {/* empty div for flexbox purposes */}
             </div>
-          </div>
-          <div className="playBox">
           </div>
         </div>
-      </div>
-    ) : (
-      null
-    )
-  
+      ) : (
+        null
+      )
+
   }
 
 }
 
 export default PlayPage;
+
+// <span>The meditation clips used for this project are courtesy of
+//                 <Link to="https://www.audiodharma.org/" target="_blank">AudioDharma</Link>
+//                 and the Insight Meditation Center in Redwood, California</span>

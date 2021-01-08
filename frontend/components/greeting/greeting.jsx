@@ -49,7 +49,10 @@ const Greeting = ({ currentUser, logout }) => {
             HOME
           </NavLink>
           &nbsp;
-          <NavLink to="/discover" className="headerLink" activeStyle={{ color: "#F4A566" }}>
+          <NavLink 
+            to="/discover" 
+            className="headerLink"
+            activeStyle={{ color: "#F4A566"}}>
             DISCOVER
           </NavLink>
           &nbsp;

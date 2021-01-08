@@ -32,11 +32,19 @@ class UserDash extends React.Component {
   }
 
   componentDidMount() {
+    this.props.showUser(this.props.currentUser.id);
     this.props.fetchAllUserPacks()
     this.setState({
       packsToShow: 3,
       addButtonClicked: false
     })
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log("update")
+    if (this.props.medCompletions.length !== prevProps.medCompletions.length) {
+      this.props.fetchAllUserPacks();
+    }
   }
 
 
@@ -66,7 +74,7 @@ class UserDash extends React.Component {
               </div>
 
               <div className="dashBackground">
-                <img src={window.userDashBackgroundUrl} />
+                <img src={window.footerImg} />
               </div>
             </div>
     

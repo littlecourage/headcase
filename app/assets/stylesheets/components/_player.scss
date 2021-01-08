@@ -26,6 +26,7 @@
   width: 100%;
   height: 90vh;
   justify-content: space-between;
+  margin-top: 30px;
   // padding-top: 65px;
 
 
@@ -35,13 +36,16 @@
   z-index: 6;
   width: 300px;
   span {
+    margin-top: 8px;
     cursor: pointer;
     padding-left: 38px;
-    color: #5A6175;
+    // color: #5A6175;
+    color: #413D47;
     font-size: 28px;
   }
   span:hover {
-    color: #9A8F7C;
+    // color: #9A8F7C;
+    color: rgba(65, 61, 71, 0.6);
   }
 
 }
@@ -57,7 +61,8 @@
     font-family: "ApercuPro", sans-serif;
     font-size: 15px;
     font-weight: 400;
-    color: #646A7D;
+    // color: #646A7D;
+    color: #413D47;
     letter-spacing: 4px;
   }
   p{
@@ -66,14 +71,16 @@
     font-size: 15px;
   }
   span {
-    color: #9A8F7C;
+    // color: #9A8F7C;
+    color: rgba(65, 61, 71, 0.6);
   }
 
   button{
     width: 150px;
     height: 150px;
     border-radius: 100%;
-    background-color: #5A6175;
+    // background-color: #5A6175;
+    background-color: #423D47;
     color: #FFFFFF;
     cursor: pointer;
     font-size: 40px;
@@ -91,13 +98,15 @@
   justify-content: space-between;
   align-items: center;
   height: 300px;
+  // height: auto;
   width: 300px;
 
   p, span {
     font-family: "ApercuPro", sans-serif;
     font-size: 14px;
     font-weight: 400;
-    color: #646A7D;
+    // color: #646A7D;
+    color: #413D47;
     letter-spacing: 2.5px;
   }
   p{
@@ -106,14 +115,16 @@
     font-size: 15px;
   }
   span {
-    color: #9A8F7C;
+    // color: #9A8F7C;
+       color: rgba(65, 61, 71, 0.6);
   }
 
   button{
     width: 150px;
     height: 150px;
     border-radius: 100%;
-    background-color: #5A6175;
+    // background-color: #5A6175;
+    background-color: #423D47;
     color: #FFFFFF;
     cursor: pointer;
     font-size: 40px;
@@ -127,7 +138,12 @@
     width:200px;
     background:rgba(90,97,117, 0.2);
     height:25px;
-    // border-radius: 100%;
+    
+    // width: 200px;
+    // height: 200px;
+    // border: 25px solid rgba(90,97,117, 0.2);
+    // border-top: 25px solid rgba(90,97,117, 0.2);;
+    // border-radius: 50%;
     //https://www.w3schools.com/howto/howto_css_loader.asp
 }
 .range{

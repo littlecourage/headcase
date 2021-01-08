@@ -28,7 +28,6 @@ import { FaPlay, FaCheck  } from 'react-icons/fa';
     meditations = meditations.concat(Object.values(userPack.meditations));
     if (num > 1) {
       bar.width = ((num - 1)/length) * 100 + "%"
-      console.log(bar.width);
       progress.backgroundColor =  'rgba(255, 255, 255, 0.2)';
     }
   } else {
@@ -76,7 +75,7 @@ import { FaPlay, FaCheck  } from 'react-icons/fa';
             <div key={med.id}>
               {
                 (med.order === 1) ? (
-                  <Link to={`/play/${med.id}`} className="play-icon">
+                    <Link to={`/play/${med.id}`} className="play-icon" onClick={added ? null : handleAdd}>
                     <FaPlay /> 
                   </Link>
                 ) : (
