@@ -20,6 +20,7 @@ class PlayPage extends React.Component {
     this.handleMouseUp = this.handleMouseUp.bind(this);
     this.handleMouseMove = this.handleMouseMove.bind(this);
     this.handleCompletion = this.handleCompletion.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   handleMetadata() {
@@ -140,6 +141,14 @@ class PlayPage extends React.Component {
     window.removeEventListener('mouseup', this.handleMouseUp);
   }
 
+  handleClose() {
+    if (this.state.play) {
+      this.audio.pause();
+      this.setState({play: false});
+    }
+    this.props.handleBack();
+  }
+
   render() {
     let width = 200;
     let ptCt = (this.state.currentTimeUnMod / width) * 100;
@@ -154,7 +163,7 @@ class PlayPage extends React.Component {
           <img src={window.footerImg} className="playerBackground" />
           <div className="playContainer">
             <div className="navBox" >
-              <span onClick={this.props.handleBack}>
+              <span onClick={this.handleClose}>
                 <VscChromeClose />
               </span>
             </div>
