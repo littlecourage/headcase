@@ -63,8 +63,10 @@ class PlayPage extends React.Component {
       // let position = this.outer.offsetWidth * ratio;
       // this.positionTime(position);
       let ratio = this.audio.currentTime / this.audio.duration;
-      let position = (this.outer.offsetWidth * ratio) + this.outer.offsetLeft;
-      this.positionTime(position);
+      if (this.outer) {
+        let position = (this.outer.offsetWidth * ratio) + this.outer.offsetLeft;
+        this.positionTime(position);
+      }
     }
 
   }
@@ -149,7 +151,7 @@ class PlayPage extends React.Component {
     return (this.props.currentMed && this.props.currentUp && this.props.currentTrack) ?
       (
         <div className="player">
-          <img src={window.userDashBackgroundUrl} className="playerBackground" />
+          <img src={window.footerImg} className="playerBackground" />
           <div className="playContainer">
             <div className="navBox" >
               <span onClick={this.props.handleBack}>
