@@ -28,7 +28,7 @@ class SessionForm extends React.Component {
       },
       type: 'password',
       passwordErrors: false,
-      emailErrors: true
+      emailErrors: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemoUser = this.handleDemoUser.bind(this);
@@ -42,7 +42,7 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    if (this.state.firstName.valid && this.state.lastName.valid && this.state.validEmail.valid && this.state.validPassword.valid) {
+    if (this.state.email.valid && this.state.password.valid) {
       const user = Object.assign({}, this.state);
       this.props.processForm(user);
     }
@@ -85,46 +85,62 @@ class SessionForm extends React.Component {
   update(category) {
     let field = category;
     return (e) => {
-
       let attributes = { ...this.state.field };
       attributes.input = e.currentTarget.value;
       attributes.changed = true;
-
       if (!this.isValid(field, attributes, e.currentTarget.value)) {
-  
         attributes.valid = false;
       } else {
         attributes.valid = true;
+        if (field === 'password') {
+          this.setState({passwordErrors: false})
+        }
       }
       this.setState({[field]: attributes});
     }
   }
 
   checkForErrors(field) {
-    debugger
     field = field
-    if (field === "email") {
-      if (!this.state.field.input.includes("@")) {
-        this.setState({emailErrors: true});
-      } else {
-        this.setState({ emailErrors: false });
-      }
-    } else if (field === "password") {
-      if (this.state.field.input.length >= 8) {
-        this.setState({ passwordErrors: true });
-      } else {
-        this.setState({ passwordErrors: false });
+    return () => {
+      if (field === "email") {
+        if (!this.state[field].input.includes("@")) {
+          this.setState({emailErrors: true});
+        } else {
+          this.setState({ emailErrors: false });
+        }
+      } else if (field === "password") {
+        if (this.state[field].input.length < 8) {
+          this.setState({ passwordErrors: true });
+        } else {
+          this.setState({ passwordErrors: false });
+        }
+      } else if (field === "firstName" || field === 'lastName') {
+        if (this.state[field].input.length < 1) {
+          let attributes = { ...this.state.field };
+          attributes.changed = true;
+          attributes.valid = false;
+          this.setState({ [field]: attributes });
+        }
       }
     }
 
   }
 
-  renderEmailError() {
-    return (
-      <li className="error">
-        Hmm, try double-checking your email.
-      </li>
-    );
+  renderEmailError(title) {
+    if (title === 'Sign up') {
+      return (
+        <li className="error">
+          Hmm, try double-checking your email.
+        </li>
+      );
+    } else if (title === 'Log in') {
+      return (
+        <li className="error">
+          Please verify e-mail address is correct.
+        </li>
+      );
+    }
   }
 
   renderPasswordError() {
@@ -136,6 +152,7 @@ class SessionForm extends React.Component {
   }
 
   renderErrors() {
+    debugger
     return (
       <ul>
         {this.props.errors.map((error, i) => (
@@ -185,6 +202,7 @@ class SessionForm extends React.Component {
                       placeholder="First name"
                       value={this.state.firstName.input}
                       onChange={this.update('firstName')}
+                      onBlur={this.checkForErrors('firstName')}
                     />
                     <br />
                     <br />
@@ -199,37 +217,40 @@ class SessionForm extends React.Component {
                       placeholder="Last name"
                       value={this.state.lastName.input}
                       onChange={this.update('lastName')}
+                      onBlur={this.checkForErrors('lastName')}
                     />
                     <br />
                     <br />
                     <input
                       type="text"
-                      className={!this.state.email.changed ? 
+                      className={(!this.state.email.changed && !this.state.emailErrors) ? 
                                   "signup_input" : 
-                                  this.state.email.changed && !this.state.email.valid ?
+                                  (this.state.email.changed && !this.state.email.valid)
+                                  || (this.state.emailErrors) ? 
                                   "signup_input error_input" :
                                   "signup_input valid"
                                 }
                       placeholder="Email address"
                       value={this.state.email.input}
                       onChange={this.update('email')}
-                      onfocusout={this.checkForErrors('email')}
+                      onBlur={this.checkForErrors('email')}
                     />
-                    {!this.state.emailErrors ? this.renderEmailError() : null}
+                    {this.state.emailErrors ? this.renderEmailError(title) : null}
                     <br />
                     <br />
                     <input
                       type={this.state.type}
-                      className={!this.state.password.changed ?
+                      className={(!this.state.password.changed && !this.state.passwordErrors) ?
                                   "signup_input" :
-                                  this.state.password.changed && !this.state.password.valid ?
+                                  (this.state.password.changed && !this.state.password.valid)
+                                  || this.state.passwordErrors ?
                                   "signup_input error_input" :
                                   "signup_input valid"
                                 }
                       placeholder="Password (8+ characters)"
                       value={this.state.password.input}
                       onChange={this.update('password')}
-                      onfocusout={this.checkForErrors('password')}
+                      onBlur={this.checkForErrors('password')}
                     />
                     {
                       (this.state.type === 'password') ? (
@@ -238,7 +259,7 @@ class SessionForm extends React.Component {
                         <RiEyeLine onClick={this.handleToggle} className="eye-icon" id="open-eye" />
                       )
                     }
-                    {!this.state.passwordErrors ? this.renderPasswordError() : null}
+                    {this.state.passwordErrors ? this.renderPasswordError() : null}
                     <br />
                     <br />
                     <br />
@@ -268,19 +289,34 @@ class SessionForm extends React.Component {
               <br/>
               <input
                 type="text"
-                className="login_input"
+                className={(!this.state.email.changed && !this.state.emailErrors) ?
+                  "signup_input" :
+                  (this.state.email.changed && !this.state.email.valid)
+                  || (this.state.emailErrors) ?
+                  "signup_input error_input" :
+                  "signup_input"
+                }
                 placeholder="Email address"
-                value={this.state.email}
+                value={this.state.email.input}
                 onChange={this.update('email')}
+                onBlur={this.checkForErrors('email')}
               />
+              {this.state.emailErrors ? this.renderEmailError(title) : null}
               <br/>
               <br/>
               <input
                 type={this.state.type}
-                className="login_input"
+                className={(!this.state.password.changed && !this.state.passwordErrors) ?
+                  "signup_input" :
+                  (this.state.password.changed && !this.state.password.valid)
+                  || this.state.passwordErrors ?
+                  "signup_input error_input" :
+                  "signup_input"
+                }
                 placeholder="Password (8+ characters)"
-                value={this.state.password}
+                value={this.state.password.input}
                 onChange={this.update('password')}
+                onBlur={this.checkForErrors('password')}
               />
               {
                 (this.state.type === 'password') ? (
@@ -289,8 +325,9 @@ class SessionForm extends React.Component {
                     <RiEyeLine onClick={this.handleToggle} className="eye-icon" id="open-eye" />
                   )
               }
-              {this.renderErrors()}
+              {this.state.passwordErrors ? this.renderPasswordError() : null}
               <br/>
+              {this.renderErrors()}
               <br/>
             </div>
             <button className="form_submit">LOG IN</button>
