@@ -16,12 +16,12 @@ class SessionForm extends React.Component {
         changed: false,
         valid: true
       },
-      lastName: {
+      last_name: {
         input: "",
         changed: false,
         valid: true
       },
-      firstName: {
+      first_name: {
         input: "",
         changed: false,
         valid: true
@@ -43,7 +43,12 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     if (this.state.email.valid && this.state.password.valid) {
-      const user = Object.assign({}, this.state);
+      const user = {
+        first_name: this.state.first_name.input,
+        last_name: this.state.last_name.input,
+        email: this.state.email.input,
+        password: this.state.password.input
+      }
       this.props.processForm(user);
     }
   }
@@ -74,7 +79,7 @@ class SessionForm extends React.Component {
       if (attributes.input.length >= 8) {
         return true;
       }
-    } else if (category === "lastName" || category === "firstName") {
+    } else if (category === "last_name" || category === "first_name") {
       if (attributes.input.length > 0) {
         return true;
       }
@@ -115,7 +120,7 @@ class SessionForm extends React.Component {
         } else {
           this.setState({ passwordErrors: false });
         }
-      } else if (field === "firstName" || field === 'lastName') {
+      } else if (field === "first_name" || field === 'last_name') {
         if (this.state[field].input.length < 1) {
           let attributes = { ...this.state.field };
           attributes.changed = true;
@@ -193,31 +198,31 @@ class SessionForm extends React.Component {
                     <br />
                     <input
                       type="text"
-                      className={!this.state.firstName.changed ?
+                      className={!this.state.first_name.changed ?
                         "signup_input" :
-                        this.state.firstName.changed && !this.state.firstName.valid ?
+                        this.state.first_name.changed && !this.state.first_name.valid ?
                         "signup_input error_input" :
                         "signup_input valid"
                       }
                       placeholder="First name"
-                      value={this.state.firstName.input}
-                      onChange={this.update('firstName')}
-                      onBlur={this.checkForErrors('firstName')}
+                      value={this.state.first_name.input}
+                      onChange={this.update('first_name')}
+                      onBlur={this.checkForErrors('first_name')}
                     />
                     <br />
                     <br />
                     <input
                       type="text"
-                      className={!this.state.lastName.changed ?
+                      className={!this.state.last_name.changed ?
                         "signup_input" :
-                        this.state.lastName.changed && !this.state.lastName.valid ?
+                        this.state.last_name.changed && !this.state.last_name.valid ?
                         "signup_input error_input" :
                         "signup_input valid"
                       }
                       placeholder="Last name"
-                      value={this.state.lastName.input}
-                      onChange={this.update('lastName')}
-                      onBlur={this.checkForErrors('lastName')}
+                      value={this.state.last_name.input}
+                      onChange={this.update('last_name')}
+                      onBlur={this.checkForErrors('last_name')}
                     />
                     <br />
                     <br />
