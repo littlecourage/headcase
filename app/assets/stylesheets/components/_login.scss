@@ -44,6 +44,7 @@
   font-size: 20px;
   font-family: "ApercuPro", sans-serif;
   font-weight: 400;
+  outline: none;
 }
 
 .login_input::-webkit-input-placeholder {
@@ -117,4 +118,27 @@ span {
   height: 24px;
   width: auto;
   color: #5A6175;
+}
+
+.signup-link active{
+    background-color: #0069FF;
+    color: #fff;
+    cursor: pointer;
+}
+
+.error {
+  text-align: left;
+  color: rgb(232, 93, 74);
+  font-size: 16px;
+  line-height: 28px;
+  margin-left: 18px;
+  list-style-type: none;
+}
+
+.valid {
+  border: #96D9B0 solid 1px;
+}
+
+.error_input {
+  border: #EE624E solid 1px;
 }

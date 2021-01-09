@@ -6,22 +6,46 @@ class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: "",
-      last_name: "",
-      first_name: "",
-      type: 'password'
+      email: {
+        input: "",
+        changed: false,
+        valid: true
+      },
+      password: {
+        input: "",
+        changed: false,
+        valid: true
+      },
+      lastName: {
+        input: "",
+        changed: false,
+        valid: true
+      },
+      firstName: {
+        input: "",
+        changed: false,
+        valid: true
+      },
+      type: 'password',
+      passwordErrors: false,
+      emailErrors: true
     };
-
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemoUser = this.handleDemoUser.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
+    this.renderPasswordError = this.renderPasswordError.bind(this);
+    this.renderEmailError = this.renderEmailError.bind(this);
+    this.isValid = this.isValid.bind(this);
+    this.checkForErrors = this.checkForErrors.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    if (this.state.firstName.valid && this.state.lastName.valid && this.state.validEmail.valid && this.state.validPassword.valid) {
+      const user = Object.assign({}, this.state);
+      this.props.processForm(user);
+    }
   }
 
   handleDemoUser(e) {
@@ -41,17 +65,81 @@ class SessionForm extends React.Component {
     }
   }
 
-  update(field) {
-    return (e) => {
-      this.setState({ [field]: e.currentTarget.value })
+  isValid(category, attributes, value) {
+    if (category === "email") {
+      if (attributes.input.includes("@")) {
+        return true;
+      }
+    } else if (category === "password") {
+      if (attributes.input.length >= 8) {
+        return true;
+      }
+    } else if (category === "lastName" || category === "firstName") {
+      if (attributes.input.length > 0) {
+        return true;
+      }
     }
+    return false;
+  }
+
+  update(category) {
+    let field = category;
+    return (e) => {
+
+      let attributes = { ...this.state.field };
+      attributes.input = e.currentTarget.value;
+      attributes.changed = true;
+
+      if (!this.isValid(field, attributes, e.currentTarget.value)) {
+  
+        attributes.valid = false;
+      } else {
+        attributes.valid = true;
+      }
+      this.setState({[field]: attributes});
+    }
+  }
+
+  checkForErrors(field) {
+    debugger
+    field = field
+    if (field === "email") {
+      if (!this.state.field.input.includes("@")) {
+        this.setState({emailErrors: true});
+      } else {
+        this.setState({ emailErrors: false });
+      }
+    } else if (field === "password") {
+      if (this.state.field.input.length >= 8) {
+        this.setState({ passwordErrors: true });
+      } else {
+        this.setState({ passwordErrors: false });
+      }
+    }
+
+  }
+
+  renderEmailError() {
+    return (
+      <li className="error">
+        Hmm, try double-checking your email.
+      </li>
+    );
+  }
+
+  renderPasswordError() {
+    return (
+      <li className="error">
+        Your password needs to be at least 8 characters.
+      </li>
+    );
   }
 
   renderErrors() {
     return (
       <ul>
         {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
+          <li className="error" key={`error-${i}`}>
             {error}
           </li>
         ))}
@@ -81,46 +169,67 @@ class SessionForm extends React.Component {
               <div>
                 <form className="signup_form_box" onSubmit={this.handleSubmit}>
                   <h2 className="form_title">{`${title}`}</h2>
-                  {this.renderErrors()}
                   <br />
                   <span>Already have an account? {this.props.navLink}</span>
-
                   <div>
                     <br />
                     <br />
                     <input
                       type="text"
-                      className="signup_input"
+                      className={!this.state.firstName.changed ?
+                        "signup_input" :
+                        this.state.firstName.changed && !this.state.firstName.valid ?
+                        "signup_input error_input" :
+                        "signup_input valid"
+                      }
                       placeholder="First name"
-                      value={this.state.first_name}
-                      onChange={this.update('first_name')}
+                      value={this.state.firstName.input}
+                      onChange={this.update('firstName')}
                     />
                     <br />
                     <br />
                     <input
                       type="text"
-                      className="signup_input"
+                      className={!this.state.lastName.changed ?
+                        "signup_input" :
+                        this.state.lastName.changed && !this.state.lastName.valid ?
+                        "signup_input error_input" :
+                        "signup_input valid"
+                      }
                       placeholder="Last name"
-                      value={this.state.last_name}
-                      onChange={this.update('last_name')}
+                      value={this.state.lastName.input}
+                      onChange={this.update('lastName')}
                     />
                     <br />
                     <br />
                     <input
                       type="text"
-                      className="signup_input"
+                      className={!this.state.email.changed ? 
+                                  "signup_input" : 
+                                  this.state.email.changed && !this.state.email.valid ?
+                                  "signup_input error_input" :
+                                  "signup_input valid"
+                                }
                       placeholder="Email address"
-                      value={this.state.email}
+                      value={this.state.email.input}
                       onChange={this.update('email')}
+                      onfocusout={this.checkForErrors('email')}
                     />
+                    {!this.state.emailErrors ? this.renderEmailError() : null}
                     <br />
                     <br />
                     <input
                       type={this.state.type}
-                      className="signup_input"
+                      className={!this.state.password.changed ?
+                                  "signup_input" :
+                                  this.state.password.changed && !this.state.password.valid ?
+                                  "signup_input error_input" :
+                                  "signup_input valid"
+                                }
                       placeholder="Password (8+ characters)"
-                      value={this.state.password}
+                      value={this.state.password.input}
                       onChange={this.update('password')}
+                      onfocusout={this.checkForErrors('password')}
                     />
                     {
                       (this.state.type === 'password') ? (
@@ -129,6 +238,7 @@ class SessionForm extends React.Component {
                         <RiEyeLine onClick={this.handleToggle} className="eye-icon" id="open-eye" />
                       )
                     }
+                    {!this.state.passwordErrors ? this.renderPasswordError() : null}
                     <br />
                     <br />
                     <br />
@@ -154,7 +264,6 @@ class SessionForm extends React.Component {
             <h2 className="form_title">{`${title}`}</h2>
             <br />
             <span>New To Headcase? {this.props.navLink}</span>
-            {this.renderErrors()}
             <div>
               <br/>
               <input
@@ -180,6 +289,7 @@ class SessionForm extends React.Component {
                     <RiEyeLine onClick={this.handleToggle} className="eye-icon" id="open-eye" />
                   )
               }
+              {this.renderErrors()}
               <br/>
               <br/>
             </div>

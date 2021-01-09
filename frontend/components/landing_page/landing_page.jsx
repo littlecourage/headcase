@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import { FaPlay } from 'react-icons/fa';
 
 const LandingPage = ({ currentUser }) => {
 
@@ -16,6 +17,8 @@ const LandingPage = ({ currentUser }) => {
           <Link to="/signup">
             Start Your Journey
           </Link>
+          <br/>
+          <span><a href="https://github.com/littlecourage/headcase" target="_blank" ><FaPlay /></a>&emsp;See how it works</span>
 
         </div>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Greeting = ({ currentUser, logout }) => {
 
@@ -21,9 +21,9 @@ const Greeting = ({ currentUser, logout }) => {
               <a href="" className="about-link" target="_blank">About</a>
             </div>
             <nav className="header-nav">
-              <NavLink to="/login" className="login-link">LOG IN</NavLink>
+              <NavLink to="/login" className="login-link" activeClassName="signup-selected">LOG IN</NavLink>
               &nbsp;
-              <NavLink to="/signup" className="signup-link">Start free trial</NavLink>
+              <NavLink to="/signup" className="signup-link" >Start free trial</NavLink>
             </nav>
           </div>
       </header>
