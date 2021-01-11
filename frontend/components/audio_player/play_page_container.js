@@ -7,7 +7,7 @@ import PlayPage from './play_page';
 const mapStateToProps = (state, ownProps) => {
   let currentMedId = parseInt(ownProps.currentMed.id);
   let currentMed = ownProps.currentMed
-  let uPacks = Object.values(state.entities.userPacks);
+  let uPacks = ownProps.uPacks;
   let currentUp = uPacks.find(up => (
     Object.values(up.meditations).find(med => med.id === currentMedId)
   ));

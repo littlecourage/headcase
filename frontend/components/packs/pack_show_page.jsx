@@ -26,7 +26,7 @@ class PackShow extends React.Component {
   }
 
   handleAdd() {
-    let newUserPack = { userId: this.state.userId, packId: this.state.packId}
+    let newUserPack = {userId: this.state.userId, packId: this.state.packId}
     this.props.createUserPack(newUserPack)
   }
 

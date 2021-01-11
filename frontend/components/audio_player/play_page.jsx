@@ -100,13 +100,19 @@ class PlayPage extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchMeditation(this.props.currentMedId);
+    this.props.fetchMeditation(this.props.currentMedId);
     this.props.fetchAllUserPacks();
     this.handleTimeUpdate();
     this.audio.addEventListener('loadedmetadata', this.handleMetadata);
     this.audio.addEventListener('ended', this.handleCompletion);
     this.audio.addEventListener('timeupdate', this.handleTimeUpdate);
   }
+
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.uPacks.length !== prevProps.uPacks.length) {
+  //     this.props.fetchAllUserPacks();
+  //   }
+  // }
 
   componentWillUnmount() {
     this.audio.removeEventListener('ended', this.handleCompletion);
@@ -152,7 +158,14 @@ class PlayPage extends React.Component {
     // console.log(this.state.currentTimeUnMod)
     // console.log(ptCt)
     let barStyle = { width: (ptCt) + "%" }
-    debugger
+    let uP;
+
+    if (this.props.currentUp) {
+      uP = this.props.currentUp;
+      console.log(uP);
+    }
+
+    console.log(`play render: ${this.props.currentUp} ${this.state.uP}`);
     return (this.props.currentMed && this.props.currentUp && this.props.currentTrack) ?
       (
         <div className="player">

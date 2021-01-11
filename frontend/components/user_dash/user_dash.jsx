@@ -41,7 +41,6 @@ class UserDash extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log("update")
     if (this.props.medCompletions.length !== prevProps.medCompletions.length) {
       this.props.fetchAllUserPacks();
     }
