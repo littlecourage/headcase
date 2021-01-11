@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all'%>
     <%= javascript_include_tag 'application' %>
+    <%= favicon_link_tag asset_path('favicon.ico')  %>
     <script>
       window.logoUrl = "<%= image_url("new-logo-svg.svg") %>";
       window.backgroundUrl = "<%= image_url("background_img.png") %>"
@@ -18,6 +19,7 @@
       window.packListening = "<%= image_url("pack_listening.jpg") %>"
       window.footerImg = "<%= image_url("footer_background.png") %>"
     </script>
+
   </head>
 
   <body>

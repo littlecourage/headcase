@@ -5,7 +5,6 @@ import { createMeditationCompletion } from '../../actions/meditation_completions
 import PlayPage from './play_page';
 
 const mapStateToProps = (state, ownProps) => {
-
   let currentMedId = parseInt(ownProps.currentMed.id);
   let currentMed = ownProps.currentMed
   let uPacks = Object.values(state.entities.userPacks);

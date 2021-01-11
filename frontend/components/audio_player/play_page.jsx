@@ -101,12 +101,11 @@ class PlayPage extends React.Component {
 
   componentDidMount() {
     // this.props.fetchMeditation(this.props.currentMedId);
-    // this.props.fetchAllUserPacks();
+    this.props.fetchAllUserPacks();
     this.handleTimeUpdate();
     this.audio.addEventListener('loadedmetadata', this.handleMetadata);
     this.audio.addEventListener('ended', this.handleCompletion);
     this.audio.addEventListener('timeupdate', this.handleTimeUpdate);
-
   }
 
   componentWillUnmount() {
@@ -153,7 +152,7 @@ class PlayPage extends React.Component {
     // console.log(this.state.currentTimeUnMod)
     // console.log(ptCt)
     let barStyle = { width: (ptCt) + "%" }
-
+    debugger
     return (this.props.currentMed && this.props.currentUp && this.props.currentTrack) ?
       (
         <div className="player">
