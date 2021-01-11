@@ -158,14 +158,7 @@ class PlayPage extends React.Component {
     // console.log(this.state.currentTimeUnMod)
     // console.log(ptCt)
     let barStyle = { width: (ptCt) + "%" }
-    let uP;
 
-    if (this.props.currentUp) {
-      uP = this.props.currentUp;
-      console.log(uP);
-    }
-
-    console.log(`play render: ${this.props.currentUp} ${this.state.uP}`);
     return (this.props.currentMed && this.props.currentUp && this.props.currentTrack) ?
       (
         <div className="player">
