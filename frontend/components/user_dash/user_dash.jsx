@@ -50,12 +50,12 @@ class UserDash extends React.Component {
   render() {
     const { currentMed, userPacks, currentUp, currentPack, packs } = this.props;
     let progressStyle = {
-      backgroundColor: "#5A6175",
+      backgroundColor: "#413D47",
       width: "20%"
     }
     if (currentPack) {
       progressStyle = {
-        backgroundColor: "#5A6175",
+        backgroundColor: "#413D47",
         width: ((currentMed.order - 1)/currentPack.length) * 100 + "%",
       }
 

@@ -4,23 +4,23 @@ import { Link } from 'react-router-dom';
 const PackTile = ({ pack }) => {
   
   let colorStyle = {
-    backgroundColor: "#5A6175",
+    backgroundColor: "#413D47",
     width: "20%",
   }
   let textColor = {
-    color: "#5A6175"
+    color: "#413D47"
   }
 
-  if (pack.thumbnailUrl.includes('gray')) {
-    textColor = {
-      color: "#FFFFFF"
-    }
+  // if (pack.thumbnailUrl.includes('gray')) {
+  //   textColor = {
+  //     color: "#FFFFFF"
+  //   }
 
-    colorStyle = {
-      backgroundColor: "#FFFFFF",
-      width: "20%",
-    }
-  }
+  //   colorStyle = {
+  //     backgroundColor: "#FFFFFF",
+  //     width: "20%",
+  //   }
+  // }
 
   return (
       <Link to={`packs/${pack.id}`}>

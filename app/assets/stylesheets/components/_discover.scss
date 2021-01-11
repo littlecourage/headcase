@@ -7,7 +7,9 @@
 .linkBox {
   margin-left: 230px;
   width: 200px;
-  padding-top: 205px;
+  margin-top: 205px;
+  margin-bottom: 20px;
+  margin-right: 30px;
   font-family: "ApercuPro", sans-serif;
   font-size: 14px;
   color: #646A7D;
@@ -16,7 +18,7 @@
   justify-content: start;
   flex-direction: column;
   position: fixed;
-  height: 1000px;
+  height: 520px;
   overflow-y: scroll;
 
   span {
@@ -47,16 +49,18 @@
 
 .tileBox {
   flex: 2;
-  padding-top: 205px;
-  width: 1000px;
+  margin-top: 125px;
+  width: auto;
   position: fixed;
-  overflow-y: scroll;
   margin-left: 450px;
   padding-bottom: 300px;
   height: 100%;
-  overflow: scroll;
+  width: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   h2 {
+    // margin-top: 35px;
     font-size: 32px;
     font-family: "ApercuPro", sans-serif;
     font-weight: 400;
@@ -65,10 +69,15 @@
     margin-bottom: 60px;
   }
 
+  .category {
+    padding-top: 75px;
+    width: 100%;
+  }
+
   .categoryBox {
     display: flex;
     height: auto;
-    margin-bottom: 60px;
+    max-width: 970px;
 
     .innerBox {
       display: flex;
@@ -124,6 +133,11 @@
     }
 
 
+  }
+
+  .featured {
+    margin-top: 80px;
+    // margin-bottom: 70px;
   }
 
   .discover {

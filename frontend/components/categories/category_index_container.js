@@ -24,11 +24,13 @@ const mapStateToProps = (state) => {
   let userPacks = Object.values(state.entities.userPacks).map((userPack) => {
     return { ...userPack, ...state.entities.packs[userPack.packId] }
   })
+  let sleepPack = packs.find(pack => pack.title === 'Sleep');
 
   return {
     categories: Object.values(state.entities.categories),
     displayPacks: getDisplayPacks(userPacks, packs),
-    userPacks: userPacks
+    userPacks: userPacks,
+    sleepPack: sleepPack
   }
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PacksList from '../packs/packs_list';
 import { HashLink } from 'react-router-hash-link';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class CategoryIndex extends React.Component {
 
@@ -16,9 +16,9 @@ class CategoryIndex extends React.Component {
   }
 
   render() {
-    const { categories, displayPacks, userPacks } = this.props
+    const { categories, displayPacks, userPacks, sleepPack } = this.props
 
-    return (userPacks) ? (
+    return (userPacks && sleepPack) ? (
       <div className="discoverPage">
         <div className="linkBox">
           <span>PACKS</span>
@@ -34,6 +34,9 @@ class CategoryIndex extends React.Component {
         </div>
 
         <div className="tileBox">
+          <div className="featured">
+            <Link to={`packs/${sleepPack.id}`} ><img src={featuredPack} alt="link to sleep pack" /></Link>
+          </div>
           {categories.map(category => {
             
             return(
