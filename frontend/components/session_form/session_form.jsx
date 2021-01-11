@@ -99,6 +99,8 @@ class SessionForm extends React.Component {
         attributes.valid = true;
         if (field === 'password') {
           this.setState({passwordErrors: false})
+        } else if (field === 'email') {
+          this.setState({ emailErrors: false })
         }
       }
       this.setState({[field]: attributes});
@@ -240,9 +242,7 @@ class SessionForm extends React.Component {
                       onChange={this.update('email')}
                       onBlur={this.checkForErrors('email')}
                     />
-                    {this.state.emailErrors ? this.renderEmailError(title) : null}
-                    <br />
-                    <br />
+                    {this.state.emailErrors ? this.renderEmailError(title) : <><br /><br /></>}
                     <input
                       type={this.state.type}
                       className={(!this.state.password.changed && !this.state.passwordErrors) ?
@@ -264,12 +264,8 @@ class SessionForm extends React.Component {
                         <RiEyeLine onClick={this.handleToggle} className="eye-icon" id="open-eye" />
                       )
                     }
-                    {this.state.passwordErrors ? this.renderPasswordError() : null}
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
+                  {this.state.passwordErrors ? this.renderPasswordError() : <><br /><br /><br /><br /></>}
+
                   </div>
                   <button className="form_submit">CREATE AN ACCOUNT</button>
                   <br />
@@ -306,9 +302,7 @@ class SessionForm extends React.Component {
                 onChange={this.update('email')}
                 onBlur={this.checkForErrors('email')}
               />
-              {this.state.emailErrors ? this.renderEmailError(title) : null}
-              <br/>
-              <br/>
+              {this.state.emailErrors ? this.renderEmailError(title) : <><br /><br /></>}
               <input
                 type={this.state.type}
                 className={(!this.state.password.changed && !this.state.passwordErrors) ?
@@ -330,7 +324,7 @@ class SessionForm extends React.Component {
                     <RiEyeLine onClick={this.handleToggle} className="eye-icon" id="open-eye" />
                   )
               }
-              {this.state.passwordErrors ? this.renderPasswordError() : null}
+              {this.state.passwordErrors ? this.renderPasswordError() : <><br /><br /></>}
               <br/>
               {this.renderErrors()}
               <br/>
