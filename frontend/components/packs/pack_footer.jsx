@@ -45,7 +45,7 @@ import { FaPlay, FaCheck  } from 'react-icons/fa';
             <Link to={`/play/${currentTrack.id}`} onClick={added ? null : handleAdd}><FaPlay />&#8239;&ensp;BEGIN</Link>
             <span>Day {num} of {pack.title}</span>
           </div>
-          <span onClick={handleExpand}><IoIosArrowDropdown /></span>
+          <span className="opener" onClick={handleExpand}><IoIosArrowDropdown /></span>
         </div>
         <div className="progress" style={progress}>
           <div style={bar}></div>
@@ -100,7 +100,7 @@ import { FaPlay, FaCheck  } from 'react-icons/fa';
               <Link to={`/play/${currentTrack.id}`} onClick={added ? null : handleAdd}><FaPlay />&#8239;&ensp;BEGIN</Link>
               <span>Day {num} of {pack.title}</span>
             </div>
-            <span onClick={handleExpand}><IoIosArrowDropdown /></span>
+            <span className="opener" onClick={handleExpand}><IoIosArrowDropdown /></span>
           </div>
           <div className="progress" style={progress}>
             <div style={bar}></div>

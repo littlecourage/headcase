@@ -19,7 +19,7 @@
 }
 
 .user_nav {
-  width: 450px;
+  width: 370px;
   height: 60px;
   display: flex;
   align-items: center;
@@ -70,17 +70,19 @@
 }
 
 
-.profile_link {
-  font-family: "ApercuPro", sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: #646A7D;
-  letter-spacing: 1.5px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  margin-right: 14px;
-}
+// .profile_link {
+//   font-family: "ApercuPro", sans-serif;
+//   font-size: 14px;
+//   font-weight: 400;
+//   color: #646A7D;
+//   letter-spacing: 1.5px;
+//   cursor: pointer;
+//   // display: flex;
+//   // align-items: center;
+//   margin-right: 14px;
+//   position: relative;
+//   display: inline-block;
+// }
 
 .profile_pic {
   width: 38px;
@@ -88,9 +90,22 @@
   opacity: 1;
 }
 
-.profile_link:hover {
-  opacity: 0.7;
+.headerLink:hover img {
+  opacity: 0.6;
 }
+
+// .profile_link:hover .profile-dropdown {
+//   display: block;
+// }
+
+// .profile-dropdown {
+//   display: none;
+//   position: absolute;
+//   background-color: #f1f1f1;
+//   min-width: 160px;
+//   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+//   z-index: 1;
+// }
 
 nav .active:hover {
   color: #F4A566;

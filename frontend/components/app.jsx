@@ -18,6 +18,8 @@ import PackShowContainer from './packs/pack_show_container';
 import LandingPageContainer from './landing_page/landing_page_container';
 import PlayPageContainer from './audio_player/play_page_container';
 import PlayBufferContainer from './audio_player/play_buffer_container';
+import AboutContainer from './about/about_container';
+import ProfileContainer from './profile/profile';
 
 const App = () => (
   <div>
@@ -29,6 +31,8 @@ const App = () => (
       <ProtectedRoute exact path="/discover" component={CategoryIndexContainer} />
       <ProtectedRoute exact path="/packs/:packId" component={PackShowContainer} />
       <ProtectedRoute exact path="/play/:meditationId" component={PlayBufferContainer} />
+      <Route exact path="/about" component={AboutContainer} />
+      <ProtectedRoute exact path="/profile" component={ProfileContainer} />
       <AuthRoute exact path="/" component={LandingPageContainer} />
     </Switch>
   </div>

@@ -62,15 +62,16 @@ const Greeting = ({ currentUser, logout }) => {
             DISCOVER
           </NavLink>
           &nbsp;
-          <button className="headerLink" onClick={logout}>LOG OUT</button>
-          &nbsp;
-          <span className="profile_link">{`${name}`}&emsp;
-            <img 
-              src={window.profilePicUrl} 
-              alt="profile pic" 
-              className="profile_pic" 
-            />
-          </span>
+          {/* <button className="headerLink" onClick={logout}>LOG OUT</button>
+          &nbsp; */}
+          <NavLink to="/profile" className="headerLink" activeStyle={{ color: "#F4A566" }}>
+              {`${name}`}&emsp;
+              <img 
+                src={window.profilePicUrl} 
+                alt="profile pic" 
+                className="profile_pic" 
+              />
+          </NavLink>
 
         </nav>
       </header>

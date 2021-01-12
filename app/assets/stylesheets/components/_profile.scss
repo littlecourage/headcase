@@ -1,0 +1,99 @@
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+.background {
+  width: 100vw;
+  margin-top: 60px;
+  
+}
+
+.profile-content {
+  position: absolute;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 550px;
+
+  .links {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+
+  .headshot {
+    width: 167px;
+    height: 167px;
+    border-radius: 50%;
+    img {
+      width: 100%;
+      border-radius: 50%;
+      filter: grayscale(100%);
+    }
+  }
+
+  a, button {
+    background-color: #5A6175;
+    border-radius: 50px;
+    color: #FFFFFF;
+    box-shadow: 0rem 0.125rem 0rem rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    padding: 0px 32px;
+    width: 280px;
+    height: 80px;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 700;
+    font-family: "ApercuPro-Medium", sans-serif;
+    letter-spacing: 2.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out 0s;
+    outline: none;
+  }
+
+  .info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 650px;
+
+    h2, p {
+      color: #5A6175;
+      font-size: 56px;
+      font-family: "ApercuPro", sans-serif;
+    }
+
+    p {
+      font-size: 20px;
+      text-align: center;
+      font-weight: 400;
+      line-height: 32px;
+      padding-bottom: 16px;
+    }
+    button {
+      width: 100px;
+      height: 40px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  a:hover, button:hover {
+    background-color: rgb(81,87,105);
+  }
+}

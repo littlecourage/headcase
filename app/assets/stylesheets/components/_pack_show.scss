@@ -72,7 +72,6 @@
 }
 
 .open, .close {
-  border: red 1px solid;
   display: flex;
   justify-content: center;
   overflow: hidden;
@@ -161,26 +160,6 @@
   }
 }
 
-.open {
-  height: 500px;
-  transition: height 0.5s;
-  span svg {
-    transform: rotate(0deg);
-    transition: -webkit-transform 0.5s cubic-bezier(0.85, -0.06, 0.35, 1.26) 0.3s, transform 0.5s cubic-bezier(0.85, -0.06, 0.35, 1.26) 0.3s;
-  }
-  .outer {
-    height: 98px;
-  }
-}
-
-.close {
-  height: 95px;
-  transition: height 0.5s;
-  span svg {
-    transform: rotate(180deg);
-    transition: -webkit-transform 0.5s cubic-bezier(0.85, -0.06, 0.35, 1.26) 0.3s, transform 0.5s cubic-bezier(0.85, -0.06, 0.35, 1.26) 0.3s;
-  }
-}
 
 .meditation {
   position: absolute;
@@ -243,6 +222,31 @@
       svg {
         color: rgb(65, 61, 71);
       }
+    }
+  }
+}
+
+.open {
+  height: 500px;
+  transition: height 0.5s; 
+  .outer {
+    height: 98px;
+  }
+  .description {
+    .opener svg {
+      transform: rotate(0deg);
+      transition: -webkit-transform 0.5s cubic-bezier(0.85, -0.06, 0.35, 1.26) 0.3s, transform 0.5s cubic-bezier(0.85, -0.06, 0.35, 1.26) 0.3s;
+    }
+  }
+}
+
+.close {
+  height: 95px;
+  transition: height 0.5s;
+  .description {
+    .opener svg {
+      transform: rotate(180deg);
+      transition: -webkit-transform 0.5s cubic-bezier(0.85, -0.06, 0.35, 1.26) 0.3s, transform 0.5s cubic-bezier(0.85, -0.06, 0.35, 1.26) 0.3s;
     }
   }
 }
