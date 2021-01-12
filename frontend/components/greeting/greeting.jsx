@@ -19,7 +19,7 @@ const Greeting = ({ currentUser, logout }) => {
               <a href="https://angel.co/u/christine-adams-5" className="about-link" target="_blank">AngelList</a>
               <a href="https://littlecourage.github.io/" className="about-link" target="_blank">Portfolio</a>
               <a href="https://www.linkedin.com/in/christine-adams-180646123/" className="about-link" target="_blank">LinkedIn</a>
-              {/* <a href="" className="about-link" target="_blank">About</a> */}
+            <NavLink to="/about" className="about-link">About</NavLink>
             </div>
             <nav className="header-nav">
               <NavLink to="/login" className="login-link" activeClassName="signup-selected">LOG IN</NavLink>
