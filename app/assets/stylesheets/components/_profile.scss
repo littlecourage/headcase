@@ -18,7 +18,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 550px;
+  height: auto;
 
   .links {
     width: 100%;
@@ -39,7 +39,7 @@
     }
   }
 
-  a, button {
+  .links a, .links button, .info button {
     background-color: #5A6175;
     border-radius: 50px;
     color: #FFFFFF;
@@ -70,6 +70,10 @@
     justify-content: space-between;
     width: 650px;
 
+    h2 {
+      margin-bottom: 30px;
+    }
+
     h2, p {
       color: #5A6175;
       font-size: 56px;
@@ -91,9 +95,27 @@
       align-items: center;
       justify-content: center;
     }
+
   }
 
-  a:hover, button:hover {
+  .links a:hover, .links button:hover .info button:hover {
     background-color: rgb(81,87,105);
   }
+}
+
+.profile-links {
+  color: #5A6175;
+  width: 70%;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: none;
+  margin: 0px;
+  padding: 0px;
+  a {
+    font-size: 20px;
+  }
+}
+
+.profile-links a:hover {
+  color: #F4A566;
 }

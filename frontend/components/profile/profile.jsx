@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { logout } from '../../actions/session_actions';
 import { NavLink } from 'react-router-dom';
+import { FaGithub, FaAngellist, FaLinkedin, FaUserCircle } from "react-icons/fa";
 
 const mapStateToProps = (state) => {
   return {
@@ -36,11 +37,10 @@ class Profile extends React.Component {
         <img className="background" src={window.profileBackground} alt="patterened background"/>
         <div className="profile-content">
           <div className="links">
-
-          <NavLink to="/about">About Headcase</NavLink>
-          <button onClick={this.handleMeet}>Meet Christine</button>
-          <button onClick={this.props.logout}>Log Out</button>
-          </div>
+            <NavLink to="/about">About Headcase</NavLink>
+            <button onClick={this.handleMeet}>Meet Christine</button>
+            <button onClick={this.props.logout}>Log Out</button>
+            </div>
         </div>
       </div>
     ) : (
@@ -51,6 +51,12 @@ class Profile extends React.Component {
             <h2>Christine Adams</h2>
             <div className="headshot">
               <img src={window.headshot} alt="photo of Christine Adams, headcase developer"/>
+            </div>
+            <div className="profile-links">
+                <a href="https://github.com/littlecourage/headcase" className="about-link" target="_blank"><FaGithub /></a>
+                <a href="https://angel.co/u/christine-adams-5" className="about-link" target="_blank"><FaAngellist /></a>
+                <a href="https://www.linkedin.com/in/christine-adams-180646123/" className="about-link" target="_blank"><FaLinkedin/></a>
+                <a href="https://littlecourage.github.io/" className="about-link" target="_blank"><FaUserCircle /></a>
             </div>
             <p>
               Christine Adams is a software engineer who is passionate about combining
