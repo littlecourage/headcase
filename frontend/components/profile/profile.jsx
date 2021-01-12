@@ -53,7 +53,7 @@ class Profile extends React.Component {
               <img src={window.headshot} alt="photo of Christine Adams, headcase developer"/>
             </div>
             <div className="profile-links">
-                <a href="https://github.com/littlecourage/headcase" className="about-link" target="_blank"><FaGithub /></a>
+                <a href="https://github.com/littlecourage" className="about-link" target="_blank"><FaGithub /></a>
                 <a href="https://angel.co/u/christine-adams-5" className="about-link" target="_blank"><FaAngellist /></a>
                 <a href="https://www.linkedin.com/in/christine-adams-180646123/" className="about-link" target="_blank"><FaLinkedin/></a>
                 <a href="https://littlecourage.github.io/" className="about-link" target="_blank"><FaUserCircle /></a>
