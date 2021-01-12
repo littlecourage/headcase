@@ -1,61 +1,62 @@
 
-.discoverPage {
-  overflow: hidden;
-  height: 100%;
-}
+// .discoverPage {
+//   overflow: hidden;
+//   height: 100%;
+// }
 
-.linkBox {
-  margin-left: 230px;
-  width: 200px;
-  margin-top: 205px;
-  margin-bottom: 20px;
-  margin-right: 30px;
-  font-family: "ApercuPro", sans-serif;
-  font-size: 14px;
-  color: #646A7D;
-  letter-spacing: 1.5px;
-  display: flex;
-  justify-content: start;
-  flex-direction: column;
-  position: fixed;
-  height: 520px;
-  overflow-y: scroll;
+// .linkBox {
+//   padding-left: 200px;
+//   margin-top: 205px;
+//   margin-bottom: 20px;
+//   padding-right: 30px;
+//   max-width: 650px;
+//   font-family: "ApercuPro", sans-serif;
+//   font-size: 14px;
+//   color: #646A7D;
+//   letter-spacing: 1.5px;
+//   display: flex;
+//   justify-content: start;
+//   flex-direction: column;
+//   position: fixed;
+//   height: 520px;
+//   overflow-y: scroll;
 
-  span {
-    color: #F4A566;
-    font-size: 16px;
-    margin: 0px 0px 35px 3px;
-    padding-left: 11px;
-  }
+//   span {
+//     color: #F4A566;
+//     font-size: 16px;
+//     margin: 0px 0px 35px 3px;
+//     padding-left: 11px;
+//   }
 
-  .hashLink {
-    cursor: pointer;
-    text-decoration: none;
-    font-family: "ApercuPro", sans-serif;
-    font-size: 16px;
-    color: #5A6175;
-    letter-spacing: 1.5px;
-    margin: 8px;
-    padding: 3px;
-    text-decoration: none;
-  }
+//   .hashLink {
+//     cursor: pointer;
+//     text-decoration: none;
+//     font-family: "ApercuPro", sans-serif;
+//     font-size: 16px;
+//     color: #5A6175;
+//     letter-spacing: 1.5px;
+//     margin: 8px;
+//     padding: 3px;
+//     text-decoration: none;
+//   }
 
-  .hashLink:hover {
-    color: #C3C6CD;
-  }
+//   .hashLink:hover {
+//     color: #C3C6CD;
+//   }
 
-}
+// }
 
 
 .tileBox {
   flex: 2;
   margin-top: 125px;
+  // margin-left: 30px;
   width: auto;
   position: fixed;
-  margin-left: 450px;
-  padding-bottom: 300px;
+  margin-left: 480px;
+  padding-bottom: 250px;
   height: 100%;
-  width: auto;
+  width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
 
@@ -148,3 +149,181 @@
   }
 
 }
+
+.discoverPage {
+  overflow: hidden;
+  height: 100%;
+}
+
+.linkBox {
+  padding-left: 200px;
+  margin-top: 205px;
+  margin-bottom: 20px;
+  padding-right: 30px;
+  max-width: 650px;
+  font-family: "ApercuPro", sans-serif;
+  font-size: 14px;
+  color: #646A7D;
+  letter-spacing: 1.5px;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  position: fixed;
+  height: 520px;
+  overflow-y: scroll;
+
+  span {
+    color: #F4A566;
+    font-size: 16px;
+    margin: 0px 0px 35px 3px;
+    padding-left: 11px;
+  }
+
+  .hashLink {
+    cursor: pointer;
+    text-decoration: none;
+    font-family: "ApercuPro", sans-serif;
+    font-size: 16px;
+    color: #5A6175;
+    letter-spacing: 1.5px;
+    margin: 8px;
+    padding: 3px;
+    text-decoration: none;
+  }
+
+  .hashLink:hover {
+    color: #C3C6CD;
+  }
+
+}
+
+// .linkBox {
+//   margin-left: 230px;
+//   width: 200px;
+//   padding-top: 205px;
+//   font-family: "ApercuPro", sans-serif;
+//   font-size: 14px;
+//   color: #646A7D;
+//   letter-spacing: 1.5px;
+//   display: flex;
+//   justify-content: start;
+//   flex-direction: column;
+//   position: fixed;
+//   height: 1000px;
+//   overflow-y: scroll;
+
+//   span {
+//     color: #F4A566;
+//     font-size: 16px;
+//     margin: 0px 0px 35px 3px;
+//     padding-left: 11px;
+//   }
+
+//   .hashLink {
+//     cursor: pointer;
+//     text-decoration: none;
+//     font-family: "ApercuPro", sans-serif;
+//     font-size: 16px;
+//     color: #5A6175;
+//     letter-spacing: 1.5px;
+//     margin: 8px;
+//     padding: 3px;
+//     text-decoration: none;
+//   }
+
+//   .hashLink:hover {
+//     color: #C3C6CD;
+//   }
+
+// }
+
+
+// .tileBox {
+//   flex: 2;
+//   padding-top: 205px;
+//   width: 1000px;
+//   position: fixed;
+//   overflow-y: scroll;
+//   margin-left: 450px;
+//   padding-bottom: 300px;
+//   height: 100%;
+//   overflow: scroll;
+
+//   h2 {
+//     font-size: 32px;
+//     font-family: "ApercuPro", sans-serif;
+//     font-weight: 400;
+//     color: #5A6175;
+//     letter-spacing: 1.5px;
+//     margin-bottom: 60px;
+//   }
+
+//   .categoryBox {
+//     display: flex;
+//     height: auto;
+//     margin-bottom: 60px;
+
+//     .innerBox {
+//       display: flex;
+//       flex-wrap: wrap;
+//     }
+
+//     .pack {
+//       width: 270px;
+
+//       img {
+//         width: 245px;
+//         height: 300px;
+//         border-radius: 4px;
+//         margin: 12px;
+//       }
+
+//       .pack_text {
+//         height: 330px;
+//         width: 270px;
+//         display: flex;
+//         justify-content: space-between;
+//         flex-direction: column;
+//         position: absolute;
+//         margin-top: -332px;
+//         width: 200px;
+//         height: 300px;
+//         // padding: 12px;
+
+//         h4 {
+//           font-size: 24px;
+//           line-height: 40px;
+//           font-family: "ApercuPro", sans-serif;
+//           font-weight: 700;
+//           letter-spacing: 1.5px;
+//           padding-top: 65px;
+//           padding-left: 40px;
+//         }
+
+//         span {
+//           font-family: "ApercuPro", sans-serif;
+//           font-size: 16px;
+//           font-weight: 400;
+//           padding-left: 40px;
+//           margin-bottom: 30px;
+//         }
+//       }
+
+//       .progress_bar_mini {
+//         width: 190px;
+//         margin-left: 40px;
+//       }
+
+//     }
+
+
+//   }
+
+//   .discover {
+//     border-radius: 10px;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: flex-start;
+//   }
+
+// }
