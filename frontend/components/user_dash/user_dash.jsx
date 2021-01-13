@@ -18,7 +18,6 @@ class UserDash extends React.Component {
 
   handleMorePacks() {
     if (this.state.addButtonClicked === true) {
-      console.log(true);
       <Redirect to="/discover" />
     } else {
       this.setState( { addButtonClicked: true, packsToShow: this.state.packsLength } )

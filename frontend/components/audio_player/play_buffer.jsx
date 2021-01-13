@@ -6,9 +6,6 @@ class PlayBuffer extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = {
-      userPack: null
-    }
     this.handleBack = this.handleBack.bind(this);
   }
 

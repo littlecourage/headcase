@@ -23,8 +23,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchMeditation: (medId) => dispatch(fetchMeditation(medId)),
-    fetchAllUserPacks: () => dispatch(fetchAllUserPacks()),
-    showUser: (userId) => dispatch(showUser(userId))
+    fetchAllUserPacks: () => dispatch(fetchAllUserPacks())
   }
 }
 
