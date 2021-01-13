@@ -62,9 +62,11 @@ class User < ApplicationRecord
     pack1 = Pack.find_by(title: 'Happiness')
     pack2 = Pack.find_by(title: "Sleep")
     pack3 = Pack.find_by(title: "Restlessness")
+    pack4 = Pack.find_by(title: "Managing Anxiety")
     self.user_packs.create(user_id: self.id, pack_id: pack1.id)
     self.user_packs.create(user_id: self.id, pack_id: pack2.id)
     self.user_packs.create(user_id: self.id, pack_id: pack3.id)
+    self.user_packs.create(user_id: self.id, pack_id: pack4.id)
   end
 
   def last_med_com
