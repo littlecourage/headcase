@@ -19,6 +19,12 @@ class PlayBuffer extends React.Component {
     this.props.fetchMeditation(this.props.match.params.meditationId);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.uPacks.length > this.props.uPacks.length){
+      this.props.fetchAllUserPacks();
+    }
+  }
+
   render() {
     return (this.props.currentMed && this.props.currentMedId == this.props.currentMed.id && this.props.uPacks) ? (
       <PlayPage currentMed={this.props.currentMed} currentUp={this.props.currentUp} uPacks={this.props.uPacks} handleBack={this.handleBack}/>

@@ -6,7 +6,7 @@ import rootReducer from "../reducers/root_reducer";
 
 const configureStore = (preloadedState = {}) =>
 //logger gets added right next to thunk inside of the applyMiddleware func
-  createStore(rootReducer, preloadedState, applyMiddleware(thunk));
+  createStore(rootReducer, preloadedState, applyMiddleware(thunk, logger));
 
 export default configureStore;
 
