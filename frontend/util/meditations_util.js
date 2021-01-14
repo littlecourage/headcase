@@ -13,3 +13,10 @@ export const fetchMeditation = (meditationId) => {
     url: `/api/meditations/${meditationId}`
   })
 }
+
+export const fetchMedUserPack = (meditationId) => {
+  return $.ajax({
+    medthod: 'GET',
+    url: `/api/meditations/${meditationId}/up`
+  })
+}

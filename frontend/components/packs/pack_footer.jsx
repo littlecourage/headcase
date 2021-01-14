@@ -42,7 +42,7 @@ import { FaPlay, FaCheck  } from 'react-icons/fa';
         <img src={window.footerImg} alt="background image" />
         <div className="description">
           <div>
-            <Link to={`/play/${currentTrack.id}`} onClick={added ? null : handleAdd}><FaPlay />&#8239;&ensp;BEGIN</Link>
+            <Link to={`/play/${currentTrack.id}`} onClick={added ? null : handleAdd(currentTrack.id)}><FaPlay />&#8239;&ensp;BEGIN</Link>
             <span>Day {num} of {pack.title}</span>
           </div>
           <span className="opener" onClick={handleExpand}><IoIosArrowDropdown /></span>
@@ -75,7 +75,7 @@ import { FaPlay, FaCheck  } from 'react-icons/fa';
             <div key={med.id}>
               {
                 (med.order === 1) ? (
-                    <Link to={`/play/${med.id}`} className="play-icon" onClick={added ? null : handleAdd}>
+                    <Link to={`/play/${med.id}`} className="play-icon" onClick={added ? null : handleAdd(med.id)}>
                     <FaPlay /> 
                   </Link>
                 ) : (
@@ -97,7 +97,7 @@ import { FaPlay, FaCheck  } from 'react-icons/fa';
         <div className="outer">
           <div className="description">
             <div>
-              <Link to={`/play/${currentTrack.id}`} onClick={added ? null : handleAdd}><FaPlay />&#8239;&ensp;BEGIN</Link>
+              <Link to={`/play/${currentTrack.id}`} onClick={added ? null : handleAdd(currentTrack.id)}><FaPlay />&#8239;&ensp;BEGIN</Link>
               <span>Day {num} of {pack.title}</span>
             </div>
             <span className="opener" onClick={handleExpand}><IoIosArrowDropdown /></span>

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import PackShow from './pack_show_page';
+import { receiveCurrentMed, receiveCurrentUp } from '../../actions/player_actions';
 import { fetchPack } from '../../actions/packs_actions';
 import { fetchAllUserPacks, 
         deleteUserPack, 
@@ -21,7 +22,9 @@ const mapDispatchToProps = (dispatch) => {
     fetchPack: (packId) => dispatch(fetchPack(packId)),
     fetchAllUserPacks: () => dispatch(fetchAllUserPacks()),
     createUserPack: (userPack) => dispatch(createUserPack(userPack)),
-    deleteUserPack: (userPackId) => dispatch(deleteUserPack(userPackId))
+    deleteUserPack: (userPackId) => dispatch(deleteUserPack(userPackId)), 
+    receiveCurrentMed: (currentMed) => dispatch(receiveCurrentMed(currentMed)),
+    receiveCurrentUp: (currentUp) => dispatch(receiveCurrentUp(currentUp))
   }
 }
 

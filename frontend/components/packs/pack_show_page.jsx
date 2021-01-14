@@ -25,9 +25,17 @@ class PackShow extends React.Component {
     this.props.fetchAllUserPacks();
   }
 
-  handleAdd() {
-    let newUserPack = {userId: this.state.userId, packId: this.state.packId}
-    this.props.createUserPack(newUserPack)
+  handleAdd(path) {
+    console.log('in handle add')
+    return e => {
+      e.preventDefault();
+      let newUserPack = {userId: this.state.userId, packId: this.state.packId}
+      this.props.createUserPack(newUserPack)
+      if (path) {
+        this.props.receiveCurrentMed(path);
+        this.props.history.push(`/play/${path}`);
+      }
+    }
   }
 
   handleRemove() {

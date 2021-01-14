@@ -8,14 +8,14 @@ const mapStateToProps = (state, ownProps) => {
   let currentMedId = parseInt(ownProps.currentMed.id);
   let currentMed = ownProps.currentMed
   let uPacks = ownProps.uPacks;
-  let currentUp = uPacks.find(up => (
-    Object.values(up.meditations).find(med => med.id === currentMedId)
-  ));
+  // let currentUp = uPacks.find(up => (
+  //   Object.values(up.meditations).find(med => med.id === currentMedId)
+  // ));
   let currentTrack = currentMed.trackUrl;
   return {
     currentMedId: currentMedId,
     currentMed: currentMed,
-    currentUp: currentUp, 
+    currentUp: ownProps.currentUp, 
     currentTrack: currentTrack
   }
 }

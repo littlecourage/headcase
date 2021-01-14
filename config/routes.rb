@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     resources :packs, only: [:index, :show]
     resources :categories, only: [:index, :show]
     resources :user_packs, only: [:index, :show, :create, :destroy]
-    resources :meditations, only: [:index, :show]
+    resources :meditations, only: [:index, :show] do
+      get "/up", to: "user_packs#current_user_pack"
+    end
     resources :meditation_completions, only: [:index, :create, :show]
   end
 

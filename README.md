@@ -1,24 +1,17 @@
-# README
+![](./app/assets/images/new-logo-svg.svg)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
 
-Things you may want to cover:
+headcase is a single page web app clone of of the meditation website [headspace](https://www.headspace.com/) that allows users to stream guided meditations. Check out the live site [here](https://headcase-aa.herokuapp.com/#/)!
 
-* Ruby version
+## Tech Stack
 
-* System dependencies
+* React
+* Redux
+* Ruby on Rails
+* PostgreSQL
+* AWS S3
+* HTMLAudioElement API
+* SCSS
+* Heroku
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

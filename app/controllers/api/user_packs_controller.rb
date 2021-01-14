@@ -23,6 +23,14 @@ class Api::UserPacksController < ApplicationController
     end
   end
 
+  def current_user_pack
+
+    meditation = Meditation.find(params[:meditation_id])
+    @user_pack = meditation.user_packs.where(user_id: current_user.id)[0]
+  
+    render :show
+  end
+
   def destroy
     @user_pack = UserPack.find(params[:id])
 
@@ -34,7 +42,7 @@ class Api::UserPacksController < ApplicationController
   end
 
   def user_pack_params
-    params.require(:userPack).permit(:packId, :userId)
+    params.require(:userPack).permit(:packId, :userId, :meditation_id)
   end
 
 end

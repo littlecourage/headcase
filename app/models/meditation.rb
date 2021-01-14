@@ -12,8 +12,8 @@ class Meditation < ApplicationRecord
     class_name: "MeditationCompletion"
 
   has_many :user_packs,
-    through: :meditation_completions,
-    source: :user_pack
+    through: :pack,
+    source: :user_packs
 
   has_one_attached :track
 
