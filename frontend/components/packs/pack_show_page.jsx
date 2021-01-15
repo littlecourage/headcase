@@ -26,7 +26,6 @@ class PackShow extends React.Component {
   }
 
   handleAdd(path) {
-    console.log('in handle add')
     return e => {
       e.preventDefault();
       // this.props.clearPlayer();
@@ -59,7 +58,7 @@ class PackShow extends React.Component {
     const { pack, userPacks } = this.props;
     const { expanded } = this.state;
 
-    return (pack) ? (
+    return (pack && userPacks ) ? (
       <div>
         <div className="showContainer">
           <div className="showText">
