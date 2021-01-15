@@ -7,15 +7,22 @@ import { receiveCurrentMed, fetchMedUserPack } from '../../actions/player_action
 
 
 const mapStateToProps = (state, ownProps) => {
+  
   let currentMedId = parseInt(ownProps.match.params.meditationId);
   let uPacks = Object.values(state.entities.userPacks);
   // let currentUp = uPacks.find(up => (
   //   Object.values(up.meditations).find(med => med.id === currentMedId)
   // )) || null;
   let currentUpId = null;
-
+  let included = false;
   if (state.ui.player.currentUp) {
     currentUpId = state.ui.player.currentUp.id
+    let meds = Object.keys(state.ui.player.currentUp.meditations).map(med => med.toString());
+    if (meds.includes(`${currentMedId}`)) {
+      included = true;
+    }
+    console.log(ownProps.match.params.meditationId)
+    console.log(meds);
   }
 
   return {
@@ -24,6 +31,7 @@ const mapStateToProps = (state, ownProps) => {
     currentUp: state.ui.player.currentUp,
     currentUpId: currentUpId,
     uPacks: uPacks,
+    included: included,
     currentMed: Object.values(state.entities.meditations).find(med => med.id === currentMedId)
   }
 }

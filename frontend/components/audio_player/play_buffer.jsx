@@ -26,19 +26,24 @@ class PlayBuffer extends React.Component {
 
   componentDidUpdate(prevProps) {
     //check if meditation id changes and then do new backend call
-    if (this.props.currentUpId!== prevProps.currentUpId || this.props.meditationId !== prevProps.meditationId) {
+    if (this.props.currentUpId !== prevProps.currentUpId || this.props.meditationId !== prevProps.meditationId) {
       this.props.fetchMedUserPack(this.props.match.params.meditationId);
     }
-    // if (prevProps.uPacks.length > this.props.uPacks.length){
-    //   this.props.fetchAllUserPacks();
-    // }
   }
 
   render() {
     console.log('play buffer render')
     console.log(this.props.currentUp)
-    return (this.props.currentMed && this.props.currentMedId == this.props.currentMed.id && this.props.currentUp) ? (
-      <PlayPage currentMed={this.props.currentMed} currentUp={this.props.currentUp} uPacks={this.props.uPacks} handleBack={this.handleBack}/>
+    console.log(this.props.currentMedId)
+    console.log(this.props.included);
+    return (this.props.currentMed &&
+             this.props.currentMedId == this.props.currentMed.id && 
+             this.props.currentUp) ? (
+      <PlayPage 
+        currentMed={this.props.currentMed} 
+        currentUp={this.props.currentUp} 
+        uPacks={this.props.uPacks} 
+        handleBack={this.handleBack}/>
     ) : (
       null
     )

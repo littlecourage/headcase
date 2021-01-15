@@ -160,8 +160,9 @@ class PlayPage extends React.Component {
     let barStyle = { width: (ptCt) + "%" }
 
     console.log('play page render')
-    console.log(this.props.currentUp)
-
+    console.log(this.props.currentUp.id)
+    console.log(this.props.currentMed.id)
+    
     return (this.props.currentMed && this.props.currentUp && this.props.currentTrack) ?
       (
         <div className="player">

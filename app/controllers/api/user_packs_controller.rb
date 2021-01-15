@@ -15,8 +15,10 @@ class Api::UserPacksController < ApplicationController
     @pack = Pack.find(params[:userPack][:packId])
     @user = current_user
 
-    @user_pack = UserPack.new(user_id: @current_user.id, pack_id: @pack.id)
+    @user_pack = UserPack.new(user_id: @user.id, pack_id: @pack.id)
+
     if @user_pack.save
+  
       render :show
     else
       render json: @user_pack.errors.full_messages, status: 422
@@ -24,11 +26,13 @@ class Api::UserPacksController < ApplicationController
   end
 
   def current_user_pack
-
     meditation = Meditation.find(params[:meditation_id])
-    @user_pack = meditation.user_packs.where(user_id: current_user.id)[0]
-  
-    render :show
+    @user_pack = meditation.user_packs.where(user_id: current_user.id).last
+    unless @user_pack
+      render json: ["Can't find that user pack"], status: 404
+    else
+      render :show
+    end
   end
 
   def destroy

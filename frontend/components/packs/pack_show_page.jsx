@@ -29,8 +29,10 @@ class PackShow extends React.Component {
     console.log('in handle add')
     return e => {
       e.preventDefault();
+      // this.props.clearPlayer();
       let newUserPack = {userId: this.state.userId, packId: this.state.packId}
       this.props.createUserPack(newUserPack)
+      
       if (path) {
         this.props.receiveCurrentMed(path);
         this.props.history.push(`/play/${path}`);
@@ -72,7 +74,7 @@ class PackShow extends React.Component {
               .includes(pack.id) ? 
               (<div className="selectOrRemove" onClick={this.handleRemove}><span className="icon"><IoIosCloseCircleOutline /></span> 
                 <span >&emsp;REMOVE FROM MY PACKS</span></div>) 
-              : (<div className="selectOrRemove" onClick={this.handleAdd}><span className="icon"><IoIosAddCircleOutline /></span> 
+              : (<div className="selectOrRemove" onClick={this.handleAdd()}><span className="icon"><IoIosAddCircleOutline /></span> 
                 <span>&emsp;ADD TO MY PACKS</span></div>)}
           </div>
           <div className="showImg">
