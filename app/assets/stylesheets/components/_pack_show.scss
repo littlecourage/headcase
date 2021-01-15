@@ -39,6 +39,7 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  width: 300px;
   span {
     letter-spacing: 3px;
     font-family: "ApercuPro", sans-serif;
@@ -75,8 +76,10 @@
   display: flex;
   justify-content: center;
   overflow: hidden;
-    img {
+  width: 100%;
+  img {
     position: absolute;
+    width: 100vw;
     top: 0;
     left: 0;
   }

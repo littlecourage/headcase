@@ -55,10 +55,26 @@ class SessionForm extends React.Component {
 
   handleDemoUser(e) {
     e.preventDefault();
+    const makeEmail = () => {
+      const letters = "abcdefghijkl123456789";
+      let email = '';
+      for (let i = 0; i < 10; i ++) {
+        let idx = Math.floor(Math.random() * letters.length);
+        let letter = letters[idx];
+        email += letter;
+      }
+      email += "@test.com";
+      return email;
+    }
+    const names = ["Cheryl", "Ron", "Kathy", "Jason", "Bailey"];
     const user = ({
-      email: "email@email.email",
+      first_name: names[Math.floor(Math.random() * names.length)],
+      last_name: "User",
+      email: makeEmail(),
       password: "password"
     })
+
+    console.log(user.email)
     this.props.loginDemo(user);
   }
 

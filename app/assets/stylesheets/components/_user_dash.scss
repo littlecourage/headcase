@@ -11,11 +11,12 @@
   flex-direction: column;
   align-items: flex-start;
   margin-top: 95px;
+  width: 100vw;
 }
 
 .dashBackground {
   height: 548px;
-  width: 100%;
+  width: 100vw;
   overflow: hidden;
   position: relative;
   img {
@@ -36,7 +37,7 @@
   height: 300px;
   margin-right: 200px;
   padding-top: 20px;
-  padding-left: 185px;
+  margin-left: 20%;
 
   h1 {
     color: #413D47;
