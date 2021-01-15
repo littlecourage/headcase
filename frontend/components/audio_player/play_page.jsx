@@ -154,16 +154,12 @@ class PlayPage extends React.Component {
   render() {
     let width = 200;
     let ptCt = (this.state.currentTimeUnMod / width) * 100;
-    // console.log("currentTime")
-    // console.log(this.state.currentTimeUnMod)
-    // console.log(ptCt)
-    let barStyle = { width: (ptCt) + "%" }
 
-    console.log('play page render')
-    console.log(this.props.currentUp.id)
-    console.log(this.props.currentMed.id)
+    let barStyle = { width: (ptCt) + "%" }
     
-    return (this.props.currentMed && this.props.currentUp && this.props.currentTrack) ?
+    return (this.props.currentMed && 
+      this.props.currentUp && 
+      this.props.currentTrack) ?
       (
         <div className="player">
           <img src={window.footerImg} className="playerBackground" />

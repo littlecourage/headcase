@@ -32,13 +32,10 @@ class PlayBuffer extends React.Component {
   }
 
   render() {
-    console.log('play buffer render')
-    console.log(this.props.currentUp)
-    console.log(this.props.currentMedId)
-    console.log(this.props.included);
     return (this.props.currentMed &&
              this.props.currentMedId == this.props.currentMed.id && 
-             this.props.currentUp) ? (
+             this.props.currentUp &&
+             this.props.included) ? (
       <PlayPage 
         currentMed={this.props.currentMed} 
         currentUp={this.props.currentUp} 

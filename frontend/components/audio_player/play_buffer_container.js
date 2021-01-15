@@ -10,9 +10,6 @@ const mapStateToProps = (state, ownProps) => {
   
   let currentMedId = parseInt(ownProps.match.params.meditationId);
   let uPacks = Object.values(state.entities.userPacks);
-  // let currentUp = uPacks.find(up => (
-  //   Object.values(up.meditations).find(med => med.id === currentMedId)
-  // )) || null;
   let currentUpId = null;
   let included = false;
   if (state.ui.player.currentUp) {
@@ -21,8 +18,6 @@ const mapStateToProps = (state, ownProps) => {
     if (meds.includes(`${currentMedId}`)) {
       included = true;
     }
-    console.log(ownProps.match.params.meditationId)
-    console.log(meds);
   }
 
   return {
