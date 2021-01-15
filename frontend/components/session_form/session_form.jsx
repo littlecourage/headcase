@@ -74,7 +74,6 @@ class SessionForm extends React.Component {
       password: "password"
     })
 
-    console.log(user.email)
     this.props.loginDemo(user);
   }
 
