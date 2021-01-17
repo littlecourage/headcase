@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import PackShow from './pack_show_page';
-import { receiveCurrentMed, receiveCurrentUp, clearPlayer } from '../../actions/player_actions';
+import { receiveCurrentMed } from '../../actions/player_actions';
 import { fetchPack } from '../../actions/packs_actions';
 import { fetchAllUserPacks, 
         deleteUserPack, 
@@ -24,8 +24,6 @@ const mapDispatchToProps = (dispatch) => {
     createUserPack: (userPack) => dispatch(createUserPack(userPack)),
     deleteUserPack: (userPackId) => dispatch(deleteUserPack(userPackId)), 
     receiveCurrentMed: (currentMed) => dispatch(receiveCurrentMed(currentMed)),
-    receiveCurrentUp: (currentUp) => dispatch(receiveCurrentUp(currentUp)),
-    clearPlayer: () => dispatch(clearPlayer())
   }
 }
 

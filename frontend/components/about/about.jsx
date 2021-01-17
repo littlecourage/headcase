@@ -12,7 +12,7 @@ const About = () => {
         <h1>About This Project</h1>
         <p>headcase is a single page web app clone of the meditation site
             <a href="https://www.headspace.com/" className="about-link" target="_blank">headspace</a>
-          built by <a href="https://littlecourage.github.io/" target="_blank">Christine Adams</a>.
+          created by <a href="https://littlecourage.github.io/" target="_blank">Christine Adams</a>.
         </p>
         <p>It was built with a Ruby on Rails backend and a React/Redux frontend.</p>
         <a href="https://github.com/littlecourage/headcase" className="git-link" target="_blank">Checkout the GitHub</a>.
