@@ -66,7 +66,6 @@ class PlayPage extends React.Component {
         this.positionTime(position);
       }
     }
-
   }
 
   togglePlay() {
@@ -100,19 +99,11 @@ class PlayPage extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchMeditation(this.props.currentMedId);
-    // this.props.fetchAllUserPacks();
     this.handleTimeUpdate();
     this.audio.addEventListener('loadedmetadata', this.handleMetadata);
     this.audio.addEventListener('ended', this.handleCompletion);
     this.audio.addEventListener('timeupdate', this.handleTimeUpdate);
   }
-
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.uPacks.length !== prevProps.uPacks.length) {
-  //     this.props.fetchAllUserPacks();
-  //   }
-  // }
 
   componentWillUnmount() {
     this.audio.removeEventListener('ended', this.handleCompletion);
@@ -122,20 +113,12 @@ class PlayPage extends React.Component {
 
   handleMouseMove(e) {
     this.positionTime(e.pageX)
-    // console.log("e.pageX")
-    // console.log(e.pageX)
-    // console.log("this.audio.currentTime")
     this.audio.currentTime = (e.pageX - this.outer.offsetLeft) / this.outer.offsetWidth * this.audio.duration;
-    // console.log(this.outer.offsetWidth)
-    // console.log(e.pageX / this.outer.offsetWidth)
-    // console.log((e.pageX / this.outer.offsetWidth) * this.audio.duration)
-    // console.log("click!")
   }
 
   handleMouseDown(e) {
     window.addEventListener('mousemove', this.handleMouseMove);
     window.addEventListener('mouseup', this.handleMouseUp);
-    // console.log("clickMD!")
   }
 
   handleMouseUp(e) {
@@ -152,10 +135,6 @@ class PlayPage extends React.Component {
   }
 
   render() {
-    let width = 200;
-    let ptCt = (this.state.currentTimeUnMod / width) * 100;
-
-    let barStyle = { width: (ptCt) + "%" }
     
     return (this.props.currentMed && 
       this.props.currentUp && 
