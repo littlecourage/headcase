@@ -2,7 +2,7 @@
 
 # Description
 
-headcase is a single page web app clone of of the meditation website [headspace](https://www.headspace.com/) that allows users to stream guided meditations. Check out the live site [here](https://headcase-aa.herokuapp.com/#/)!
+headcase is a single page web app clone of of the meditation website [headspace](https://www.headspace.com/){:target="_blank"} that allows users to stream guided meditations. Check out the live site [here](https://headcase-aa.herokuapp.com/#/){:target="_blank"}!
 
 ![](./app/assets/images/headcase-gif2.gif)
 
