@@ -36,7 +36,7 @@ Hosting:
 
 # Project Highlights 
 
-One major challenge of this project was creating an audio player from scratch. I chose to utilize the HTMLAudioElement API, which gave me access to the properties and methods of ```<audio>``` elements while also giving me the flexibility of custom styling. These event listners are applied in the ```componentDidMount``` function.
+One major challenge of this project was creating an audio player from scratch. I chose to utilize the HTMLAudioElement API, which gave me access to the properties and methods of ```<audio>``` elements while also giving me the flexibility of custom styling. These event listeners are applied in the ```componentDidMount``` function.
 
 ```js
   componentDidMount() {

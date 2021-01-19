@@ -5,6 +5,8 @@ export const RECEIVE_CURRENT_UP = "RECEIVE_CURRENT_UP";
 export const RECEIVE_MED_UP = "RECEIVE_MED_UP";
 export const CLEAR_PLAYER = "CLEAR_PLAYER";
 export const RECEIVE_USER_PACK = "RECEIVE_USER_PACK";
+export const RECEIVE_UP_ERRORS = "RECEIVE_UP_ERRORS";
+
 
 export const receiveCurrentMed = (currentMed) => {
   return {
@@ -13,14 +15,6 @@ export const receiveCurrentMed = (currentMed) => {
   }
 }
 
-// export const receiveCurrentUp = (currentUp) => {
-  
-//   return {
-//     type: RECEIVE_CURRENT_UP,
-//     currentUp
-//   }
-// }
-
 const receiveUserPack = (userPack) => {
   return {
     type: RECEIVE_USER_PACK,
@@ -28,22 +22,18 @@ const receiveUserPack = (userPack) => {
   }
 }
 
-// export const clearPlayer = () => {
-//   return {
-//     type: CLEAR_PLAYER
-//   }
-// }
+export const receiveErrors = (errors) => {
+  return {
+    type: RECEIVE_UP_ERRORS,
+    errors
+  }
+}
 
-// const receiveMedUp = (userPack) => {
-//   return {
-//     type: RECEIVE_MED_UP,
-//     userPack
-//   }
-// }
 
 export const fetchMedUserPack = (medId) => (dispatch) => {
   return APIUtil.fetchMedUserPack(medId)
-    .then((userPack) => {
-      return dispatch(receiveUserPack(userPack))
-    })
+    .then((userPack) => dispatch(receiveUserPack(userPack))
+    ,(err) => (
+      dispatch(receiveErrors(err.responseJSON))
+    ))
 }

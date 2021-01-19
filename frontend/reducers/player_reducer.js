@@ -1,5 +1,5 @@
 import { RECEIVE_MED_UP } from '../actions/meditations_actions';
-import { RECEIVE_CURRENT_UP, RECEIVE_CURRENT_MED, CLEAR_PLAYER } from '../actions/player_actions';
+import { RECEIVE_CURRENT_UP, RECEIVE_CURRENT_MED, CLEAR_PLAYER, RECEIVE_UP_ERRORS } from '../actions/player_actions';
 import { RECEIVE_USER_PACK } from '../actions/user_packs_actions';
 
 const _nullPlayer = Object.freeze({ currentUp: null, currentMedId: null })
@@ -15,6 +15,10 @@ const playerReducer = (oldState = _nullPlayer, action) => {
 
     case RECEIVE_CURRENT_MED:
       newState.currentMedId = parseInt(action.currentMed);
+      return newState;
+
+    case RECEIVE_UP_ERRORS:
+      newState.errors = action.errors;
       return newState;
 
     case CLEAR_PLAYER:

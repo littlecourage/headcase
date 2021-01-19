@@ -33,7 +33,7 @@ const App = () => (
       <ProtectedRoute exact path="/play/:meditationId" component={PlayBufferContainer} />
       <Route exact path="/about" component={AboutContainer} />
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
-      <AuthRoute exact path="/" component={LandingPageContainer} />
+      <AuthRoute path="/" component={LandingPageContainer} />
     </Switch>
   </div>
 );
