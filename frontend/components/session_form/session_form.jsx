@@ -185,6 +185,10 @@ class SessionForm extends React.Component {
     );
   }
 
+  componentDidMount() {
+    this.props.removeErrors();
+  }
+
   render() {
     if (this.props.formType === 'signup'){
       let title = 'Sign up';
