@@ -19,18 +19,23 @@ class CategoryIndex extends React.Component {
     const { categories, displayPacks, userPacks, sleepPack } = this.props
 
     return (userPacks && sleepPack) ? (
+      <div className="outer-discover">
+
+
       <div className="discoverPage">
         <div className="linkBox">
-          <span>PACKS</span>
-          {categories.map(category => {
+          <div className="linkHolder">
+            <span>PACKS</span>
+            {categories.map(category => {
 
-            return (
-              <HashLink key={category.id} to={`#${category.name}`} className="hashLink">
-                {category.name}
-              </HashLink>
-            )
+              return (
+                <HashLink key={category.id} to={`#${category.name}`} className="hashLink">
+                  {category.name}
+                </HashLink>
+              )
 
-          })}
+            })}
+          </div>
         </div>
 
         <div className="tileBox">
@@ -65,6 +70,7 @@ class CategoryIndex extends React.Component {
           <br />
         </div>
         
+      </div>
       </div>
     ) : (
       null

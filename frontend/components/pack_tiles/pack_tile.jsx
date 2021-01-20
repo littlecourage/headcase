@@ -23,8 +23,8 @@ const PackTile = ({ pack }) => {
   // }
 
   return (
+    <div className="pack">
       <Link to={`packs/${pack.id}`}>
-        <div className="pack">
             <img src={pack.thumbnailUrl} />
             <div className="pack_text" >
               <h4 style={textColor}>{pack.title}</h4>
@@ -33,8 +33,8 @@ const PackTile = ({ pack }) => {
               </div>
             </div>
 
-        </div>
       </Link>
+    </div>
   )
 }
 
