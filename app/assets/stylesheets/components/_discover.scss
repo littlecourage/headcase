@@ -3,7 +3,6 @@
   width: 100vw;
 }
 
-
 .discoverPage {
   display: flex;
   padding-top: 120px;
@@ -16,10 +15,11 @@
     height: 100vh;
     margin-right: 0;
     margin-left: 15%;
+    width: 3000px;
   }
-  // .tileBox {
-  //   width: 000px;
-  // }
+  .tileBox {
+    width: 3000px;
+  }
 }
 
   
@@ -37,7 +37,9 @@
 .tileBox {
   height: 100%;
   overflow-y: scroll;
-
+  position: fixed;
+  margin-left: 280px;
+  padding-bottom: 300px;
   h2 {
     // margin-top: 35px;
     font-size: 32px;
@@ -51,7 +53,7 @@
   .category {
     padding-top: 75px;
     width: 100%;
-    padding-left: 260px;
+   
   }
 
   .categoryBox {
@@ -118,7 +120,7 @@
 
   .featured {
     margin-top: 80px;
-    padding-left: 260px;
+   
   }
 
   .discover {
@@ -157,7 +159,8 @@
     flex-wrap: wrap;
     span {
       color: #F4A566;
-      font-size: 16px;
+      font-size: 14px;
+      letter-spacing: 2.5px;
       margin: 0px 0px 25px 3px;
       padding-left: 11px;
       height: 20px;
@@ -167,9 +170,9 @@
       cursor: pointer;
       text-decoration: none;
       font-family: "ApercuPro", sans-serif;
-      font-size: 16px;
+      font-size: 15px;
       color: #5A6175;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.2px;
       margin: 8px;
       margin-left: 20px;
       padding: 3px;
@@ -191,7 +194,7 @@
     flex: 0 1 0%;
     width: 240px;
     min-width: 240px;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-right: 24px;
   }
 }
@@ -205,7 +208,7 @@
 @media (max-width: 1280px) {
   .tileBox {
     width: 100%;
-    margin-left: 20px;
+    margin-left: 260px;
     .featured {
       img {
         width: 400px;
@@ -213,7 +216,6 @@
     }
 
     .categoryBox {
-      border: red 1px solid;
       max-width: 600px;
       .pack {
         width: 180px;
