@@ -175,7 +175,7 @@ class SessionForm extends React.Component {
 
   renderErrors() {
     return (
-      <ul>
+      <ul className="error">
         {this.props.errors.map((error, i) => (
           <li className="error" key={`error-${i}`}>
             {error}
@@ -213,7 +213,7 @@ class SessionForm extends React.Component {
                   <h2 className="form_title">{`${title}`}</h2>
                   <br />
                   <span>Already have an account? {this.props.navLink}</span>
-                  <div>
+                  <div className="login-inputs">
                     <br />
                     <br />
                     <input
@@ -261,27 +261,29 @@ class SessionForm extends React.Component {
                       onBlur={this.checkForErrors('email')}
                     />
                     {this.state.emailErrors ? this.renderEmailError(title) : <><br /><br /></>}
-                    <input
-                      type={this.state.type}
-                      className={(!this.state.password.changed && !this.state.passwordErrors) ?
-                                  "signup_input" :
-                                  (this.state.password.changed && !this.state.password.valid)
-                                  || this.state.passwordErrors ?
-                                  "signup_input error_input" :
-                                  "signup_input valid"
-                                }
-                      placeholder="Password (8+ characters)"
-                      value={this.state.password.input}
-                      onChange={this.update('password')}
-                      onBlur={this.checkForErrors('password')}
-                    />
-                    {
-                      (this.state.type === 'password') ? (
-                      <RiEyeCloseLine onClick={this.handleToggle} className="eye-icon" id="closed-eye"/>
-                      ) : (
-                        <RiEyeLine onClick={this.handleToggle} className="eye-icon" id="open-eye" />
-                      )
-                    }
+                    <div>
+                      <input
+                        type={this.state.type}
+                        className={(!this.state.password.changed && !this.state.passwordErrors) ?
+                                    "signup_input" :
+                                    (this.state.password.changed && !this.state.password.valid)
+                                    || this.state.passwordErrors ?
+                                    "signup_input error_input" :
+                                    "signup_input valid"
+                                  }
+                        placeholder="Password (8+ characters)"
+                        value={this.state.password.input}
+                        onChange={this.update('password')}
+                        onBlur={this.checkForErrors('password')}
+                      />
+                      {
+                        (this.state.type === 'password') ? (
+                        <RiEyeCloseLine onClick={this.handleToggle} className="eye-icon" id="closed-eye"/>
+                        ) : (
+                          <RiEyeLine onClick={this.handleToggle} className="eye-icon" id="open-eye" />
+                        )
+                      }
+                    </div>
                   {this.state.passwordErrors ? this.renderPasswordError() : <><br /><br /><br /><br /></>}
 
                   </div>
@@ -304,54 +306,59 @@ class SessionForm extends React.Component {
             <h2 className="form_title">{`${title}`}</h2>
             <br />
             <span>New To Headcase? {this.props.navLink}</span>
-            <div>
+            <div className="login-inputs">
               <br/>
-              <input
-                type="text"
-                className={(!this.state.email.changed && !this.state.emailErrors) ?
-                  "signup_input" :
-                  (this.state.email.changed && !this.state.email.valid)
-                  || (this.state.emailErrors) ?
-                  "signup_input error_input" :
-                  "signup_input"
-                }
-                placeholder="Email address"
-                value={this.state.email.input}
-                onChange={this.update('email')}
-                onBlur={this.checkForErrors('email')}
-              />
+              <div>
+                <input
+                  type="text"
+                  className={(!this.state.email.changed && !this.state.emailErrors) ?
+                    "login_input" :
+                    (this.state.email.changed && !this.state.email.valid)
+                    || (this.state.emailErrors) ?
+                    "login_input error_input" :
+                    "login_input"
+                  }
+                  placeholder="Email address"
+                  value={this.state.email.input}
+                  onChange={this.update('email')}
+                  onBlur={this.checkForErrors('email')}
+                />
+              </div>
               {this.state.emailErrors ? this.renderEmailError(title) : <><br /><br /></>}
-              <input
-                type={this.state.type}
-                className={(!this.state.password.changed && !this.state.passwordErrors) ?
-                  "signup_input" :
-                  (this.state.password.changed && !this.state.password.valid)
-                  || this.state.passwordErrors ?
-                  "signup_input error_input" :
-                  "signup_input"
+              <div>
+                <input
+                  type={this.state.type}
+                  id="password-input"
+                  className={(!this.state.password.changed && !this.state.passwordErrors) ?
+                    "login_input" :
+                    (this.state.password.changed && !this.state.password.valid)
+                    || this.state.passwordErrors ?
+                    "login_input error_input" :
+                    "login_input"
+                  }
+                  placeholder="Password (8+ characters)"
+                  value={this.state.password.input}
+                  onChange={this.update('password')}
+                  onBlur={this.checkForErrors('password')}
+                />
+                {
+                  (this.state.type === 'password') ? (
+                    <RiEyeCloseLine onClick={this.handleToggle} className="eye-icon" id="closed-eye" />
+                  ) : (
+                      <RiEyeLine onClick={this.handleToggle} className="eye-icon" id="open-eye" />
+                    )
                 }
-                placeholder="Password (8+ characters)"
-                value={this.state.password.input}
-                onChange={this.update('password')}
-                onBlur={this.checkForErrors('password')}
-              />
-              {
-                (this.state.type === 'password') ? (
-                  <RiEyeCloseLine onClick={this.handleToggle} className="eye-icon" id="closed-eye" />
-                ) : (
-                    <RiEyeLine onClick={this.handleToggle} className="eye-icon" id="open-eye" />
-                  )
-              }
+              </div>
               {this.state.passwordErrors ? this.renderPasswordError() : <><br /><br /></>}
-              <br/>
               {this.renderErrors()}
-              <br/>
             </div>
-            <button className="form_submit">LOG IN</button>
-            <br/>
-            <button onClick={this.handleDemoUser} className="demo_button">
-              SIGN IN AS DEMO USER
-            </button>
+            <div className="buttons">
+              <button className="form_submit">LOG IN</button>
+              <br/>
+              <button onClick={this.handleDemoUser} className="demo_button">
+                SIGN IN AS DEMO USER
+              </button>
+            </div>
           </form>
           <br/>
         </div>
