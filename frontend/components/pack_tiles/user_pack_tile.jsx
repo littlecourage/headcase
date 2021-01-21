@@ -22,7 +22,7 @@ const UserPackTile = ({ pack, userPack }) => {
   // }
   return (userPack.currentMeditation.order > 1) ? (
     <div className="pack">
-          <Link to={`packs/${pack.id}`}>
+        <Link to={`packs/${pack.id}`}>
 
           <img src={pack.thumbnailUrl} />
 
@@ -40,7 +40,7 @@ const UserPackTile = ({ pack, userPack }) => {
       </div>
   ) : (
       <div className="pack">
-          <Link to={`packs/${pack.id}`}>
+        <Link to={`packs/${pack.id}`}>
           <img src={pack.thumbnailUrl} />
           <div className="pack_text" >
             <h4 style={textColor}>{pack.title}</h4>
@@ -49,8 +49,8 @@ const UserPackTile = ({ pack, userPack }) => {
             </div>
           </div>
 
-          </Link>
-        </div>
+        </Link>
+      </div>
   )
 }
 

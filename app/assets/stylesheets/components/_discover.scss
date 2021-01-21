@@ -111,7 +111,7 @@
 
       .progress_bar_mini {
         width: 190px;
-        margin-left: 40px;
+        margin-left: 30px;
       }
 
     }
@@ -203,6 +203,9 @@
   .categoryBox {
     width: 250px;
   }
+  .progress_bar_mini {
+    width: 120px;
+  }
 }
 
 @media (max-width: 1280px) {
@@ -220,22 +223,26 @@
       .pack {
         width: 180px;
         height: 220px;
-      .pack_text {
-        width: 170px;
-        h4 {
-          font-size: 16px;
-          margin-top: 80px;
-          margin-left: -10px;
+        .pack_text {
+          width: 170px;
+          h4 {
+            font-size: 16px;
+            margin-top: 80px;
+            margin-left: -10px;
+          }
+          span {
+            margin-left: -15px;
+          }
         }
-        span {
-          margin-left: -5px;
+        .progress_bar_mini {
+          width: 130px;
+          margin-left: 25px;
+        }
+        img {
+          width: 180px;
+          height: 220px;
         }
       }
-      img {
-        width: 180px;
-        height: 220px;
-      }
-    }
   }
     .linkBox {
       width: 100px;
