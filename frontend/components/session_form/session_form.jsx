@@ -201,14 +201,14 @@ class SessionForm extends React.Component {
                 <h1 className="tag_line">Get some Headcase for a</h1>
                 <h1 className="tag_line">healthier, happier life.</h1>
                 <ul>
-                  <li><FaCheck className="check_icon" />&emsp;Hundreds of guided meditations on everything from stress to</li>
-                  <li><span>&emsp;</span>&emsp;focus to relationships.</li>
+                  <li><FaCheck className="check_icon" />&emsp;Hundreds of guided meditations on everything from stress to
+                  focus to relationships.</li>
                   <li><FaCheck className="check_icon" />&emsp;Stories, soundscapes, and music to help you sleep soundly.</li>
                   <li><FaCheck className="check_icon" />&emsp;Get a new meditation delivered to your phone everyday.</li>
                 </ul>
               </div>
 
-              <div>
+              <div className="form-holder">
                 <form className="signup_form_box" onSubmit={this.handleSubmit}>
                   <h2 className="form_title">{`${title}`}</h2>
                   <br />
@@ -264,6 +264,7 @@ class SessionForm extends React.Component {
                     <div>
                       <input
                         type={this.state.type}
+                        id="password-input"
                         className={(!this.state.password.changed && !this.state.passwordErrors) ?
                                     "signup_input" :
                                     (this.state.password.changed && !this.state.password.valid)
@@ -284,14 +285,15 @@ class SessionForm extends React.Component {
                         )
                       }
                     </div>
-                  {this.state.passwordErrors ? this.renderPasswordError() : <><br /><br /><br /><br /></>}
-
+                  {this.state.passwordErrors ? this.renderPasswordError() : <><br /><br /></>}
                   </div>
-                  <button className="form_submit">CREATE AN ACCOUNT</button>
-                  <br />
-                  <button onClick={this.handleDemoUser} className="demo_button">
-                    SIGN IN AS DEMO USER
-                  </button>
+                  <div className="buttons">
+                    <button className="form_submit">CREATE AN ACCOUNT</button>
+                    <br />
+                    <button onClick={this.handleDemoUser} className="demo_button">
+                      SIGN IN AS DEMO USER
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>
