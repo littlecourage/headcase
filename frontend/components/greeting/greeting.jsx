@@ -15,9 +15,9 @@ const Greeting = ({ currentUser, logout }) => {
               className="header-logo" 
               id ="header_logo" />
           </NavLink>
-          <div className="about-nav">
-            <div className="media-links">
-              <a href="https://github.com/littlecourage/headcase" 
+        <div className="about-nav">
+            <div className="greeting-media-links">
+              {/* <a href="https://github.com/littlecourage/headcase" 
                 className="about-link" 
                 target="_blank">GitHub <FaGithub />
               </a>
@@ -32,7 +32,7 @@ const Greeting = ({ currentUser, logout }) => {
               <a href="https://www.linkedin.com/in/christine-adams-180646123/" 
                 className="about-link" 
                 target="_blank">LinkedIn <FaLinkedin />
-              </a>
+              </a> */}
               <NavLink to="/about" className="about-link">About</NavLink>
             </div>
             <nav className="header-nav">
