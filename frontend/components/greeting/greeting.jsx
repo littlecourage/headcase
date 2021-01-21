@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { FaGithub, FaAngellist, FaLinkedin, FaUserCircle } from "react-icons/fa";
+
 
 const Greeting = ({ currentUser, logout }) => {
 
@@ -14,12 +16,24 @@ const Greeting = ({ currentUser, logout }) => {
               id ="header_logo" />
           </NavLink>
           <div className="about-nav">
-            <div>
-              <a href="https://github.com/littlecourage/headcase" className="about-link" target="_blank">GitHub</a>
-              <a href="https://angel.co/u/christine-adams-5" className="about-link" target="_blank">AngelList</a>
-              <a href="https://littlecourage.github.io/" className="about-link" target="_blank">Portfolio</a>
-              <a href="https://www.linkedin.com/in/christine-adams-180646123/" className="about-link" target="_blank">LinkedIn</a>
-            <NavLink to="/about" className="about-link">About</NavLink>
+            <div className="media-links">
+              <a href="https://github.com/littlecourage/headcase" 
+                className="about-link" 
+                target="_blank">GitHub <FaGithub />
+              </a>
+              <a href="https://angel.co/u/christine-adams-5" 
+                className="about-link" 
+                target="_blank">AngelList <FaAngellist />
+              </a>
+              <a href="https://littlecourage.github.io/" 
+                className="about-link" 
+                target="_blank">Portfolio <FaUserCircle />
+              </a>
+              <a href="https://www.linkedin.com/in/christine-adams-180646123/" 
+                className="about-link" 
+                target="_blank">LinkedIn <FaLinkedin />
+              </a>
+              <NavLink to="/about" className="about-link">About</NavLink>
             </div>
             <nav className="header-nav">
               <NavLink to="/login" className="login-link" activeClassName="signup-selected">LOG IN</NavLink>

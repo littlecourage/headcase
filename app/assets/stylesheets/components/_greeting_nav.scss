@@ -17,6 +17,20 @@
   justify-content: flex-end;
   align-items: center;
   margin-left: 20px;
+  .media-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    a {
+      margin-right: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg {
+        margin-left: 4px;
+      }
+    }
+  }
 }
 
 .header-nav {

@@ -40,7 +40,25 @@ class Profile extends React.Component {
             <NavLink to="/about">About Headcase</NavLink>
             <button onClick={this.handleMeet}>Meet Christine</button>
             <button onClick={this.props.logout}>Log Out</button>
-            </div>
+          </div>
+        </div>
+        <div className="media-links">
+          <a href="https://github.com/littlecourage/headcase"
+            className="about-link"
+            target="_blank">GitHub <FaGithub />
+          </a>
+          <a href="https://angel.co/u/christine-adams-5"
+            className="about-link"
+            target="_blank">AngelList <FaAngellist />
+          </a>
+          <a href="https://littlecourage.github.io/"
+            className="about-link"
+            target="_blank">Portfolio <FaUserCircle />
+          </a>
+          <a href="https://www.linkedin.com/in/christine-adams-180646123/"
+            className="about-link"
+            target="_blank">LinkedIn <FaLinkedin />
+          </a>
         </div>
       </div>
     ) : (

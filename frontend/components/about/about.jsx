@@ -1,9 +1,28 @@
 import React from 'react';
+import { FaGithub, FaAngellist, FaLinkedin, FaUserCircle } from "react-icons/fa";
 
 const About = () => {
   return (
     <div className="about-container">
       <div className="filler">
+        <div className="social-links">
+          <a href="https://github.com/littlecourage/headcase"
+            className="about-link"
+            target="_blank">GitHub <FaGithub />
+          </a>
+          <a href="https://angel.co/u/christine-adams-5"
+            className="about-link"
+            target="_blank">AngelList <FaAngellist />
+          </a>
+          <a href="https://littlecourage.github.io/"
+            className="about-link"
+            target="_blank">Portfolio <FaUserCircle />
+          </a>
+          <a href="https://www.linkedin.com/in/christine-adams-180646123/"
+            className="about-link"
+            target="_blank">LinkedIn <FaLinkedin />
+          </a>
+        </div>
       </div>
       <div className="image-container">
         <img src={window.aboutBackground} alt="illustration of gears"/>
