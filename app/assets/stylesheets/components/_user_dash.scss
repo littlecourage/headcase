@@ -21,9 +21,8 @@
   overflow: hidden;
   position: relative;
   img {
-    margin-top: -150px;
-    width: 100%;
-    height: auto;
+    height: 100%;
+    width: 100vw;
   }
 }
 
@@ -263,7 +262,6 @@ button {
     }
   }
   .packsDash {
-
     min-width: 500px;
     width: 90%;
     padding-left: 10%;
