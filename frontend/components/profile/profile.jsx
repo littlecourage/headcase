@@ -42,6 +42,7 @@ class Profile extends React.Component {
             <button onClick={this.props.logout}>Log Out</button>
           </div>
         </div>
+        
         <div className="media-links">
           <a href="https://github.com/littlecourage/headcase"
             className="about-link"
