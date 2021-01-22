@@ -72,9 +72,9 @@ class PackShow extends React.Component {
               .map(uP => uP.packId)
               .includes(pack.id) ? 
               (<div className="selectOrRemove" onClick={this.handleRemove}><span className="icon"><IoIosCloseCircleOutline /></span> 
-                <span >&emsp;REMOVE FROM MY PACKS</span></div>) 
+                <span className="selectRemoveText">&emsp;REMOVE FROM MY PACKS</span></div>) 
               : (<div className="selectOrRemove" onClick={this.handleAdd()}><span className="icon"><IoIosAddCircleOutline /></span> 
-                <span>&emsp;ADD TO MY PACKS</span></div>)}
+                <span className="selectRemoveText">&emsp;ADD TO MY PACKS</span></div>)}
           </div>
           <div className="showImg">
             <img 
