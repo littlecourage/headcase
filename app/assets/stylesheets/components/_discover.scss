@@ -199,7 +199,26 @@
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
+  .featured {
+    display: none;
+  }
+  .category {
+    h2 {
+      width: 220px;
+      font-size: 24px;
+    }
+  }
+  .categoryBox {
+    width: 250px;
+  }
+  .progress_bar_mini {
+    width: 120px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 800px) {
+
   .categoryBox {
     width: 250px;
   }
