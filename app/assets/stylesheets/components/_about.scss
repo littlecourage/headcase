@@ -127,3 +127,68 @@ a.git-link {
 a.git-link:hover {
   background-color: rgb(81,87,105);
 }
+
+@media (min-width: 1250px) and (max-width: 1350px) {
+  .image-container {
+    img {
+      margin-top: -350px;
+    }
+  }
+}
+
+@media (min-width: 1050px) and (max-width: 1250px) {
+  .image-container {
+    img {
+      margin-top: -150px;
+    }
+  }
+}
+
+@media (min-width: 715px) and (max-width: 1050px) {
+  .image-container {
+    width: 100vw;
+    img {
+      margin-top: 0px;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}
+
+@media (min-width: 500px) and (max-width: 715px) {
+  .image-container {
+    width: 100vw;
+    img {
+      margin-top: 0px;
+      margin-left: -60px;
+      width: 150%;
+      bottom: 0;
+      left: 0;
+    }
+  }
+  .text {
+    p {
+      width: 100%;
+      font-size: 17px;
+    }
+    p a {
+      font-size: 17px;
+    }
+    .git-link {
+      font-size: 12px;
+    }
+  }
+}
+
+// @media (max-width: 300px) {
+//   .image-container {
+//     border: red 1px solid;
+//     width: 100vw;
+//     img {
+//       margin-top: 0px;
+//       width: 150vw;
+//       bottom: 0;
+//       left: 0;
+//     }
+//   }
+// }
