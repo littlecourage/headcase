@@ -31,6 +31,7 @@ class SessionForm extends React.Component {
       emailErrors: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmitNewUser = this.handleSubmitNewUser.bind(this);
     this.handleDemoUser = this.handleDemoUser.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
@@ -38,11 +39,24 @@ class SessionForm extends React.Component {
     this.renderEmailError = this.renderEmailError.bind(this);
     this.isValid = this.isValid.bind(this);
     this.checkForErrors = this.checkForErrors.bind(this);
+    this.checkSubmission = this.checkSubmission.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
     if (this.state.email.valid && this.state.password.valid) {
+      const user = {
+        email: this.state.email.input,
+        password: this.state.password.input
+      }
+      this.props.processForm(user);
+    }
+  }
+
+  handleSubmitNewUser(e) {
+    e.preventDefault();
+    let valid = this.checkSubmission();
+    if (valid) {
       const user = {
         first_name: this.state.first_name.input,
         last_name: this.state.last_name.input,
@@ -51,6 +65,43 @@ class SessionForm extends React.Component {
       }
       this.props.processForm(user);
     }
+  }
+
+  checkSubmission() {
+    if (this.state.email.input.length < 1) {
+      let attributes = { ...this.state.email };
+      attributes.changed = true;
+      attributes.valid = false;
+      this.setState({ emailErrors: true, ["email"]: attributes });
+    }
+    if (this.state.password.input.length < 1) {
+      this.setState({ passwordErrors: true });
+      let attributes = { ...this.state.password };
+      attributes.changed = true;
+      attributes.valid = false;
+      this.setState({ passwordErrors: true, ["password"]: attributes });
+    }
+    if (this.state.last_name.input.length < 1) {
+      let attributes = { ...this.state.last_name };
+      attributes.changed = true;
+      attributes.valid = false;
+      this.setState({ ["last_name"]: attributes });
+    }
+    if (this.state.first_name.input.length < 1) {
+      let attributes = { ...this.state.first_name };
+      attributes.changed = true;
+      attributes.valid = false;
+      this.setState({ ["first_name"]: attributes });
+    }
+    if (this.state.email.input.length > 0 && 
+      this.state.email.input.includes('@') &&
+      this.state.password.input.length > 8 && 
+      this.state.first_name.input.length > 0 && 
+      this.state.last_name.input.length > 0) {
+        return true;
+      } else {
+        return false;
+      }
   }
 
   handleDemoUser(e) {
@@ -105,7 +156,7 @@ class SessionForm extends React.Component {
   update(category) {
     let field = category;
     return (e) => {
-      let attributes = { ...this.state.field };
+      let attributes = Object.assign({}, this.state[field])
       attributes.input = e.currentTarget.value;
       attributes.changed = true;
       if (!this.isValid(field, attributes, e.currentTarget.value)) {
@@ -123,7 +174,7 @@ class SessionForm extends React.Component {
   }
 
   checkForErrors(field) {
-    field = field
+    field = field;
     return () => {
       if (field === "email") {
         if (!this.state[field].input.includes("@")) {
@@ -139,7 +190,7 @@ class SessionForm extends React.Component {
         }
       } else if (field === "first_name" || field === 'last_name') {
         if (this.state[field].input.length < 1) {
-          let attributes = { ...this.state.field };
+          let attributes = Object.assign({}, this.state[field])
           attributes.changed = true;
           attributes.valid = false;
           this.setState({ [field]: attributes });
@@ -209,7 +260,7 @@ class SessionForm extends React.Component {
               </div>
 
               <div className="form-holder">
-                <form className="signup_form_box" onSubmit={this.handleSubmit}>
+                <form className="signup_form_box" onSubmit={this.handleSubmitNewUser}>
                   <h2 className="form_title">{`${title}`}</h2>
                   <br />
                   <span>Already have an account? {this.props.navLink}</span>
